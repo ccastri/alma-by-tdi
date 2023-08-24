@@ -100,9 +100,9 @@ export async function loader({context}: LoaderArgs) {
 
 export default function App() {
   const data = useLoaderData<typeof loader>();
-
+console.log(data)
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -135,7 +135,7 @@ export function ErrorBoundary() {
   }
 
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />

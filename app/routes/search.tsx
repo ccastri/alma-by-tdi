@@ -5,7 +5,7 @@ import {getPaginationVariables} from '@shopify/hydrogen';
 import {SearchForm, SearchResults, NoSearchResults} from '~/components/Search';
 
 export const meta: V2_MetaFunction = () => {
-  return [{title: `Hydrogen | Search`}];
+  return [{title: `Hydrogen | Buscar`}];
 };
 
 export async function loader({request, context}: LoaderArgs) {
@@ -29,7 +29,7 @@ export async function loader({request, context}: LoaderArgs) {
   });
 
   if (!data) {
-    throw new Error('No search data returned from Shopify API');
+    throw new Error('Ningun resultado de busqueda obtenido de la API de Shopify');
   }
 
   const totalResults = Object.values(data).reduce((total, value) => {
@@ -48,7 +48,7 @@ export default function SearchPage() {
   const {searchTerm, searchResults} = useLoaderData<typeof loader>();
   return (
     <div className="search">
-      <h1>Search</h1>
+      <h1>Buscar</h1>
       <SearchForm searchTerm={searchTerm} />
       {!searchTerm || !searchResults.totalResults ? (
         <NoSearchResults />

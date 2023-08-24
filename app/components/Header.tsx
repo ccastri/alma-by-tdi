@@ -9,9 +9,9 @@ type Viewport = 'desktop' | 'mobile';
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   return (
-    <header className="header">
+    <header className="header hover:bg-slate-700">
       <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
-        <strong>{shop.name}</strong>
+        <strong>Alma by tejidos</strong>
       </NavLink>
       <HeaderMenu menu={menu} viewport="desktop" />
       <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
@@ -47,12 +47,11 @@ export function HeaderMenu({
           style={activeLinkStyle}
           to="/"
         >
-          Home
         </NavLink>
       )}
       {(menu || FALLBACK_HEADER_MENU).items.map((item) => {
         if (!item.url) return null;
-
+        console.log(item)
         // if the url is internal, we strip the domain
         const url =
           item.url.includes('myshopify.com') ||
@@ -102,11 +101,11 @@ function HeaderMenuMobileToggle() {
 }
 
 function SearchToggle() {
-  return <a href="#search-aside">Search</a>;
+  return <a href="#search-aside">Buscar</a>;
 }
 
 function CartBadge({count}: {count: number}) {
-  return <a href="#cart-aside">Cart {count}</a>;
+  return <a href="#cart-aside">Carrito {count}</a>;
 }
 
 function CartToggle({cart}: Pick<HeaderProps, 'cart'>) {
@@ -129,7 +128,7 @@ const FALLBACK_HEADER_MENU = {
       id: 'gid://shopify/MenuItem/461609500728',
       resourceId: null,
       tags: [],
-      title: 'Collections',
+      title: 'Colecciones',
       type: 'HTTP',
       url: '/collections',
       items: [],
@@ -147,7 +146,7 @@ const FALLBACK_HEADER_MENU = {
       id: 'gid://shopify/MenuItem/461609566264',
       resourceId: null,
       tags: [],
-      title: 'Policies',
+      title: 'Politicas',
       type: 'HTTP',
       url: '/policies',
       items: [],
@@ -156,7 +155,7 @@ const FALLBACK_HEADER_MENU = {
       id: 'gid://shopify/MenuItem/461609599032',
       resourceId: 'gid://shopify/Page/92591030328',
       tags: [],
-      title: 'About',
+      title: 'Nosotros',
       type: 'PAGE',
       url: '/pages/about',
       items: [],

@@ -236,7 +236,12 @@ function ProductForm({
         {({option}) => <ProductOptions key={option.name} option={option} />}
       </VariantSelector>
       <br />
+      <div 
+      className='w-24 rounded-md bg-blue-500'
+      >
+
       <AddToCartButton
+      
         disabled={!selectedVariant || !selectedVariant.availableForSale}
         onClick={() => {
           window.location.href = window.location.href + '#cart-aside';
@@ -252,8 +257,9 @@ function ProductForm({
             : []
         }
       >
-        {selectedVariant?.availableForSale ? 'Add to cart' : 'Sold out'}
+        {selectedVariant?.availableForSale ? 'Añadir al carrito': 'Agotado'}
       </AddToCartButton>
+      </div>
     </div>
   );
 }

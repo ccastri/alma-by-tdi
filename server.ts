@@ -259,7 +259,7 @@ const CART_QUERY_FRAGMENT = `#graphql
 export type I18nLocale = {language: LanguageCode; country: CountryCode};
 
 function getLocaleFromRequest(request: Request): I18nLocale {
-  const defaultLocale: I18nLocale = {language: 'EN', country: 'US'};
+  const defaultLocale: I18nLocale = {language: 'ES', country: 'CO'};
   const supportedLocales = {
     ES: 'ES',
     FR: 'FR',
