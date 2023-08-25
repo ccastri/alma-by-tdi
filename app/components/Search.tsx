@@ -322,7 +322,7 @@ export function PredictiveSearchResults() {
       {searchTerm.current && (
         <Link onClick={goToSearchResult} to={`/search?q=${searchTerm.current}`}>
           <p>
-            View all results for <q>{searchTerm.current}</q>
+            Ver todos los resultados para <q>{searchTerm.current}</q>
             &nbsp; →
           </p>
         </Link>

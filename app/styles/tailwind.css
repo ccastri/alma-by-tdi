@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.logo-background {
+  width: 100%; /* Opcional, ajusta el ancho según tus necesidades */
+  height: 400px; /* Opcional, ajusta la altura según tus necesidades */
+  background-image: url('/logo.png'); /* Ruta relativa a la imagen en la carpeta "public" */
+  background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el área del div */
+  background-position: center; /* Centra la imagen en el div */
+}

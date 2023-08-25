@@ -35,7 +35,8 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
             style={activeLinkStyle}
             to={url}
           >
-            {item.title}
+            Buscar
+            {/* {item.title} */}
           </NavLink>
         );
       })}

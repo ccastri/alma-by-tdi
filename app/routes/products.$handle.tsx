@@ -46,7 +46,7 @@ export async function loader({params, request, context}: LoaderArgs) {
   );
 
   if (!handle) {
-    throw new Error('Expected product handle to be defined');
+    throw new Error('se espera que haya un producto definido');
   }
 
   // await the query for the critical product data
@@ -183,7 +183,7 @@ function ProductMain({
       <br />
       <br />
       <p>
-        <strong>Description</strong>
+        <strong>Descripcion</strong>
       </p>
       <br />
       <div dangerouslySetInnerHTML={{__html: descriptionHtml}} />
@@ -201,7 +201,7 @@ function ProductPrice({
     <div className="product-price">
       {selectedVariant?.compareAtPrice ? (
         <>
-          <p>Sale</p>
+          <p>Oferta</p>
           <br />
           <div className="product-price-on-sale">
             {selectedVariant ? <Money data={selectedVariant.price} /> : null}

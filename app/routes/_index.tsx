@@ -11,9 +11,9 @@ import type {
   FeaturedCollectionFragment,
   RecommendedProductsQuery,
 } from 'storefrontapi.generated';
-
+import {motion} from 'framer-motion'
 export const meta: V2_MetaFunction = () => {
-  return [{title: 'Hydrogen | Home'}];
+  return [{title: 'Alma by TDI'}];
 };
 
 export async function loader({context}: LoaderArgs) {
@@ -63,7 +63,9 @@ function RecommendedProducts({
 }) {
   return (
     <div className="recommended-products">
-      <h2>Productos Recomendados</h2>
+      <>
+      <motion.h2 animate={{x:250}}>Productos Recomendados</motion.h2>
+      </>
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
           {({products}) => (

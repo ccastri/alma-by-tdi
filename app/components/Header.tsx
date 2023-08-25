@@ -1,6 +1,9 @@
 import {Await, NavLink, useMatches} from '@remix-run/react';
 import {Suspense} from 'react';
 import type {LayoutProps} from './Layout';
+import {
+  Image,
+} from '@shopify/hydrogen';
 
 type HeaderProps = Pick<LayoutProps, 'header' | 'cart' | 'isLoggedIn'>;
 
@@ -9,9 +12,12 @@ type Viewport = 'desktop' | 'mobile';
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   return (
-    <header className="header hover:bg-slate-700">
+    <header className="header sticky hover:bg-slate-700">
       <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
-        <strong>Alma by tejidos</strong>
+        {/* <strong>Alma by tejidos</strong> */}
+            <div className=" w-32">
+        <img src='/logo.png'/>
+    </div>
       </NavLink>
       <HeaderMenu menu={menu} viewport="desktop" />
       <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
