@@ -12,7 +12,7 @@ type Viewport = 'desktop' | 'mobile';
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   return (
-    <header className="header sticky hover:bg-slate-700">
+    <header className="header sticky hover:bg-[#F6EEE6]">
       <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
         {/* <strong>Alma by tejidos</strong> */}
             <div className=" w-32">
