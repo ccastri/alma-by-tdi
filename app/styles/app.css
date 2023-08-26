@@ -1,3 +1,5 @@
+
+/* Mientras migro a los estilos de tailwind aqui modifiqué la letra */
 :root {
   --aside-width: 400px;
   --cart-aside-summary-height-with-discount: 300px;
@@ -6,8 +8,16 @@
   --header-height: 64px;
   --color-dark: #000;
   --color-light: #fff;
+  --font-family: 'Assistant', sans-serif;
 }
-
+body {
+  font-family: var(--font-family);
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-family);
+}
 img {
   border-radius: 4px;
 }

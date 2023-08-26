@@ -41,9 +41,11 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({
 
 export function links() {
   return [
-    {rel: 'stylesheet', href: tailwindCss},
-    {rel: 'stylesheet', href: resetStyles},
+    //!!!!!!! La letra no funciona
     {rel: 'stylesheet', href: appStyles},
+    {rel: 'stylesheet', href: resetStyles},
+    {rel: 'stylesheet', href: tailwindCss},
+    {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap' }, // Google Fonts link
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
@@ -109,7 +111,7 @@ console.log(data)
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="bg-[#FEE6]">
         <Layout {...data}>
           <Outlet />
         </Layout>

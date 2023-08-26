@@ -12,15 +12,20 @@ type Viewport = 'desktop' | 'mobile';
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   return (
-    <header className="header sticky hover:bg-[#F6EEE6]">
-      <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
+    <header className="header sticky transition-all ease-in-out duration-200 hover:bg-[#F6EEE6]">
+    <div className="px-12 py-6 w-full justify-between flex">
+
+      <NavLink 
+      
+      prefetch="intent" to="/" style={activeLinkStyle} end>
         {/* <strong>Alma by tejidos</strong> */}
-            <div className=" w-32">
-        <img src='/logo.png'/>
+            <div className=" w-auto rounded-xl  hover:bg-[#F6EEE6]">
+        <img className= 'h-16 w-full object-cover'  src='/logo.png'/>
     </div>
       </NavLink>
       <HeaderMenu menu={menu} viewport="desktop" />
       <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+        </div>
     </header>
   );
 }

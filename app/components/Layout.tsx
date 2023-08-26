@@ -71,7 +71,7 @@ function SearchAside() {
                 name="q"
                 onChange={fetchResults}
                 onFocus={fetchResults}
-                placeholder="Search"
+                placeholder="Buscar"
                 ref={inputRef}
                 type="search"
               />

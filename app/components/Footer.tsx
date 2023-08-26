@@ -16,6 +16,7 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
     <nav className="footer-menu" role="navigation">
       {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
         if (!item.url) return null;
+        console.log(menu)
         // if the url is internal, we strip the domain
         const url =
           item.url.includes('myshopify.com') ||
@@ -35,8 +36,8 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
             style={activeLinkStyle}
             to={url}
           >
-            Buscar
-            {/* {item.title} */}
+            {/* Buscar */}
+            {item.title}
           </NavLink>
         );
       })}

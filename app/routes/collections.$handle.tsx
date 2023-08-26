@@ -10,7 +10,7 @@ import type {ProductItemFragment} from 'storefrontapi.generated';
 import {useVariantUrl} from '~/utils';
 
 export const meta: V2_MetaFunction = ({data}) => {
-  return [{title: `Hydrogen | ${data.collection.title} Collection`}];
+  return [{title: ` ${data.collection.title}`}];
 };
 
 export async function loader({request, params, context}: LoaderArgs) {
@@ -47,12 +47,12 @@ export default function Collection() {
         {({nodes, isLoading, PreviousLink, NextLink}) => (
           <>
             <PreviousLink>
-              {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
+              {isLoading ? 'Loading...' : <span>↑ Cargar previos</span>}
             </PreviousLink>
             <ProductsGrid products={nodes} />
             <br />
             <NextLink>
-              {isLoading ? 'Loading...' : <span>Load more ↓</span>}
+              {isLoading ? 'Loading...' : <span>Cargar mas ↓</span>}
             </NextLink>
           </>
         )}

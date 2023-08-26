@@ -12,39 +12,12 @@ import type {
   RecommendedProductsQuery,
 } from 'storefrontapi.generated';
 import {motion} from 'framer-motion'
-// import Slider from '../components/Slider'
+import Slider from '../components/Slider'
 
-const sliderItems:string[] = [
-'PhotoRoom_20230811_171642.jpg',
-'PhotoRoom_20230811_171700.jpg',
-'PhotoRoom_20230811_172032.jpg',
-'PhotoRoom_20230811_172055.jpg',
-'PhotoRoom_20230811_172118.jpg',
-'PhotoRoom_20230811_172356.jpg',
-'PhotoRoom_20230811_172423.jpg',
-'PhotoRoom_20230811_172447.jpg',
-]
+
 
 // #BB6A72, #F6EEE6, #DFC7C7
-const Slider = () => {
-  return (
-    <div className='w-full h-[calc(100vw- 64px)] rounded-md   bg-[#F6EEE6] py-12  '>
-      <div 
-       className=' h-full flex space-x-44 overflow-x-scroll overflow-y-hidden scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#F6EEE6] scrollbar-thumb-rounded-md rounded-md  bg-[#DFC7C7]'>
-        {sliderItems.map((img, index)=>
-          <div className='  flex-shrink-0 w-full min-h-full rounded-md' key={index}
-            // whileHover={{ scale: 1.1 }} // Ejemplo: escala al pasar el cursor
-          >
-            <img 
-              className="w-full mx-auto transform transition-all duration-200  ease-in-out hover:scale-105 cursor-grab  h-[calc(100vw- 64px)] object-cover"
-              src={`/${img}`} alt={`Image ${index}`}
-            />
-          </div>
-        )}
-      </div>
-    </div>
-  )
-}
+
 
 export const meta: V2_MetaFunction = () => {
   return [{title: 'Alma by TDI'}];
@@ -63,12 +36,18 @@ export default function Homepage() {
   const data = useLoaderData<typeof loader>();
   return (
     // ! Aqui estoy quitando el overflow EN LA JUEGAAAA!!!
-    <div className="home overflow-x-hidden">
+    <div className="home flex flex-col space-y-12 overflow-x-hidden p-12 ">
       {/* <div className='w-full overflow-x-scroll'> */}
       <Slider/>
       {/* </div> */}
+      <div className="w-[33.33%]  transition-all mt-12 mb-12 mx-6 rounded-md transform  hover:opacity-80 hover:bg-[#F6EEE6] hover:scale-125 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72] hover:border-2 border-[#DFC7C7]">
+
       <FeaturedCollection collection={data.featuredCollection} />
+      </div>
       <RecommendedProducts products={data.recommendedProducts} />
+      <div className='flex  flex-row w-full '>
+
+      </div>
     </div>
   );
 }
@@ -79,21 +58,25 @@ function FeaturedCollection({
   collection: FeaturedCollectionFragment;
 }) {
   const image = collection.image;
+  console.log(collection)
   return (
     <Link
       className="featured-collection"
       to={`/collections/${collection.handle}`}
     >
       {image && (
-        <div className="featured-collection-image">
-          <Image data={image} sizes="100vw" />
+        <div className="featured-collection group  m-6 rounded-md  relative">
+          <h2 className="absolute opacity-0 duration-200 transition-all transform hover:ease-in-out   bottom-0 p-4 rounded bg-[#F6EEE6] my-auto group-hover:opacity-80">En Tendencia</h2>
+          <Image data={image} className="" sizes="(min-width: 45em) 20vw, 50vw" />
         </div>
       )}
-      <h1>{collection.title}</h1>
+      {/* <h1>{collection.title}</h1> */}
     </Link>
   );
 }
 
+
+// !THIS IS THE FUNCTION TO RENDER OUT Recommended products
 function RecommendedProducts({
   products,
 }: {
@@ -102,18 +85,29 @@ function RecommendedProducts({
   return (
     <div className="recommended-products">
       <>
-      <motion.h2 animate={{x:250}}>Productos Recomendados</motion.h2>
+
+
+      <motion.h2 
+      initial={{ x: 250 }}  // posición inicial en la derecha
+  animate={{ x: 0 }}    // posición final en el centro
+  transition={{
+    type: 'spring',     // tipo de transición (rebote)
+    stiffness: 100,     // rigidez del rebote
+    damping: 50,        // amortiguación del rebote
+    duration: 1.5,      // duración de la animación
+  }}  className="text-[#886969]">Productos Recomendados</motion.h2>
       </>
       <Suspense fallback={<div>Cargando...</div>}>
         <Await resolve={products}>
           {({products}) => (
-            <div className="recommended-products-grid">
+            <div className="recommended-products flex">
               {products.nodes.map((product) => (
                 <Link
                   key={product.id}
                   className="recommended-product"
                   to={`/products/${product.handle}`}
                 >
+
                   <Image
                     data={product.images.nodes[0]}
                     aspectRatio="1/1"
@@ -133,6 +127,7 @@ function RecommendedProducts({
     </div>
   );
 }
+export {RecommendedProducts}
 
 const FEATURED_COLLECTION_QUERY = `#graphql
   fragment FeaturedCollection on Collection {
