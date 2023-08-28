@@ -13,17 +13,21 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   return (
     <header className="header sticky transition-all ease-in-out duration-200 hover:bg-[#F6EEE6]">
-    <div className="px-12 py-6 w-full justify-between flex">
+    <div className="px-12 my-auto w-full items-center flex">
 
       <NavLink 
       
       prefetch="intent" to="/" style={activeLinkStyle} end>
         {/* <strong>Alma by tejidos</strong> */}
-            <div className=" w-auto rounded-xl  hover:bg-[#F6EEE6]">
-        <img className= 'h-16 w-full object-cover'  src='/logo.png'/>
+            <div className=" sm:w-32 my-auto xs:w-auto  xs:rounded-full xs-p-2  rounded-xl  hover:bg-[#F6EEE6]">
+        <img className= {`xs:hidden md:flex  w-full object-cover`}  src='/logo.png'/>
+        <img className= {`md:hidden xs:flex h-14 w-14 object-cover`}  src='/logo-small.png'/>
     </div>
       </NavLink>
+      <div className='hidden w-auto md:block'>
+
       <HeaderMenu menu={menu} viewport="desktop" />
+      </div>
       <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
         </div>
     </header>
@@ -49,15 +53,17 @@ export function HeaderMenu({
   }
 
   return (
+    <div className=" w-full h-full">
     <nav className={className} role="navigation">
       {viewport === 'mobile' && (
         <NavLink
           end
+          className=' '
           onClick={closeAside}
           prefetch="intent"
           style={activeLinkStyle}
           to="/"
-        >
+          >
         </NavLink>
       )}
       {(menu || FALLBACK_HEADER_MENU).items.map((item) => {
@@ -71,19 +77,21 @@ export function HeaderMenu({
             : item.url;
         return (
           <NavLink
-            className="header-menu-item"
-            end
-            key={item.id}
-            onClick={closeAside}
-            prefetch="intent"
-            style={activeLinkStyle}
-            to={url}
+          className="header-menu-item"
+          end
+          key={item.id}
+          onClick={closeAside}
+          prefetch="intent"
+          style={activeLinkStyle}
+          to={url}
           >
             {item.title}
           </NavLink>
         );
       })}
     </nav>
+  {/* <img alt=""className='absolute' src='/logo-small.png'/> */}
+  </div>
   );
 }
 
@@ -94,11 +102,14 @@ function HeaderCtas({
   return (
     <nav className="header-ctas" role="navigation">
       <HeaderMenuMobileToggle />
+      <div className= "xs:hidden md:flex space-x-4 w-auto">
+
       <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
         {isLoggedIn ? 'Account' : 'Sign in'}
       </NavLink>
       <SearchToggle />
       <CartToggle cart={cart} />
+      </div>
     </nav>
   );
 }

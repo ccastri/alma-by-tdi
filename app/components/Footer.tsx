@@ -3,7 +3,7 @@ import type {FooterQuery} from 'storefrontapi.generated';
 
 export function Footer({menu}: FooterQuery) {
   return (
-    <footer className="footer">
+    <footer className="footer text-black">
       <FooterMenu menu={menu} />
     </footer>
   );
@@ -13,7 +13,7 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
   const [root] = useMatches();
   const publicStoreDomain = root?.data?.publicStoreDomain;
   return (
-    <nav className="footer-menu" role="navigation">
+    <nav className="footer-menu text-black font-semibold bg-[#DFC7C7]" role="navigation">
       {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
         if (!item.url) return null;
         console.log(menu)
@@ -25,7 +25,7 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
             : item.url;
         const isExternal = !url.startsWith('/');
         return isExternal ? (
-          <a href={url} key={item.id} rel="noopener noreferrer" target="_blank">
+          <a href={url} key={item.id} className="text-black" rel="noopener noreferrer" target="_blank">
             {item.title}
           </a>
         ) : (
@@ -35,6 +35,7 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
             prefetch="intent"
             style={activeLinkStyle}
             to={url}
+            className="text-black"
           >
             {/* Buscar */}
             {item.title}

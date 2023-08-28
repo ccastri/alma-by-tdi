@@ -227,7 +227,7 @@ function ProductForm({
   variants: Array<ProductVariantFragment>;
 }) {
   return (
-    <div className="product-form">
+    <div className="product-form flex">
       <VariantSelector
         handle={product.handle}
         options={product.options}
@@ -237,7 +237,8 @@ function ProductForm({
       </VariantSelector>
       <br />
       <div 
-      className='w-24 rounded-md bg-blue-500'
+      
+      className='w-auto rounded-md px-6 ml-2 py-4 h-auto hover:text-[#F6EEE6] bg-[#DFC7C7]'
       >
 
       <AddToCartButton

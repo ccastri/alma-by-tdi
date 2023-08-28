@@ -40,7 +40,7 @@ export default function Homepage() {
       {/* <div className='w-full overflow-x-scroll'> */}
       <Slider/>
       {/* </div> */}
-      <div className="w-[33.33%]  transition-all mt-12 mb-12 mx-6 rounded-md transform  hover:opacity-80 hover:bg-[#F6EEE6] hover:scale-125 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72] hover:border-2 border-[#DFC7C7]">
+      <div className="w-[33.33%]  transition-all mt-12 mb-12 sm:mx-6 xs:mx-0 xl:mx-12 rounded-md transform  hover:opacity-80 hover:bg-[#F6EEE6] hover:scale-125 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72] hover:border-2 border-[#DFC7C7]">
 
       <FeaturedCollection collection={data.featuredCollection} />
       </div>
@@ -95,7 +95,7 @@ function RecommendedProducts({
     stiffness: 100,     // rigidez del rebote
     damping: 50,        // amortiguación del rebote
     duration: 1.5,      // duración de la animación
-  }}  className="text-[#886969]">Productos Recomendados</motion.h2>
+  }}  className="text-[#886969] ">Productos Recomendados</motion.h2>
       </>
       <Suspense fallback={<div>Cargando...</div>}>
         <Await resolve={products}>
