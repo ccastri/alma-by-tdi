@@ -13,7 +13,7 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   return (
     <header className="header sticky transition-all ease-in-out duration-200 hover:bg-[#F6EEE6]">
-    <div className="px-12 my-auto w-full items-center flex">
+    <div className="md:px-12 xs:px-4 my-auto w-full items-center flex">
 
       <NavLink 
       

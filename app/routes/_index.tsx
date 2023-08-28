@@ -36,7 +36,7 @@ export default function Homepage() {
   const data = useLoaderData<typeof loader>();
   return (
     // ! Aqui estoy quitando el overflow EN LA JUEGAAAA!!!
-    <div className="home flex flex-col space-y-12 overflow-x-hidden p-12 ">
+    <div className="home flex flex-col space-y-12 overflow-x-hidden xs:p-4 md:p-12 ">
       {/* <div className='w-full overflow-x-scroll'> */}
       <Slider/>
       {/* </div> */}
