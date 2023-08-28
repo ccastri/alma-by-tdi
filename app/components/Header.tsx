@@ -19,9 +19,9 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
       
       prefetch="intent" to="/" style={activeLinkStyle} end>
         {/* <strong>Alma by tejidos</strong> */}
-            <div className=" sm:w-32 my-auto xs:w-auto  xs:rounded-full xs-p-2  rounded-xl  hover:bg-[#F6EEE6]">
+            <div className=" sm:w-32 my-auto xs:w-auto  xs:rounded-full xs:p-2  rounded-xl  hover:bg-[#F6EEE6]">
         <img className= {`xs:hidden md:flex  w-full object-cover`}  src='/logo.png'/>
-        <img className= {`md:hidden xs:flex h-14 w-14 object-cover`}  src='/logo-small.png'/>
+        <img className= {`md:hidden xs:flex h-12 w-12 sm:w-14 sm:h-14  object-cover`}  src='/logo-small.png'/>
     </div>
       </NavLink>
       <div className='hidden w-auto md:block'>

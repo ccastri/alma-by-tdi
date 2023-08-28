@@ -40,7 +40,7 @@ export default function Homepage() {
       {/* <div className='w-full overflow-x-scroll'> */}
       <Slider/>
       {/* </div> */}
-      <div className="w-[33.33%]  transition-all mt-12 mb-12 sm:mx-6 xs:mx-0 xl:mx-12 rounded-md transform  hover:opacity-80 hover:bg-[#F6EEE6] hover:scale-125 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72] hover:border-2 border-[#DFC7C7]">
+      <div className="w-[33.33%]  transition-all sm:mt-12 sm:mb-12 xs:my-2 sm:mx-6 xs:mx-0 xl:mx-12 rounded-md transform  hover:opacity-80 hover:bg-[#F6EEE6] hover:scale-125 xs:hover:scale-105 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72] hover:border-2 border-[#DFC7C7]">
 
       <FeaturedCollection collection={data.featuredCollection} />
       </div>
@@ -65,8 +65,8 @@ function FeaturedCollection({
       to={`/collections/${collection.handle}`}
     >
       {image && (
-        <div className="featured-collection group  m-6 rounded-md  relative">
-          <h2 className="absolute opacity-0 duration-200 transition-all transform hover:ease-in-out   bottom-0 p-4 rounded bg-[#F6EEE6] my-auto group-hover:opacity-80">En Tendencia</h2>
+        <div className="featured-collection group  sm:m-6 xs:m-0 rounded-md  relative">
+          <p className="absolute w-full opacity-0 duration-200 transition-all transform hover:ease-in-out xs:text-xs xs:p-2 bottom-0 sm:p-4 rounded bg-[#F6EEE6] my-auto group-hover:opacity-80">En Tendencia</p>
           <Image data={image} className="" sizes="(min-width: 45em) 20vw, 50vw" />
         </div>
       )}
