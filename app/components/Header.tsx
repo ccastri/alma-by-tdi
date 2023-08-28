@@ -1,6 +1,10 @@
 import {Await, NavLink, useMatches} from '@remix-run/react';
 import {Suspense} from 'react';
 import type {LayoutProps} from './Layout';
+import MenuIcon from '@mui/icons-material/Menu';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import ShoppingCartFilledIcon from '@mui/icons-material/ShoppingCart';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import {
   Image,
 } from '@shopify/hydrogen';
@@ -13,7 +17,7 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   return (
     <header className="header sticky transition-all ease-in-out duration-200 hover:bg-[#F6EEE6]">
-    <div className="md:px-12 xs:px-4 my-auto w-full items-center flex">
+    <div className="md:px-12 xs:px-4  justify-between my-auto w-full items-center flex">
 
       <NavLink 
       
@@ -28,7 +32,10 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
 
       <HeaderMenu menu={menu} viewport="desktop" />
       </div>
+      <div className='w-auto'>
       <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+      </div>
+        
         </div>
     </header>
   );
@@ -102,7 +109,7 @@ function HeaderCtas({
   return (
     <nav className="header-ctas" role="navigation">
       <HeaderMenuMobileToggle />
-      <div className= "xs:hidden md:flex space-x-4 w-auto">
+      <div className= " space-x-4 w-auto">
 
       <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
         {isLoggedIn ? 'Account' : 'Sign in'}
@@ -113,21 +120,22 @@ function HeaderCtas({
     </nav>
   );
 }
+// #BB6A72, #F6EEE6, #DFC7C7
 
 function HeaderMenuMobileToggle() {
   return (
-    <a className="header-menu-mobile-toggle" href="#mobile-menu-aside">
-      <h3>☰</h3>
+    <a className="header-menu-mobile-toggle " href="#mobile-menu-aside">
+      <span ><MenuIcon className='text-[#BB6A72] hover:text-slate-300 transition-all transform hover:scale duration-200 hover:ease-in-out'/></span>
     </a>
   );
 }
 
 function SearchToggle() {
-  return <a href="#search-aside">Buscar</a>;
+  return <a href="#search-aside ">Buscar<span className=""><SearchOutlinedIcon/></span></a>;
 }
 
 function CartBadge({count}: {count: number}) {
-  return <a href="#cart-aside">Carrito {count}</a>;
+  return <a href="#cart-aside">{count !== 0 ? <ShoppingCartFilledIcon />:<ShoppingCartOutlinedIcon />}  {count} </a>;
 }
 
 function CartToggle({cart}: Pick<HeaderProps, 'cart'>) {
