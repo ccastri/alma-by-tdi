@@ -73,29 +73,33 @@ export function HeaderMenu({
           >
         </NavLink>
       )}
-      {(menu || FALLBACK_HEADER_MENU).items.map((item) => {
-        if (!item.url) return null;
-        console.log(item)
-        // if the url is internal, we strip the domain
-        const url =
-          item.url.includes('myshopify.com') ||
-          item.url.includes(publicStoreDomain)
-            ? new URL(item.url).pathname
-            : item.url;
-        return (
-          <NavLink
-          className="header-menu-item"
-          end
-          key={item.id}
-          onClick={closeAside}
-          prefetch="intent"
-          style={activeLinkStyle}
-          to={url}
-          >
-            {item.title}
-          </NavLink>
-        );
-      })}
+      {/* {menu?.items} */}
+  {(menu || FALLBACK_HEADER_MENU).items
+  // .filter(item => item?.title !== 'Contacto')
+  .map((item) => {
+    if (!item || !item.url) return null;
+    console.log(item);
+    // if the url is internal, we strip the domain
+    const url =
+      item.url.includes('myshopify.com') ||
+      item.url.includes(publicStoreDomain)
+        ? new URL(item.url).pathname
+        : item.url;
+    return (
+      <NavLink
+        className="header-menu-item"
+        end
+        key={item.id}
+        onClick={closeAside}
+        prefetch="intent"
+        style={activeLinkStyle}
+        to={url}
+      >
+        {item.title !== 'Contacto' && item.title}
+      </NavLink>
+    );
+  })}
+
     </nav>
   {/* <img alt=""className='absolute' src='/logo-small.png'/> */}
   </div>
