@@ -20,12 +20,12 @@ export async function loader({request, params, context}: LoaderArgs) {
     pageBy: 8,
   });
 
-  if (!handle) {
+  if (handle) {
     return redirect('/collections');
   }
 
   const {collection} = await storefront.query(COLLECTION_QUERY, {
-    variables: {handle, ...paginationVariables},
+    variables: {handle: handle!, ...paginationVariables},
   });
 
   if (!collection) {
