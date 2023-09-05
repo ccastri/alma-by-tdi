@@ -34,6 +34,7 @@ export async function loader({context}: LoaderArgs) {
 
 export default function Homepage() {
   const data = useLoaderData<typeof loader>();
+  console.log(data)
   return (
     // ! Aqui estoy quitando el overflow EN LA JUEGAAAA!!!
     <div className="home flex flex-col space-y-12 overflow-x-hidden xs:p-4 md:p-12 ">
@@ -58,7 +59,6 @@ function FeaturedCollection({
   collection: FeaturedCollectionFragment;
 }) {
   const image = collection.image;
-  console.log(collection)
   return (
     <Link
       className="featured-collection"

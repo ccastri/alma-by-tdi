@@ -40,7 +40,7 @@ export default function Collections() {
 
 function CollectionsGrid({collections}: {collections: CollectionFragment[]}) {
   return (
-    <div className="collections-grid">
+    <div className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
       {collections.map((collection, index) => (
         <CollectionItem
           key={collection.id}
@@ -70,6 +70,7 @@ function CollectionItem({
         <Image
           alt={collection.image.altText || collection.title}
           aspectRatio="1/1"
+          className='object-cover'
           data={collection.image}
           loading={index < 3 ? 'eager' : undefined}
         />
