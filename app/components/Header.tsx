@@ -33,7 +33,7 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
 
       <HeaderMenu menu={menu} viewport="desktop" />
       </div>
-      <div className='w-auto flex border-4'>
+      <div className='w-auto flex '>
       <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
       </div>
         
@@ -61,7 +61,7 @@ export function HeaderMenu({
   }
 
   return (
-    <div className=" w-full flex  border-2 h-full">
+    <div className=" w-full flex   h-full">
     <nav className={className} role="navigation">
       {viewport === 'mobile' && (
         <NavLink
@@ -140,7 +140,7 @@ function HeaderMenuMobileToggle() {
 
 function SearchToggle() {
   return <>
-  <a href="#search-aside" className=' flex flex-row border-2 text-[#BB6A72] '>
+  <a href="#search-aside" className=' flex flex-row  text-[#BB6A72] '>
   <span className="hidden md:block text-[#BB6A72]">Buscar</span><SearchOutlinedIcon/>
   </a>
   </>

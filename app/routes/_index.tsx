@@ -68,6 +68,7 @@ function FeaturedCollection({
         <div className="featured-collection group  sm:m-6 xs:m-0 rounded-md  relative">
           <p className="absolute w-full opacity-0 duration-200 transition-all transform hover:ease-in-out xs:text-xs xs:p-2 bottom-0 sm:p-4 rounded bg-[#F6EEE6] my-auto group-hover:opacity-80">En Tendencia</p>
           <Image data={image} className="" sizes="(min-width: 45em) 20vw, 50vw" />
+          <>{console.log(collection)}</>
         </div>
       )}
       {/* <h1>{collection.title}</h1> */}
@@ -100,25 +101,28 @@ function RecommendedProducts({
       <Suspense fallback={<div>Cargando...</div>}>
         <Await resolve={products}>
           {({products}) => (
-            <div className="recommended-products overflow-x-scroll  space-x-4 bg-[#fafaf] flex">
+            <div className="recommended-products h-44 w-full overflow-x-scroll overflow-y-hidden scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#F6EEE6] scrollbar-thumb-rounded-md space-x-6 bg-[#fafaf] flex">
               {products.nodes.map((product) => (
-                <div className="hover:bg-[#fafa]">
+                <div className="h-36 w-full  rounded-md  flex hover:bg-[#F6EEE6]">
                 <Link
                   key={product.id}
-                  className="recommended-product"
+                  className="w-full transition-all transform hover:scale-105 hover:ease-in-out hover:text-[#DFC7C7] text-[#886969] font-semibold recommended-product flex flex-col justify-between"
                   to={`/products/${product.handle}`}
                 >
 
                   <Image
                     data={product.images.nodes[0]}
                     aspectRatio="1/1"
+                    className='object-cover'
                     sizes="(min-width: 45em) 20vw, 50vw"
                   />
+                  {/* <div className='h-20 justify-between px-2 flex flex-col'> */}
 
-                  <p className='text-sm py-4'>{product.title}</p>
-                  <small className='text-xs'>
+                  <p className='text-xs w-auto flex-1 text-justify  '>{product.title}</p>
+                  <p className='bottom-0 h-full text-sm'>
                     <Money data={product.priceRange.minVariantPrice} />
-                  </small>
+                  </p>
+                  {/* </div> */}
                 </Link>
                   </div>
               ))}
@@ -145,9 +149,13 @@ const FEATURED_COLLECTION_QUERY = `#graphql
     }
     handle
   }
-  query FeaturedCollection($country: CountryCode, $language: LanguageCode)
-    @inContext(country: $country, language: $language) {
-    collections(first: 1, sortKey: UPDATED_AT, reverse: true) {
+  query FeaturedCollection(
+    $country: CountryCode,
+    $language: LanguageCode
+    
+    ) @inContext(country: $country, language: $language) {
+    collections(
+      first: 6, sortKey: UPDATED_AT, reverse: true) {
       nodes {
         ...FeaturedCollection
       }
