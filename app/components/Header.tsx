@@ -8,7 +8,8 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import {
   Image,
 } from '@shopify/hydrogen';
-
+import LoginIcon from '@mui/icons-material/Login';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 type HeaderProps = Pick<LayoutProps, 'header' | 'cart' | 'isLoggedIn'>;
 
 type Viewport = 'desktop' | 'mobile';
@@ -23,7 +24,7 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
       
       prefetch="intent" to="/" style={activeLinkStyle} end>
         {/* <strong>Alma by tejidos</strong> */}
-            <div className=" sm:w-32 my-auto xs:w-auto  xs:rounded-full xs:p-2  rounded-xl  hover:bg-[#F6EEE6]">
+            <div className=" sm:w-32 my-auto xs:w-auto  xs:rounded-full xs:p-2  rounded-xl bg-[#fafafa]">
         <img className= {`xs:hidden md:flex  w-full object-cover`}  src='/logo.png'/>
         <img className= {`md:hidden xs:flex h-12 w-12 sm:w-14 sm:h-14  object-cover`}  src='/logo-small.png'/>
     </div>
@@ -32,7 +33,7 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
 
       <HeaderMenu menu={menu} viewport="desktop" />
       </div>
-      <div className='w-auto'>
+      <div className='w-auto flex border-4'>
       <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
       </div>
         
@@ -60,12 +61,12 @@ export function HeaderMenu({
   }
 
   return (
-    <div className=" w-full h-full">
+    <div className=" w-full flex  border-2 h-full">
     <nav className={className} role="navigation">
       {viewport === 'mobile' && (
         <NavLink
           end
-          className=' '
+          className='text-[#BB6A72] '
           onClick={closeAside}
           prefetch="intent"
           style={activeLinkStyle}
@@ -95,7 +96,7 @@ export function HeaderMenu({
         style={activeLinkStyle}
         to={url}
       >
-        {item.title !== 'Contacto' && item.title}
+        {item.title}
       </NavLink>
     );
   })}
@@ -111,12 +112,15 @@ function HeaderCtas({
   cart,
 }: Pick<HeaderProps, 'isLoggedIn' | 'cart'>) {
   return (
-    <nav className="header-ctas w-full " role="navigation">
+    <nav className="header-ctas  w-full " role="navigation">
       <HeaderMenuMobileToggle />
-      <div className= " space-x-4 w-auto">
+      <div className= " space-x-4 flex items-center w-auto">
 
-      <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
-        {isLoggedIn ? 'Account' : 'Sign in'}
+      <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className='hidden md:flex text-[#BB6A72]'>
+        {isLoggedIn ? 'Cuenta' : 'Iniciar Sesion'}
+      </NavLink>
+      <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className='md:hidden flex text-[#BB6A72]'>
+        {isLoggedIn ?  <PersonOutlineIcon/> :<LoginIcon/>}
       </NavLink>
       <SearchToggle />
       <CartToggle cart={cart} />
@@ -136,13 +140,14 @@ function HeaderMenuMobileToggle() {
 
 function SearchToggle() {
   return <>
-  <a href="#search-aside" className=' opacity-100 '>Buscar</a>
-  <span className=""><SearchOutlinedIcon/></span>
+  <a href="#search-aside" className=' flex flex-row border-2 text-[#BB6A72] '>
+  <span className="hidden md:block text-[#BB6A72]">Buscar</span><SearchOutlinedIcon/>
+  </a>
   </>
 }
 
 function CartBadge({count}: {count: number}) {
-  return <a href="#cart-aside">{count !== 0 ? <ShoppingCartFilledIcon />:<ShoppingCartOutlinedIcon />}  {count} </a>;
+  return <a href="#cart-aside" className="flex text-[#BB6A72]">{count !== 0 ? <ShoppingCartFilledIcon />:<ShoppingCartOutlinedIcon />}  {count} </a>;
 }
 
 function CartToggle({cart}: Pick<HeaderProps, 'cart'>) {
@@ -208,7 +213,8 @@ function activeLinkStyle({
   isPending: boolean;
 }) {
   return {
+    fontFamily: 'Assistant, sans-serif',
     fontWeight: isActive ? 'bold' : undefined,
-    color: isPending ? 'grey' : 'black',
+    color: isPending ? 'grey' : 'text-[#BB6A72]',
   };
 }

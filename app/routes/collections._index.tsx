@@ -40,13 +40,17 @@ export default function Collections() {
 
 function CollectionsGrid({collections}: {collections: CollectionFragment[]}) {
   return (
-    <div className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+    <div className="grid  xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 ">
       {collections.map((collection, index) => (
+        <div className="hover:scale-105 transition-all transform hover:ease-in-out ">
+
         <CollectionItem
-          key={collection.id}
-          collection={collection}
+        
+        key={collection.id}
+        collection={collection}
           index={index}
-        />
+          />
+          </div>
       ))}
     </div>
   );
@@ -61,7 +65,7 @@ function CollectionItem({
 }) {
   return (
     <Link
-      className="collection-item"
+      className="collection-item p-6 group hover:text-[#F6EEE6] text-[#BB6A72]"
       key={collection.id}
       to={`/collections/${collection.handle}`}
       prefetch="intent"
@@ -70,12 +74,12 @@ function CollectionItem({
         <Image
           alt={collection.image.altText || collection.title}
           aspectRatio="1/1"
-          className='object-cover'
+          className='object-contain group p-4'
           data={collection.image}
           loading={index < 3 ? 'eager' : undefined}
         />
       )}
-      <h5>{collection.title}</h5>
+      <h5 className='py-4 rounded-b-md text text-[#BB6A72] text-center group-hover:text-[#F6EEE6] group-hover:bg-[#DFC7C7]'>{collection.title}</h5>
     </Link>
   );
 }

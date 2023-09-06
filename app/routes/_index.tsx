@@ -100,8 +100,9 @@ function RecommendedProducts({
       <Suspense fallback={<div>Cargando...</div>}>
         <Await resolve={products}>
           {({products}) => (
-            <div className="recommended-products flex">
+            <div className="recommended-products overflow-x-scroll  space-x-4 bg-[#fafaf] flex">
               {products.nodes.map((product) => (
+                <div className="hover:bg-[#fafa]">
                 <Link
                   key={product.id}
                   className="recommended-product"
@@ -113,11 +114,13 @@ function RecommendedProducts({
                     aspectRatio="1/1"
                     sizes="(min-width: 45em) 20vw, 50vw"
                   />
-                  <h4>{product.title}</h4>
-                  <small>
+
+                  <p className='text-sm py-4'>{product.title}</p>
+                  <small className='text-xs'>
                     <Money data={product.priceRange.minVariantPrice} />
                   </small>
                 </Link>
+                  </div>
               ))}
             </div>
           )}
@@ -177,7 +180,7 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
     $country: CountryCode, 
     $language: LanguageCode
     ) @inContext(country: $country, language: $language) {
-    products(first: 6, sortKey: UPDATED_AT, reverse: true) {
+    products(first: 20, sortKey: UPDATED_AT, reverse: true) {
       nodes {
         ...RecommendedProduct
       }
