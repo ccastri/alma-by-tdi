@@ -1,6 +1,6 @@
 import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 import {useLoaderData, type V2_MetaFunction} from '@remix-run/react';
-
+import Contact from '~/components/Contact';
 export const meta: V2_MetaFunction = ({data}) => {
   return [{title: `${data.page.title}`}];
 };
@@ -15,7 +15,7 @@ export async function loader({params, context}: LoaderArgs) {
       handle: params.handle,
     },
   });
-
+  console.log(page)
   if (!page) {
     throw new Response('Not Found', {status: 404});
   }
@@ -31,6 +31,7 @@ export default function Page() {
       <header>
         <h1>{page.title}</h1>
       </header>
+      {page.title === 'Contacto' && <Contact/>}
       <main dangerouslySetInnerHTML={{__html: page.body}} />
     </div>
   );

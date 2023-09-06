@@ -10,6 +10,7 @@ import {
 } from '@shopify/hydrogen';
 import LoginIcon from '@mui/icons-material/Login';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 type HeaderProps = Pick<LayoutProps, 'header' | 'cart' | 'isLoggedIn'>;
 
 type Viewport = 'desktop' | 'mobile';
@@ -87,8 +88,9 @@ export function HeaderMenu({
         ? new URL(item.url).pathname
         : item.url;
     return (
+      <>
       <NavLink
-        className="header-menu-item"
+        className="header-menu-item relative"
         end
         key={item.id}
         onClick={closeAside}
@@ -96,8 +98,36 @@ export function HeaderMenu({
         style={activeLinkStyle}
         to={url}
       >
-        {item.title}
+        {item.title} 
       </NavLink>
+        {item.items.length > 0 && (
+        <div className="group flex -ml-4 flex-col">
+        <KeyboardArrowDownIcon/>
+        <div className='group absolute -ml-16 mt-6 hover:border-2 flex flex-col '>
+          {item.items.map(subitem =>
+          {
+          const url =
+          subitem?.url?.includes('myshopify.com') ||
+          subitem?.url?.includes(publicStoreDomain)
+        ? new URL(subitem?.url).pathname
+        : subitem.url;
+      // }
+        return(
+        <div className=" border-4 flex flex-col group-hover:opacity-100 opacity-0">
+        <NavLink
+           end
+           key={subitem.id}
+           onClick={closeAside}
+           prefetch="intent"
+        style={activeLinkStyle}
+        to={`${url}`}
+        > {subitem.title} </NavLink>
+        </div>
+        )})}
+        </div>
+        </div>
+        )}
+        </>
     );
   })}
 
