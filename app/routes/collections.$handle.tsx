@@ -63,7 +63,7 @@ export default function Collection() {
 
 function ProductsGrid({products}: {products: ProductItemFragment[]}) {
   return (
-    <div className="products-grid">
+    <div className="products-grid grid  xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 ">
       {products.map((product, index) => {
         return (
           <ProductItem
@@ -87,26 +87,29 @@ function ProductItem({
   const variant = product.variants.nodes[0];
   const variantUrl = useVariantUrl(product.handle, variant.selectedOptions);
   return (
+    // <div>
+
     <Link
       className="product-item"
       key={product.id}
       prefetch="intent"
       to={variantUrl}
-    >
+      >
       {product.featuredImage && (
         <Image
           alt={product.featuredImage.altText || product.title}
-          aspectRatio="1/1"
+          aspectRatio="1/1.3"
           data={product.featuredImage}
           loading={loading}
           sizes="(min-width: 45em) 400px, 100vw"
-        />
-      )}
+          />
+          )}
       <h4>{product.title}</h4>
       <small>
         <Money data={product.priceRange.minVariantPrice} />
       </small>
     </Link>
+          // </div>
   );
 }
 
