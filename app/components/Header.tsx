@@ -21,6 +21,10 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
 <>
   <header className="z-50 header flex flex-col overflow-hidden pt-2 h-auto transition-all over ease-in-out duration-200 hover:bg-[#F6EEE6]">
     <div className="md:px-12 xs:px-4 space-x-4 justify-between my-auto w-full items-center flex">
+    <div className='flex space-x-2'>
+            <HeaderMenuMobileToggle /> 
+      <SearchToggle />
+    </div>
       <NavLink className="rounded-full bg-[#fafafa" prefetch="intent" to="/" style={activeLinkStyle} end>
         <div className="sm:w-32 p-2 my-auto xs:w-full rounded-full md:rounded-xl bg-[#fafafa]">
           <img className={`hidden md:flex w-full object-cover`} src='/logo.png' alt="Logo" />
@@ -138,17 +142,16 @@ function HeaderCtas({
   cart,
 }: Pick<HeaderProps, 'isLoggedIn' | 'cart'>) {
   return (
-    <nav className="header-ctas  w-full " role="navigation">
-      <HeaderMenuMobileToggle />
+    <nav className="header-ctas flex items-center w-full " role="navigation">
+
       <div className= " space-x-4 flex items-center w-auto">
 
       <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className='hidden text-xs md:flex text-[#BB6A72]'>
         {isLoggedIn ? 'Cuenta' : 'Iniciar Sesion'}
       </NavLink>
       <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className='md:hidden flex text-[#BB6A72]'>
-        {isLoggedIn ?  <PersonOutlineIcon sx={{ fontSize: '20px' }} /> :<LoginIcon sx={{ fontSize: '15px' }} />}
+        {isLoggedIn ?  <PersonOutlineIcon sx={{ fontSize: '20px' }} /> :<LoginIcon sx={{ fontSize: '20px' }} />}
       </NavLink>
-      <SearchToggle />
       <CartToggle cart={cart} />
       </div>
     </nav>
@@ -158,9 +161,9 @@ function HeaderCtas({
 
 function HeaderMenuMobileToggle() {
   return (
-    <a className="header-menu-mobile-toggle " href="#mobile-menu-aside">
+    <a className=" " href="#mobile-menu-aside">
       <span ><MenuIcon 
-      sx={{ fontSize: '15px' }}
+      sx={{ fontSize: '20px' }}
       className='text-[#BB6A72] hover:text-slate-300 transition-all transform hover:scale duration-200 hover:ease-in-out'/></span>
     </a>
   );
@@ -169,13 +172,13 @@ function HeaderMenuMobileToggle() {
 function SearchToggle() {
   return <>
   <a href="#search-aside" className=' flex flex-row items-center text-[#BB6A72] '>
-  <span className="hidden md:block text-xs text-[#BB6A72]">Buscar</span><SearchOutlinedIcon sx={{ fontSize: '15px' }}/>
+  <span className="hidden md:block text-xs text-[#BB6A72]">Buscar</span><SearchOutlinedIcon sx={{ fontSize: '20px' }}/>
   </a>
   </>
 }
 
 function CartBadge({count}: {count: number}) {
-  return <a href="#cart-aside" className="flex text-xs text-[#BB6A72]">{count !== 0 ? <ShoppingCartFilledIcon sx={{ fontSize: '15px' }} />:<ShoppingCartOutlinedIcon sx={{ fontSize: '15px' }} />}  {count} </a>;
+  return <a href="#cart-aside" className="flex text-xs text-[#BB6A72]">{count !== 0 ? <ShoppingCartFilledIcon sx={{ fontSize: '20px' }} />:<ShoppingCartOutlinedIcon sx={{ fontSize: '20px' }} />}  {count} </a>;
 }
 
 function CartToggle({cart}: Pick<HeaderProps, 'cart'>) {
