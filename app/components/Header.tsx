@@ -19,7 +19,7 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   return (
 <>
-  <header className="header flex flex-col py-2 h-auto transition-all ease-in-out duration-200 hover:bg-[#F6EEE6]">
+  <header className="z-50 header flex flex-col overflow-hidden pt-2 h-auto transition-all over ease-in-out duration-200 hover:bg-[#F6EEE6]">
     <div className="md:px-12 xs:px-4 space-x-4 justify-between my-auto w-full items-center flex">
       <NavLink className="rounded-full bg-[#fafafa" prefetch="intent" to="/" style={activeLinkStyle} end>
         <div className="sm:w-32 p-2 my-auto xs:w-full rounded-full md:rounded-xl bg-[#fafafa]">
@@ -31,7 +31,7 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
         <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
       </div>
     </div>
-  <div className='sticky top-0 z-50 w-full items-center justify-center mx-auto bg-[#F6EEE6] md:flex'>
+  <div className='sticky z-50  w-screen mt-2  py-2 items-center justify-center mx-0 opacity-20 hover:opacity-100 bg-[#fafafa] md:flex'>
     <HeaderMenu menu={menu} viewport="desktop" />
   </div>
   </header>
@@ -97,9 +97,9 @@ export function HeaderMenu({
         {item.title} 
       </NavLink>
         {item.items.length > 0 && (
-        <div className="group flex -ml-4 flex-col">
+        <div className="group flex w-full -ml-4 flex-col">
         <KeyboardArrowDownIcon/>
-        <div className='group absolute -ml-16 mt-6 hover:border-2 flex flex-col '>
+        <div className=' absolute z-50 w-full -ml-[50%] mt-6 hover:border-2 flex flex-col '>
           {item.items.map(subitem =>
           {
           const url =
@@ -142,7 +142,7 @@ function HeaderCtas({
       <HeaderMenuMobileToggle />
       <div className= " space-x-4 flex items-center w-auto">
 
-      <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className='hidden md:flex text-[#BB6A72]'>
+      <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className='hidden text-xs md:flex text-[#BB6A72]'>
         {isLoggedIn ? 'Cuenta' : 'Iniciar Sesion'}
       </NavLink>
       <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className='md:hidden flex text-[#BB6A72]'>
@@ -168,8 +168,8 @@ function HeaderMenuMobileToggle() {
 
 function SearchToggle() {
   return <>
-  <a href="#search-aside" className=' flex flex-row  text-[#BB6A72] '>
-  <span className="hidden md:block text-[#BB6A72]">Buscar</span><SearchOutlinedIcon sx={{ fontSize: '15px' }}/>
+  <a href="#search-aside" className=' flex flex-row items-center text-[#BB6A72] '>
+  <span className="hidden md:block text-xs text-[#BB6A72]">Buscar</span><SearchOutlinedIcon sx={{ fontSize: '15px' }}/>
   </a>
   </>
 }

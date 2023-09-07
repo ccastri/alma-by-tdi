@@ -15,7 +15,9 @@ body {
 }
 h1,
 h2,
-h3 {
+h3,
+a,
+p {
   font-family: var(--font-family);
 }
 img {
@@ -186,22 +188,9 @@ aside li {
 * components/Footer
 * --------------------------------------------------
 */
-.footer {
-  background: var(--color-dark);
-  margin-top: auto;
-}
 
-.footer-menu-missing {
-  display: inline-block;
-  margin: 1rem;
-}
 
-.footer-menu {
-  align-items: center;
-  display: flex;
-  grid-gap: 1rem;
-  padding: 1rem;
-}
+
 
 /* .footer-menu a { */
   /* color: var(--color-light); */

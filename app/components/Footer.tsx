@@ -3,7 +3,7 @@ import type {FooterQuery} from 'storefrontapi.generated';
 
 export function Footer({menu}: FooterQuery) {
   return (
-    <footer className="footer text-black">
+    <footer className="w-full">
       <FooterMenu menu={menu} />
     </footer>
   );
@@ -13,7 +13,7 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
   const [root] = useMatches();
   const publicStoreDomain = root?.data?.publicStoreDomain;
   return (
-    <nav className="footer-menu text-black font-semibold bg-[#DFC7C7]" role="navigation">
+    <nav className="footer-menu flex flex-col w-full p-4 space-y-4 text-italic border-2 font-semibold bg-[#DFC7C7]" role="navigation">
       {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
         if (!item.url) return null;
         console.log(menu)
@@ -25,21 +25,25 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
             : item.url;
         const isExternal = !url.startsWith('/');
         return isExternal ? (
-          <a href={url} key={item.id} className="text-black" rel="noopener noreferrer" target="_blank">
+          
+          <a href={url} key={item.id} className="" rel="noopener noreferrer" target="_blank">
             {item.title}
           </a>
         ) : (
+          // <div className="flex flex-row w-full  ">
+          
           <NavLink
             end
             key={item.id}
             prefetch="intent"
             style={activeLinkStyle}
             to={url}
-            className="text-black"
+            className=" w-full text-2xs italic"
           >
             {/* Buscar */}
             {item.title}
           </NavLink>
+      // </div>
         );
       })}
     </nav>
