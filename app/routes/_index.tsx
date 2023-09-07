@@ -13,6 +13,8 @@ import type {
 } from 'storefrontapi.generated';
 import {motion} from 'framer-motion'
 import Slider from '../components/Slider'
+import Reviews from '~/components/Reviews';
+import Perks from '~/components/Perks';
 
 
 
@@ -49,8 +51,11 @@ export default function Homepage() {
 {/* Debo revisar que es lo que estoy consumiendo aqui porque lo que necesito son todas las colecciones */}
       <FeaturedCollection collection={data.featuredCollection} />
       </div>
-      <>Componente de opiniones</>
-      <>Componente de con iconos de redireccions</>
+      {/* <div className='w-full flex flex-col border'> */}
+
+      <Reviews/>
+      <Perks/>
+      {/* </div> */}
     </div>
   );
 }

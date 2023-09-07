@@ -15,7 +15,8 @@ export default {
         // Puedes agregar más breakpoints según tus necesidades
       },
       fontSize: {
-        '2xs': '0.5rem',     // Extra Small
+        '3xs': '0.4rem',     // extra extra sExtra Small
+        '2xs': '0.5rem',     // extra Extra Small
         'xs': '0.75rem',     // Extra Small
         'sm': '0.875rem',    // Small
         'base': '1rem',     // Default
