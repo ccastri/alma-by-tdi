@@ -110,9 +110,11 @@ function RecommendedProducts({
           {({products}) => (
             <div className="recommended-products h-full w-full overflow-x-scroll overflow-y-hidden scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#F6EEE6] scrollbar-thumb-rounded-md space-x-6 bg-[#fafaf] flex">
               {products.nodes.map((product) => (
-                <div className=" w-full  rounded-md  flex hover:bg-[#F6EEE6]">
+                <div 
+                key={product.id}
+                className=" w-full  rounded-md  flex hover:bg-[#F6EEE6]">
                 <Link
-                  key={product.id}
+                  
                   className="w-full transition-all transform hover:scale-90 hover:ease-in-out hover:text-[#DFC7C7] text-[#886969] font-semibold recommended-product flex flex-col justify-between"
                   to={`/products/${product.handle}`}
                 >
