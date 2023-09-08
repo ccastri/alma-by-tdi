@@ -30,18 +30,9 @@ export function Layout({
   isLoggedIn,
 }: LayoutProps) {
   // const newMenu = header?.menu?.items?.map(menuItem=> menuItem.title === 'Catalogo' && menuItem.url:'https://my-store-newww.myshopify.com/collections' )
-  const newMenu = header?.menu?.items?.map(menuItem => {
-  if (menuItem.title === 'Catalogo') {
-    return {
-      ...menuItem,
-      url: 'https://my-store-newww.myshopify.com/collections'
-    };
-  } else {
-    return menuItem;
-  }
-});
+ 
   return (
-    <>
+    <div>
       <CartAside cart={cart} />
       <SearchAside />
       <MobileMenuAside menu={header.menu} />
@@ -52,7 +43,7 @@ export function Layout({
           {(footer) => <Footer menu={footer.menu} />}
         </Await>
       </Suspense>
-    </>
+    </div>
   );
 }
 

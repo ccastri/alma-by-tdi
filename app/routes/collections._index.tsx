@@ -42,7 +42,7 @@ function CollectionsGrid({collections}: {collections: CollectionFragment[]}) {
   return (
     <div className="grid  xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 ">
       {collections.map((collection, index) => (
-        <div className="hover:scale-105 transition-all transform hover:ease-in-out ">
+        <div className="hover:scale-105 transition-all transform hover:ease-in-out " key={index}>
 
         <CollectionItem
         

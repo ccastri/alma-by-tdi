@@ -39,6 +39,7 @@ export default function Homepage() {
   console.log(data)
   return (
     // ! Aqui estoy quitando el overflow EN LA JUEGAAAA!!!
+    <>
     <div className="home flex flex-col space-y-12 overflow-x-hidden xs:p-4 overflow-y-hidden md:p-12 ">
       {/* <div className='w-full overflow-x-scroll'> */}
       <Slider/>
@@ -54,9 +55,13 @@ export default function Homepage() {
       {/* <div className='w-full flex flex-col border'> */}
 
       <Reviews/>
-      <Perks/>
+
       {/* </div> */}
     </div>
+      <div className='bg-gradient-to-b from-[#F6EEE6] to-[#fafafa]'>
+      <Perks/>
+      </div>
+      </>
   );
 }
 
@@ -128,9 +133,9 @@ function RecommendedProducts({
                   {/* <div className='h-20 justify-between px-2 flex flex-col'> */}
 
                   <p className='text-2xs w-auto flex-1 text-justify  '>{product.title}</p>
-                  <p className='bottom-0 h-full text-xs'>
+                  <div className='bottom-0 h-full text-xs'>
                     <Money data={product.priceRange.minVariantPrice} />
-                  </p>
+                  </div>
                   {/* </div> */}
                 </Link>
                   </div>

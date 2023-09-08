@@ -115,7 +115,7 @@ export default function Product() {
   const {product, variants} = useLoaderData<typeof loader>();
   const {selectedVariant} = product;
   return (
-    <div className="product">
+    <div className="product ">
       <ProductImage image={selectedVariant?.image} />
       <ProductMain
         selectedVariant={selectedVariant}
@@ -131,10 +131,10 @@ function ProductImage({image}: {image: ProductVariantFragment['image']}) {
     return <div className="product-image" />;
   }
   return (
-    <div className="product-image">
+    <div className="product-image ">
       <Image
         alt={image.altText || 'Product Image'}
-        aspectRatio="1/1"
+        aspectRatio="1.2/2"
         data={image}
         key={image.id}
         sizes="(min-width: 45em) 50vw, 100vw"

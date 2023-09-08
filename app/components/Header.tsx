@@ -90,7 +90,7 @@ export function HeaderMenu({
         ? new URL(item.url).pathname
         : item.url;
     return (
-      <div key={item.id}>
+      <div className="flex flex-col" key={item.id}>
       <NavLink
         className=" flex border-2 relative w-full"
         end
@@ -103,8 +103,9 @@ export function HeaderMenu({
         {item.title} 
         {item.items.length > 0 && (
           
-        <KeyboardArrowDownIcon/>
+        <KeyboardArrowDownIcon className="group-hover:block"/>
         )}
+       
         </NavLink>
         </div>
         );
@@ -116,26 +117,6 @@ export function HeaderMenu({
       {/* ------------------------------------------------------------------------------------------------ */}
 
 {/* <div className=' absolute z-50 w-full  mt-6 hover:border-2 flex flex-col '>
-        {item.items.map(subitem =>
-        {
-          const url =
-          subitem?.url?.includes('myshopify.com') ||
-          subitem?.url?.includes(publicStoreDomain)
-          ? new URL(subitem?.url).pathname
-          : subitem.url;
-          // }
-          return(
-            <div key={subitem.id} className=" border-4 flex flex-col group-hover:opacity-100 opacity-0">
-      <NavLink
-         end
-         key={subitem.id}
-         onClick={closeAside}
-         prefetch="intent"
-         style={activeLinkStyle}
-         to={`${url}`}
-         > {subitem.title} </NavLink>
-      </div>
-      )})}
       </div>
       </div> */}
 
