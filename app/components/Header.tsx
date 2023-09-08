@@ -19,7 +19,7 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   return (
 <>
-  <header className="z-50 header flex flex-col overflow-hidden pt-2 h-auto transition-all over ease-in-out duration-200 hover:bg-[#F6EEE6]">
+  <header className=" header flex flex-col overflow-hidden pt-2 h-auto transition-all over ease-in-out duration-200 hover:bg-[#F6EEE6] ">
     <div className="md:px-12 xs:px-4 space-x-4 justify-between my-auto w-full items-center flex">
     <div className='flex space-x-2'>
             <HeaderMenuMobileToggle /> 
@@ -27,8 +27,8 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
     </div>
       <NavLink className="rounded-full bg-[#fafafa" prefetch="intent" to="/" style={activeLinkStyle} end>
         <div className="sm:w-32 p-2 my-auto xs:w-full rounded-full md:rounded-xl bg-[#fafafa]">
-          <img className={`hidden md:flex w-full object-cover`} src='/logo.png' alt="Logo" />
-          <img className={`md:hidden flex h-12 w-12 sm:w-14 sm:h-14 object-cover`} src='/logo-small.png' alt="Logo" />
+          <img className={`hidden sm:flex w-full object-cover`} src='/logo.png' alt="Logo" />
+          <img className={`sm:hidden flex h-12 w-12 sm:w-14 sm:h-14 object-cover`} src='/logo-small.png' alt="Logo" />
         </div>
       </NavLink>
       <div className='w-auto flex'>
@@ -62,7 +62,9 @@ export function HeaderMenu({
   }
 
   return (
-    <div className="sticky z-50 w-full flex items-center justify-center    h-full">
+    <div 
+    // className="sticky z-50 w-full flex items-center justify-center    h-full"
+    >
     <nav className={className} role="navigation">
       {viewport === 'mobile' && (
         <NavLink
@@ -90,7 +92,7 @@ export function HeaderMenu({
     return (
       <>
       <NavLink
-        className="header-menu-item relative"
+        className=" flex border-2 relative w-full"
         end
         key={item.id}
         onClick={closeAside}
@@ -99,34 +101,37 @@ export function HeaderMenu({
         to={url}
       >
         {item.title} 
-      </NavLink>
         {item.items.length > 0 && (
-        <div className="group flex w-full -ml-4 flex-col">
+          <div className="group flex w-full space-x-2  flex-col">
         <KeyboardArrowDownIcon/>
-        <div className=' absolute z-50 w-full -ml-[50%] mt-6 hover:border-2 flex flex-col '>
+{/* ------------------------------------------------------------------------------------------------ */}
+{/*--------------------- MAÑANA SEPARO ESTO CON UN ESTADO; IMPORTANTE CONTAINERIZAR!!!! --------------*/}
+{/* ------------------------------------------------------------------------------------------------ */}
+        <div className=' absolute z-50 w-full  mt-6 hover:border-2 flex flex-col '>
           {item.items.map(subitem =>
           {
-          const url =
-          subitem?.url?.includes('myshopify.com') ||
-          subitem?.url?.includes(publicStoreDomain)
-        ? new URL(subitem?.url).pathname
-        : subitem.url;
-      // }
-        return(
-        <div className=" border-4 flex flex-col group-hover:opacity-100 opacity-0">
+            const url =
+            subitem?.url?.includes('myshopify.com') ||
+            subitem?.url?.includes(publicStoreDomain)
+            ? new URL(subitem?.url).pathname
+            : subitem.url;
+            // }
+            return(
+              <div key={subitem.id} className=" border-4 flex flex-col group-hover:opacity-100 opacity-0">
         <NavLink
            end
            key={subitem.id}
            onClick={closeAside}
            prefetch="intent"
-        style={activeLinkStyle}
-        to={`${url}`}
-        > {subitem.title} </NavLink>
+           style={activeLinkStyle}
+           to={`${url}`}
+           > {subitem.title} </NavLink>
         </div>
         )})}
         </div>
         </div>
         )}
+        </NavLink>
         </>
     );
   })}

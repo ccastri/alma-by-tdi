@@ -99,8 +99,11 @@ function SearchAside() {
 
 function MobileMenuAside({menu}: {menu: HeaderQuery['menu']}) {
   return (
-    <Aside id="mobile-menu-aside" heading="MENU">
-      <HeaderMenu menu={menu} viewport="mobile" />
+    
+    <Aside id="mobile-menu-aside"  heading="MENU">
+      <div className='flex flex-row border-2 top-48'>
+      <HeaderMenu menu={menu}  viewport="mobile" />
+    </div>
     </Aside>
   );
 }

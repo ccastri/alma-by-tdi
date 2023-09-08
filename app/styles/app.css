@@ -156,11 +156,11 @@ aside li {
   }
 }
 
-.header-menu-mobile {
+/* .header-menu-mobile {
   display: flex;
   flex-direction: column;
   grid-gap: 1rem;
-}
+} */
 
 .header-menu-desktop {
   display: none;
