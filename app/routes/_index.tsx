@@ -119,31 +119,31 @@ function RecommendedProducts({
         <Await resolve={products}>
           {({products}) => (
             <div className=" h-full rounded w-full overflow-x-scroll overflow-y-hidden scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#F6EEE6] scrollbar-thumb-rounded-md space-x-6 flex">
-              {products.nodes.map((product) => (
+              {products.nodes.map((product:any) => (
                 <div 
                 key={product.id}
                 className=" group w-36 items-center p-4 justify-center  rounded-md  flex ">
                  
                 <Link
                   
-                  className="w-auto rounded-md h-auto transition-all transform hover:scale-125 hover:ease-in-out group-hover:text-gray-300 text-[#886969] font-semibold  flex flex-col justify-between"
+                  className="w-auto rounded-md h-auto transition-all transform hover:scale-105 hover:ease-in-out group-hover:text-gray-300 text-[#886969] font-semibold  flex flex-col justify-between"
                   to={`/products/${product.handle}`}
                 >
 
                   <Image
                     data={product.images.nodes[0]}
                     aspectRatio="1/1.5"
-                    className=' rounded-md'
+                    className=' '
                     sizes="(min-width: 45em) 20vw, 50vw"
                   />
                   {/* <div className='h-20 justify-between px-2 flex flex-col'> */}
 
-                  <div className='group-hover:bg-[#F6EEE6] transition-all duration-200 group-hover:text-gray-300 group-hover:ease-in-out rounded p-4 text-sm'>
+                  <div className='group-hover:bg-[#F6EEE6] transition-all duration-200 group-hover:text-gray-300 group-hover:ease-in-out rounded-b p-4 text-sm'>
                   <p className='text-xs w-auto flex-1 text-justify  group-hover:text-gray-300 '>{product.title}</p>
-                    <Money data={product.priceRange.minVariantPrice} />
+                  <Money data={product.priceRange.minVariantPrice} />
                   </div>
-                  {/* </div> */}
-                </Link>
+
+    </Link>
                   </div>
               ))}
             </div>

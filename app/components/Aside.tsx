@@ -18,21 +18,21 @@ export function Aside({
   id?: string;
 }) {
   return (
-    <div aria-modal className="overlay" id={id} role="dialog">
-      <button
+    <div aria-modal className="overlay p-4 bg-[#fafafa]" id={id} role="dialog">
+      {/* <button
         className="close-outside"
         onClick={() => {
           history.go(-1);
           window.location.hash = '';
         }}
-      />
-      <aside>
-        <header>
-          <h3>{heading}</h3>
+      /> */}
+      <>
+        <>
+          <div>{heading}</div>
           <CloseAside />
-        </header>
+        </>
         <main>{children}</main>
-      </aside>
+      </>
     </div>
   );
 }
