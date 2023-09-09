@@ -3,6 +3,7 @@ import type {FooterQuery} from 'storefrontapi.generated';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import Perks from './Perks';
 export function Footer({menu}: FooterQuery) {
   return (
     <footer className="w-full">
@@ -17,6 +18,10 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
   return (
 
     <div className=" space-y-4 flex flex-col w-full py-4  font-semibold bg-[#DFC7C7]" role="navigation">
+      <div className='bg-gradient-to-b from-[#F6EEE6] to-[#fafafa]'>
+      <Perks/>
+      </div>
+      <div className='grid lg:grid-cols-3 md:grid-cols-3 transition-all transform duration-200 ease-in-out'>
       <div className="flex flex-col px-4 ">
 
       {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
@@ -43,18 +48,18 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
             prefetch="intent"
             style={activeLinkStyle}
             to={url}
-            className="hover:opacity-70 w-full text-slate-600 text-xs"
+            className="hover:opacity-70 w-full text-slate-600 text-base"
             >
             {/* Buscar */}
-            <span className='font-light text-2xs text-slate-600'>{item.title}</span>
+            <span className='font-light text-sm text-slate-600'>{item.title}</span>
           </NavLink>
       // </div>
       );
     })}
     </div>
       <div className='px-4 '>
-        <h2 className='text-xs font-semibold text-slate-600'>Contacto</h2>
-        <p className='text-2xs font-light leading-4 text-slate-600'>
+        <h2 className='text-base font-semibold text-slate-600'>Contacto</h2>
+        <p className='text-sm font-light leading-4 text-slate-600'>
 
         Correo Electrónico: almabytdi@gmail.com  <br/>
         WhatsApp: 3101234567 <br/>
@@ -64,16 +69,17 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
         </p>
       </div>
       <div className='px-4 '>
-        <h2 className='text-xs font-semibold text-slate-600'>Newsletter</h2>
-        <p className='text-2xs pb-2 font-light leading-4 text-slate-600'> Suscribete a nuestra lista preferencial y enterate de lo último de la marca</p>
+        <h2 className='text-base font-semibold text-slate-600'>Newsletter</h2>
+        <p className='text-sm pb-2 font-light leading-4 text-slate-600'> Suscribete a nuestra lista preferencial y enterate de lo último de la marca</p>
         <div className='flex flex-col space-y-2 w-full'>
 
         <input 
         placeholder='Correo electrónico'
-        className='rounded text-2xs leading-4 text-slate-600' 
+        className='rounded text-sm leading-4 w-64 text-slate-600' 
         type='text' />
-        <button  className='rounded w-1/3 py-1 text-[#fafafa] font-normal hover:opacity-60 bg-slate-600 text-xs border-2 border-slate-600 hover:text-[#fafafa]'>Enviar</button>
+        <button  className='rounded w-32 py-1 text-[#fafafa] font-normal hover:opacity-60 bg-slate-600 text-base border-2 border-slate-600 hover:text-[#fafafa]'>Enviar</button>
         </div>
+      </div>
       </div>
       <div className="flex space-x-2 px-4 ">
 <FacebookIcon className="text-slate-600" sx={{fontSize: '15px'}}/>

@@ -39,11 +39,19 @@ export default function Homepage() {
   console.log(data)
   return (
     // ! Aqui estoy quitando el overflow EN LA JUEGAAAA!!!
-    <div className="home flex flex-col space-y-12 overflow-x-hidden xs:p-4 overflow-y-hidden md:p-12 ">
+    
+    <div className=" flex flex-col space-y-12 overflow-x-hidden xs:p-4 overflow-y-hidden md:p-12 ">
       {/* <div className='w-full overflow-x-scroll'> */}
       <Slider/>
       {/* </div> */}
-      <RecommendedProducts products={data.recommendedProducts} />
+      <div className=" bg-[#d8d2d2] relative z-10">
+        {/* Gradiente izquierdo */}
+        <div className="absolute rounded  h-auto inset-y-0 left-0 w-1/4 bg-gradient-to-r to-[rgba(0,0,0,0)] from-[rgba(256,256,256,0.92)] z-50" />
+
+        {/* Gradiente derecho */}
+        <div className="absolute rounded h-auto inset-y-0 right-0 w-1/4 bg-gradient-to-l to-[rgba(0,0,0,0)] from-[rgba(256,256,256,0.92)] z-50" />
+        <RecommendedProducts products={data.recommendedProducts} />
+      </div>
       {/* <div className='flex  flex-row w-full '>
 
       </div> */}
@@ -54,9 +62,11 @@ export default function Homepage() {
       {/* <div className='w-full flex flex-col border'> */}
 
       <Reviews/>
-      <Perks/>
+
       {/* </div> */}
     </div>
+      
+    
   );
 }
 
@@ -91,7 +101,7 @@ function RecommendedProducts({
   products: Promise<RecommendedProductsQuery>;
 }) {
   return (
-    <div className="recommended-products">
+    <div className=" z-10">
       <>
 
 
@@ -103,34 +113,35 @@ function RecommendedProducts({
     stiffness: 100,     // rigidez del rebote
     damping: 50,        // amortiguación del rebote
     duration: 1.5,      // duración de la animación
-  }}  className="text-[#886969] text-xs text-center mb-2 w-full">Productos Recomendados</motion.h2>
+  }}  className="text-[#886969] text-lg tracking-wide font-bold text-center mb-6 h-auto  w-full">Productos Recomendados</motion.h2>
       </>
       <Suspense fallback={<div>Cargando...</div>}>
         <Await resolve={products}>
           {({products}) => (
-            <div className="recommended-products h-full w-full overflow-x-scroll overflow-y-hidden scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#F6EEE6] scrollbar-thumb-rounded-md space-x-6 bg-[#fafaf] flex">
+            <div className=" h-full rounded w-full overflow-x-scroll overflow-y-hidden scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#F6EEE6] scrollbar-thumb-rounded-md space-x-6 flex">
               {products.nodes.map((product) => (
                 <div 
                 key={product.id}
-                className=" w-full  rounded-md  flex hover:bg-[#F6EEE6]">
+                className=" group w-36 items-center p-4 justify-center  rounded-md  flex ">
+                 
                 <Link
                   
-                  className="w-full transition-all transform hover:scale-90 hover:ease-in-out hover:text-[#DFC7C7] text-[#886969] font-semibold recommended-product flex flex-col justify-between"
+                  className="w-auto rounded-md h-auto transition-all transform hover:scale-125 hover:ease-in-out group-hover:text-gray-300 text-[#886969] font-semibold  flex flex-col justify-between"
                   to={`/products/${product.handle}`}
                 >
 
                   <Image
                     data={product.images.nodes[0]}
-                    aspectRatio="1/2"
-                    className=''
+                    aspectRatio="1/1.5"
+                    className=' rounded-md'
                     sizes="(min-width: 45em) 20vw, 50vw"
                   />
                   {/* <div className='h-20 justify-between px-2 flex flex-col'> */}
 
-                  <p className='text-2xs w-auto flex-1 text-justify  '>{product.title}</p>
-                  <p className='bottom-0 h-full text-xs'>
+                  <div className='group-hover:bg-[#F6EEE6] transition-all duration-200 group-hover:text-gray-300 group-hover:ease-in-out rounded p-4 text-sm'>
+                  <p className='text-xs w-auto flex-1 text-justify  group-hover:text-gray-300 '>{product.title}</p>
                     <Money data={product.priceRange.minVariantPrice} />
-                  </p>
+                  </div>
                   {/* </div> */}
                 </Link>
                   </div>

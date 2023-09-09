@@ -157,7 +157,7 @@ function HeaderCtas({
 
       <div className= " space-x-4 flex items-center w-auto">
 
-      <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className='hidden text-xs md:flex text-[#BB6A72]'>
+      <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className='hidden text-sm md:flex text-[#BB6A72]'>
         {isLoggedIn ? 'Cuenta' : 'Iniciar Sesion'}
       </NavLink>
       <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className='md:hidden flex text-[#BB6A72]'>
@@ -173,23 +173,23 @@ function HeaderCtas({
 function HeaderMenuMobileToggle() {
   return (
     <a className=" " href="#mobile-menu-aside">
-      <span ><MenuIcon 
+      <MenuIcon 
       sx={{ fontSize: '20px' }}
-      className='text-[#BB6A72] hover:text-slate-300 transition-all transform hover:scale duration-200 hover:ease-in-out'/></span>
+      className='text-[#BB6A72] hover:text-slate-300 transition-all transform hover:scale duration-200 hover:ease-in-out'/>
     </a>
   );
 }
 
 function SearchToggle() {
   return <>
-  <a href="#search-aside" className=' flex flex-row items-center text-[#BB6A72] '>
-  <span className="hidden md:block text-xs text-[#BB6A72]">Buscar</span><SearchOutlinedIcon sx={{ fontSize: '20px' }}/>
+  <a href="#search-aside" className=' flex flex-row items-center space-x-2 text-[#BB6A72] '>
+  <span className="hidden md:block text-sm text-[#BB6A72]">Buscar</span><SearchOutlinedIcon sx={{ fontSize: '20px' }}/>
   </a>
   </>
 }
 
 function CartBadge({count}: {count: number}) {
-  return <a href="#cart-aside" className="flex text-xs text-[#BB6A72]">{count !== 0 ? <ShoppingCartFilledIcon sx={{ fontSize: '20px' }} />:<ShoppingCartOutlinedIcon sx={{ fontSize: '20px' }} />}  {count} </a>;
+  return <a href="#cart-aside" className="flex text-sm text-[#BB6A72]">{count !== 0 ? <ShoppingCartFilledIcon sx={{ fontSize: '20px' }} />:<ShoppingCartOutlinedIcon sx={{ fontSize: '20px' }} />}  {count} </a>;
 }
 
 function CartToggle({cart}: Pick<HeaderProps, 'cart'>) {
