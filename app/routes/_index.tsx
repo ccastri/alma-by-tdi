@@ -30,6 +30,7 @@ export async function loader({context}: LoaderArgs) {
   const {collections} = await storefront.query(FEATURED_COLLECTION_QUERY);
   const featuredCollection = collections.nodes[0];
   const recommendedProducts = storefront.query(RECOMMENDED_PRODUCTS_QUERY);
+  console.log(recommendedProducts)
 
   return defer({featuredCollection, recommendedProducts});
 }
@@ -44,18 +45,21 @@ export default function Homepage() {
       {/* <div className='w-full overflow-x-scroll'> */}
       <Slider/>
       {/* </div> */}
-      <div className=" bg-[#d8d2d2] relative z-10">
+      <div className=" bg-[#fafafa] relative ">
         {/* Gradiente izquierdo */}
-        <div className="absolute rounded  h-auto inset-y-0 left-0 w-1/4 bg-gradient-to-r to-[rgba(0,0,0,0)] from-[rgba(256,256,256,0.92)] z-50" />
+        
+        <div className="absolute rounded  h-auto inset-y-0 left-0 w-1/4 bg-gradient-to-r to-[rgba(0,0,0,0)] from-[rgba(256,256,256,0.92)] z-40" />
 
         {/* Gradiente derecho */}
-        <div className="absolute rounded h-auto inset-y-0 right-0 w-1/4 bg-gradient-to-l to-[rgba(0,0,0,0)] from-[rgba(256,256,256,0.92)] z-50" />
+        <div className="absolute rounded h-auto inset-y-0 right-0 w-1/4 bg-gradient-to-l to-[rgba(0,0,0,0)] from-[rgba(256,256,256,0.92)] z-40" />
+        <div className="absolute rounded-b-full  h-16  inset-x-0 top-8 w-full bg-gradient-to-b to-[rgba(0,0,0,0)] from-[rgba(235,166,166,0.92)] z-30" />
         <RecommendedProducts products={data.recommendedProducts} />
+        <div className="absolute rounded-t-full  h-16  inset-x-0 bottom-10 w-full bg-gradient-to-t to-[rgba(0,0,0,0)] from-[rgba(235,166,166,0.92)] z-10" />
       </div>
       {/* <div className='flex  flex-row w-full '>
 
       </div> */}
-      <div className="w-full my-6 h-auto overflow-hidden transition-all    xs:mx-0 xl:mx-12  transform  hover:opacity-80  hover:bg-gradient-to-t from-[#F6EEE6] via-[#BB6A72] to-[#DFC7C7] xs:hover:scale-105 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72] hover:border-2 border-[#DFC7C7]">
+      <div className="w-full my-6 h-auto overflow-hidden transition-all    xs:mx-0 xl:px-6  transform  hover:opacity-80  hover:bg-gradient-to-t from-[#F6EEE6] via-[#BB6A72] to-[#DFC7C7] xs:hover:scale-105 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72] hover:border-2 border-[#DFC7C7]">
 {/* Debo revisar que es lo que estoy consumiendo aqui porque lo que necesito son todas las colecciones */}
       <FeaturedCollection collection={data.featuredCollection} />
       </div>
@@ -77,19 +81,27 @@ function FeaturedCollection({
 }) {
   const image = collection.image;
   return (
-    <Link
-      className=" hover:bg-gradient-to-t pt-2 from-[#F6EEE6] via-[#BB6A72] to-[#DFC7C7]"
-      to={`/collections/${collection.handle}`}
-    >
-      {image && (
-        <div className=" group  xs:m-0    relative">
-          <p className="absolute w-full opacity-0 duration-200 h-full transition-all transform group-hover:ease-in-out group-hover:scale-125 group-hover:bg-gradient-to-t from-[#F6EEE6] via-[#BB6A72] to-[#DFC7C7] xs:text-xs tracking-tighter italic  pt-36    my-auto group-hover:opacity-80 text-center">En Tendencia</p>
-          <Image data={image} className="object-cover w-full  " aspectRatio="1/1.5" sizes="(min-width: 45em) 20vw, 50vw" />
-          {/* <>{console.log(collection)}</> */}
-        </div>
-      )}
-      {/* <h1>{collection.title}</h1> */}
-    </Link>
+<Link
+  className="xs:relative w-full px-2 flex"
+  to={`/collections/${collection.handle}`}
+>
+  {image && (
+    <div className="group w-full relative m-0 h-auto flex flex-row">
+      <div className="w-full bg-[#fafafa]">
+        <Image
+          data={image}
+          className="object-contain w-full h-auto md:h-72"
+          aspectRatio="1/2"
+          sizes="(min-width: 45em) 20vw, 50vw"
+        />
+      </div>
+      <span className="w-full  absolute  opacity-0 duration-200 h-full transition-all transform group-hover:ease-in-out group-hover:scale-105 group-hover:bg-gradient-to-t from-[#F6EEE6] via-[#BB6A72] to-[#DFC7C7] xs:text-xs tracking-tighter italic xs:pt-36 md:pt-0 my-auto group-hover:opacity-80 text-center">
+        En Tendencia
+      </span>
+    </div>
+  )}
+</Link>
+
   );
 }
 
@@ -118,7 +130,7 @@ function RecommendedProducts({
       <Suspense fallback={<div>Cargando...</div>}>
         <Await resolve={products}>
           {({products}) => (
-            <div className=" h-full rounded w-full overflow-x-scroll overflow-y-hidden scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#F6EEE6] scrollbar-thumb-rounded-md space-x-6 flex">
+            <div className=" h-full rounded w-full overflow-x-scroll overflow-y-hidden scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#353534] scrollbar-thumb-rounded-md transition-all ease-in-out duration-200 space-x-6 flex z-40">
               {products.nodes.map((product:any) => (
                 <div 
                 key={product.id}
@@ -133,7 +145,7 @@ function RecommendedProducts({
                   <Image
                     data={product.images.nodes[0]}
                     aspectRatio="1/1.5"
-                    className=' '
+                    className=''
                     sizes="(min-width: 45em) 20vw, 50vw"
                   />
                   {/* <div className='h-20 justify-between px-2 flex flex-col'> */}
@@ -175,14 +187,14 @@ const FEATURED_COLLECTION_QUERY = `#graphql
     
     ) @inContext(country: $country, language: $language) {
     collections(
-      first: 6, sortKey: UPDATED_AT, reverse: true) {
+      first: 6) {
       nodes {
         ...FeaturedCollection
       }
     }
   }
 ` as const;
-
+// El querry tenia dos propiedades mas acompañando a first: sortKey: UPDATED_AT, reverse: true
 const RECOMMENDED_PRODUCTS_QUERY = `#graphql
   fragment RecommendedProduct on Product {
     id
@@ -194,7 +206,7 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
         currencyCode
       }
     }
-    images(first: 1) {
+    images(first: 3) {
       nodes {
         id
         url

@@ -102,7 +102,7 @@ export async function loader({context}: LoaderArgs) {
 
 export default function App() {
   const data = useLoaderData<typeof loader>();
-console.log(data)
+// console.log(data)
   return (
     <html lang="es">
       <head>

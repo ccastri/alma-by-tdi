@@ -35,7 +35,7 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
         <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
       </div>
     </div>
-  <div className='sticky z-50  w-screen mt-2  py-2 items-center justify-center mx-0 opacity-20 hover:opacity-100 bg-[#fafafa] md:flex'>
+  <div className='sticky z-50  w-screen mt-2  py-2 items-center justify-center mx-0 opacity-20 hover:opacity-100  md:flex'>
     <HeaderMenu menu={menu} viewport="desktop" />
   </div>
   </header>
@@ -82,7 +82,7 @@ export function HeaderMenu({
   // .filter(item => item?.title !== 'Contacto')
   .map((item) => {
     if (!item || !item.url) return null;
-    console.log(item);
+    // console.log(item);
     // if the url is internal, we strip the domain
     const url =
       item.url.includes('myshopify.com') ||
@@ -141,7 +141,7 @@ function HeaderCtas({
       <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className='hidden text-sm md:flex text-[#BB6A72]'>
         {isLoggedIn ? 'Cuenta' : 'Iniciar Sesion'}
       </NavLink>
-      <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className='md:hidden flex text-[#BB6A72]'>
+      <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className=' text-[#BB6A72]'>
         {isLoggedIn ?  <PersonOutlineIcon sx={{ fontSize: '20px' }} /> :<LoginIcon sx={{ fontSize: '20px' }} />}
       </NavLink>
       <CartToggle cart={cart} />

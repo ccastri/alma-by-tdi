@@ -18,7 +18,7 @@ export function Aside({
   id?: string;
 }) {
   return (
-    <div aria-modal className="overlay p-4 bg-[#fafafa]" id={id} role="dialog">
+    <div aria-modal className="overlay p-4 bg-[#fafafa] z-50" id={id} role="dialog">
       {/* <button
         className="close-outside"
         onClick={() => {

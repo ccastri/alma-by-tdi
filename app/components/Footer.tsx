@@ -17,16 +17,16 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
   const publicStoreDomain = root?.data?.publicStoreDomain;
   return (
 
-    <div className=" space-y-4 flex flex-col w-full py-4  font-semibold bg-[#DFC7C7]" role="navigation">
+    <div className=" space-y-4 flex flex-col w-full pb-4  font-semibold bg-[#DFC7C7]" role="navigation">
       <div className='bg-gradient-to-b from-[#F6EEE6] to-[#fafafa]'>
       <Perks/>
       </div>
       <div className='grid lg:grid-cols-3 md:grid-cols-3 transition-all transform duration-200 ease-in-out'>
-      <div className="flex flex-col px-4 ">
+      <div className="flex flex-col p-4 ">
 
       {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
         if (!item.url) return null;
-        console.log(menu)
+        // console.log(menu)
         // if the url is internal, we strip the domain
         const url =
           item.url.includes('myshopify.com') ||
@@ -57,19 +57,19 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
       );
     })}
     </div>
-      <div className='px-4 '>
-        <h2 className='text-base font-semibold text-slate-600'>Contacto</h2>
-        <p className='text-sm font-light leading-4 text-slate-600'>
+      <div className='p-4 '>
+        <h2 className='text-base font-bold text-slate-600'>Contacto</h2>
+        <p className='text-sm font-light leading-6 text-slate-600'>
 
-        Correo Electrónico: almabytdi@gmail.com  <br/>
-        WhatsApp: 3101234567 <br/>
+         <span className="font-semibold">Correo Electrónico:   </span>almabytdi@gmail.com  <br/>
+        <span className="font-semibold ">WhatsApp:  </span>3101234567<br/>
         Horario de Atención al Cliente: Lunes a domingo 7:00 am - 7:00  <br/>
         Dirección (Tienda Fisica): Cra 12A # 34-56
 
         </p>
       </div>
-      <div className='px-4 '>
-        <h2 className='text-base font-semibold text-slate-600'>Newsletter</h2>
+      <div className='p-4 '>
+        <h2 className='text-base font-bold text-slate-600'>Newsletter</h2>
         <p className='text-sm pb-2 font-light leading-4 text-slate-600'> Suscribete a nuestra lista preferencial y enterate de lo último de la marca</p>
         <div className='flex flex-col space-y-2 w-full'>
 
@@ -81,10 +81,10 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
         </div>
       </div>
       </div>
-      <div className="flex space-x-2 px-4 ">
-<FacebookIcon className="text-slate-600" sx={{fontSize: '15px'}}/>
-<InstagramIcon className="text-slate-600" sx={{fontSize: '15px'}}/>
-<WhatsAppIcon className="text-slate-600" sx={{fontSize: '15px'}}/>
+      <div className="flex space-x-6  px-3">
+<FacebookIcon className="text-slate-600" sx={{fontSize: '30px'}}/>
+<InstagramIcon className="text-slate-600" sx={{fontSize: '30px'}}/>
+<WhatsAppIcon className="text-slate-600" sx={{fontSize: '30px'}}/>
       </div>
       <div className="w-full h-px bg-gray-300 my-4"/>
       <div className='flex px-4 items-center space-x-2'>
@@ -97,8 +97,8 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
         </svg>
 
       </div>
-        <p className= ' font-light px-4 pt-2 text-slate-600 text-3xs'>Alma by Tejidos Marca propiedad de Yuyu Molina NIT: 900542009-6. Calle 12 #34 56 Cali, Colombia.</p>
-        <p className= ' font-bold px-4 pt-2 text-slate-600 text-3xs'>© Copyright Alma by Tejidos. Tecnología de ccastri X Shopify</p>
+        <p className= ' font-light px-4 pt-2 text-slate-600 text-sm'>Alma by Tejidos Marca propiedad de Yuyu Molina NIT: 900542009-6. Calle 12 #34 56 Cali, Colombia.</p>
+        <p className= ' font-bold px-4 pt-2 text-slate-600 text-sm'>© Copyright Alma by Tejidos. Tecnología de <a href='https://www.github.com/ccastri'>ccastri</a></p>
 
     </div>
       

@@ -114,6 +114,7 @@ function redirectToFirstVariant({
 export default function Product() {
   const {product, variants} = useLoaderData<typeof loader>();
   const {selectedVariant} = product;
+  console.log(selectedVariant)
   return (
     <div className="product ">
       <ProductImage image={selectedVariant?.image} />
