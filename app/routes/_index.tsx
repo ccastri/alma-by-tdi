@@ -52,9 +52,9 @@ export default function Homepage() {
 
         {/* Gradiente derecho */}
         <div className="absolute rounded h-auto inset-y-0 right-0 w-1/4 bg-gradient-to-l to-[rgba(0,0,0,0)] from-[rgba(256,256,256,0.92)] z-40" />
-        <div className="absolute rounded-b-full  h-16  inset-x-0 top-8 w-full bg-gradient-to-b to-[rgba(0,0,0,0)] from-[rgba(235,166,166,0.92)] z-30" />
+        <div className="absolute rounded-b-full  h-16  inset-x-0 top-10 w-full bg-gradient-to-b to-[rgba(0,0,0,0)] from-[#DFC7C7] z-10" />
         <RecommendedProducts products={data.recommendedProducts} />
-        <div className="absolute rounded-t-full  h-16  inset-x-0 bottom-10 w-full bg-gradient-to-t to-[rgba(0,0,0,0)] from-[rgba(235,166,166,0.92)] z-10" />
+        <div className="absolute rounded-t-full  h-16  inset-x-0 bottom-10 w-full bg-gradient-to-t to-[rgba(0,0,0,0)] from-[#DFC7C7] z-10" />
       </div>
       {/* <div className='flex  flex-row w-full '>
 
@@ -130,7 +130,7 @@ function RecommendedProducts({
       <Suspense fallback={<div>Cargando...</div>}>
         <Await resolve={products}>
           {({products}) => (
-            <div className=" h-full rounded w-full overflow-x-scroll overflow-y-hidden scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#353534] scrollbar-thumb-rounded-md transition-all ease-in-out duration-200 space-x-6 flex z-40">
+            <div className=" h-full rounded w-full overflow-x-scroll overflow-y-hidden scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#fafa] scrollbar-thumb-rounded-md transition-all ease-in-out duration-200 space-x-6 flex z-40">
               {products.nodes.map((product:any) => (
                 <div 
                 key={product.id}
@@ -150,7 +150,7 @@ function RecommendedProducts({
                   />
                   {/* <div className='h-20 justify-between px-2 flex flex-col'> */}
 
-                  <div className='group-hover:bg-[#F6EEE6] transition-all duration-200 group-hover:text-gray-300 group-hover:ease-in-out rounded-b p-4 text-sm'>
+                  <div className=' transition-all duration-200 group-hover:text-gray-300 group-hover:ease-in-out rounded-b p-4 text-sm'>
                   <p className='text-xs w-auto flex-1 text-justify  group-hover:text-gray-300 '>{product.title}</p>
                   <Money data={product.priceRange.minVariantPrice} />
                   </div>

@@ -16,7 +16,7 @@ export function CartMain({layout, cart}: CartMainProps) {
   const withDiscount =
     cart &&
     Boolean(cart.discountCodes.filter((code) => code.applicable).length);
-  const className = `cart-main ${withDiscount ? 'with-discount' : ''}`;
+  const className = `  cart-main ${withDiscount ? 'with-discount' : ''}`;
 
   return (
     <div className={className}>
@@ -30,7 +30,7 @@ function CartDetails({layout, cart}: CartMainProps) {
   const cartHasItems = !!cart && cart.totalQuantity > 0;
 
   return (
-    <div className="cart-details">
+    <div className="cart-details p-6 h-screen">
       <CartLines lines={cart?.lines} layout={layout} />
       {cartHasItems && (
         <CartSummary cost={cart.cost} layout={layout}>
@@ -41,6 +41,7 @@ function CartDetails({layout, cart}: CartMainProps) {
     </div>
   );
 }
+// #BB6A72, #F6EEE6, #DFC7C7
 
 function CartLines({
   lines,
@@ -121,9 +122,9 @@ function CartCheckoutActions({checkoutUrl}: {checkoutUrl: string}) {
   if (!checkoutUrl) return null;
 
   return (
-    <div>
-      <a href={checkoutUrl} target="_self">
-        <p>Continue to Checkout &rarr;</p>
+    <div className='py-4' >
+      <a className='py-2 px-4 text-[#BB6A72]' href={checkoutUrl} target="_self">
+        <p className='font-bold text-md text-[#BB6A72]'>Continua al pago &rarr;</p>
       </a>
       <br />
     </div>
@@ -140,13 +141,13 @@ export function CartSummary({
   layout: CartMainProps['layout'];
 }) {
   const className =
-    layout === 'page' ? 'cart-summary-page' : 'cart-summary-aside';
+    layout === 'page' ? 'cart-summary-page' : 'cart-summary-aside my-2';
 
   return (
     <div aria-labelledby="cart-summary" className={className}>
-      <h4>Totals</h4>
-      <dl className="cart-subtotal">
-        <dt>Subtotal</dt>
+      <h4 className='font-bold text-xl'>Totales</h4>
+      <dl className="cart-subtotal flex py-4 justify-between">
+        <dt className='text-lg '>Subtotal</dt>
         <dd>
           {cost?.subtotalAmount?.amount ? (
             <Money data={cost?.subtotalAmount} />
@@ -167,7 +168,7 @@ function CartLineRemoveButton({lineIds}: {lineIds: string[]}) {
       action={CartForm.ACTIONS.LinesRemove}
       inputs={{lineIds}}
     >
-      <button type="submit">Remove</button>
+      <button className='border-2 border-[#BB6A72] px-2 py-1 text-center rounded-md hover:text-slate-500 hover:border-slate-300' type="submit">Remove</button>
     </CartForm>
   );
 }
@@ -179,14 +180,17 @@ function CartLineQuantity({line}: {line: CartLine}) {
   const nextQuantity = Number((quantity + 1).toFixed(0));
 
   return (
-    <div className="cart-line-quantiy">
-      <small>Quantity: {quantity} &nbsp;&nbsp;</small>
+    <div className=" flex flex-col">
+      <small>Cantidad: {quantity} &nbsp;&nbsp;</small>
+      <div className='flex mt-4 space-x1'>
+
       <CartLineUpdateButton lines={[{id: lineId, quantity: prevQuantity}]}>
         <button
           aria-label="Decrease quantity"
           disabled={quantity <= 1}
           name="decrease-quantity"
           value={prevQuantity}
+          className='text-[#BB6A72] hover:text-slate-300 border-2 border-[#BB6A72] hover:border-slate-300 rounded-full h-8 w-8'
         >
           <span>&#8722; </span>
         </button>
@@ -197,12 +201,17 @@ function CartLineQuantity({line}: {line: CartLine}) {
           aria-label="Increase quantity"
           name="increase-quantity"
           value={nextQuantity}
-        >
+          className='text-[#BB6A72] hover:text-slate-300 border-2 border-[#BB6A72] hover:border-slate-300 rounded-full h-8 w-8'
+          >
           <span>&#43;</span>
         </button>
       </CartLineUpdateButton>
+          </div>
       &nbsp;
+      <div>
+
       <CartLineRemoveButton lineIds={[lineId]} />
+      </div>
     </div>
   );
 }
@@ -245,19 +254,19 @@ export function CartEmpty({
     <div hidden={hidden}>
       <br />
       <p>
-        Looks like you haven&rsquo;t added anything yet, let&rsquo;s get you
-        started!
+        Parece que no has agregado ningún producto todavía. 
+        Haz click para ver algunas de nuestras opciones!
       </p>
       <br />
       <Link
-        to="/collections"
+        to="/collections/all"
         onClick={() => {
           if (layout === 'aside') {
             window.location.href = '/collections';
           }
         }}
       >
-        Continue shopping →
+        Continua comprando →
       </Link>
     </div>
   );
@@ -274,16 +283,16 @@ function CartDiscounts({
       ?.map(({code}) => code) || [];
 
   return (
-    <div>
+    <div className='flex w-full justify-between '>
       {/* Have existing discount, display it with a remove option */}
       <dl hidden={!codes.length}>
         <div>
-          <dt>Discount(s)</dt>
+          <dt>Descuento(s)</dt>
           <UpdateDiscountForm>
             <div className="cart-discount">
               <code>{codes?.join(', ')}</code>
               &nbsp;
-              <button>Remove</button>
+              <button>Remover</button>
             </div>
           </UpdateDiscountForm>
         </div>
@@ -291,10 +300,10 @@ function CartDiscounts({
 
       {/* Show an input to apply a discount */}
       <UpdateDiscountForm discountCodes={codes}>
-        <div>
-          <input type="text" name="discountCode" placeholder="Discount code" />
+        <div className='flex w-full  '>
+          <input type="text" className='rounded border-[#BB6A72] ' name="discountCode" placeholder="Codigo de descuento" />
           &nbsp;
-          <button type="submit">Apply</button>
+          <button  className="ml-12 border-2 text-center px-4 py-2 w-full text-[#BB6A72] hover:text-slate-300 border-[#BB6A72] hover:border-slate-300 rounded" type="submit">Aplicar</button>
         </div>
       </UpdateDiscountForm>
     </div>

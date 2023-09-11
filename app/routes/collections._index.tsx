@@ -84,7 +84,7 @@ function CollectionItem({
   );
 }
 
-const COLLECTIONS_QUERY = `#graphql
+export const COLLECTIONS_QUERY = `#graphql
   fragment Collection on Collection {
     id
     title

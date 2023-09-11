@@ -116,7 +116,7 @@ export default function Product() {
   const {selectedVariant} = product;
   console.log(selectedVariant)
   return (
-    <div className="product ">
+    <div className="product p-8">
       <ProductImage image={selectedVariant?.image} />
       <ProductMain
         selectedVariant={selectedVariant}
@@ -228,7 +228,7 @@ function ProductForm({
   variants: Array<ProductVariantFragment>;
 }) {
   return (
-    <div className="product-form flex">
+    <div className="product-form flex flex-col">
       <VariantSelector
         handle={product.handle}
         options={product.options}
@@ -239,11 +239,11 @@ function ProductForm({
       <br />
       <div 
       
-      className='w-auto rounded-md px-6 ml-2 py-4 h-auto hover:text-[#F6EEE6] bg-[#DFC7C7]'
+      className='w-40 flex items-center justify-center rounded-md px-4  py-4 h-12 hover:text-[#F6EEE6] bg-[#DFC7C7]'
       >
 
       <AddToCartButton
-      
+        
         disabled={!selectedVariant || !selectedVariant.availableForSale}
         onClick={() => {
           window.location.href = window.location.href + '#cart-aside';
@@ -274,14 +274,14 @@ function ProductOptions({option}: {option: VariantOption}) {
         {option.values.map(({value, isAvailable, isActive, to}) => {
           return (
             <Link
-              className="product-options-item"
+              className="product-options-item rounded-md"
               key={option.name + value}
               prefetch="intent"
               preventScrollReset
               replace
               to={to}
               style={{
-                border: isActive ? '1px solid black' : '1px solid transparent',
+                border: isActive ? '1px solid black ' : '1px solid transparent',
                 opacity: isAvailable ? 1 : 0.3,
               }}
             >
