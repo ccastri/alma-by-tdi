@@ -153,7 +153,7 @@ function HeaderCtas({
 
 function HeaderMenuMobileToggle() {
   return (
-    <a className=" " href="#mobile-menu-aside">
+    <a className="md:hidden " href="#mobile-menu-aside">
       <MenuIcon 
       sx={{ fontSize: '20px' }}
       className='text-[#BB6A72] hover:text-slate-300 transition-all transform hover:scale duration-200 hover:ease-in-out'/>

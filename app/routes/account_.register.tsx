@@ -107,40 +107,40 @@ export default function Register() {
   const data = useActionData<ActionResponse>();
   const error = data?.error || null;
   return (
-    <div className="login">
-      <h1>Register.</h1>
+    <div className="login pt-24 px-8 h-screen">
+      <h1>Registrarse</h1>
       <Form method="POST">
         <fieldset>
-          <label htmlFor="email">Email address</label>
+          <label htmlFor="email">Correo electrónico</label>
           <input
             id="email"
             name="email"
             type="email"
             autoComplete="email"
             required
-            placeholder="Email address"
+            placeholder="Correo electrónico"
             aria-label="Email address"
             // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus
           />
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Contraseña</label>
           <input
             id="password"
             name="password"
             type="password"
             autoComplete="current-password"
-            placeholder="Password"
+            placeholder="Contraseña"
             aria-label="Password"
             minLength={8}
             required
           />
-          <label htmlFor="passwordConfirm">Re-enter password</label>
+          <label htmlFor="passwordConfirm">Confirmar Contraseña</label>
           <input
             id="passwordConfirm"
             name="passwordConfirm"
             type="password"
             autoComplete="current-password"
-            placeholder="Re-enter password"
+            placeholder="Confirmar contraseña"
             aria-label="Re-enter password"
             minLength={8}
             required
@@ -155,11 +155,11 @@ export default function Register() {
         ) : (
           <br />
         )}
-        <button type="submit">Register</button>
+        <button type="submit">Registrarme</button>
       </Form>
       <br />
       <p>
-        <Link to="/account/login">Login →</Link>
+        <Link to="/account/login">Iniciar Sesión</Link>
       </p>
     </div>
   );

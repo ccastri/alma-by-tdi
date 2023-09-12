@@ -88,6 +88,8 @@ export function SearchForm({searchTerm}: {searchTerm: string}) {
   }, []);
 
   return (
+    <div className='z-50 py-24'>
+
     <Form method="get">
       <input
         defaultValue={searchTerm}
@@ -99,6 +101,7 @@ export function SearchForm({searchTerm}: {searchTerm: string}) {
       &nbsp;
       <button type="submit">Buscar</button>
     </Form>
+        </div>
   );
 }
 

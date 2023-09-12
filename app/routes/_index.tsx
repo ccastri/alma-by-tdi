@@ -113,7 +113,7 @@ function RecommendedProducts({
   products: Promise<RecommendedProductsQuery>;
 }) {
   return (
-    <div className=" z-10 bg-gray-500">
+    <div className=" z-10 bg-[#fafafa]">
       <>
 
 
@@ -125,7 +125,7 @@ function RecommendedProducts({
     stiffness: 100,     // rigidez del rebote
     damping: 5,        // amortiguación del rebote
     duration: 1.5,      // duración de la animación
-  }}  className="text-[#fafafa] text-lg tracking-wide font-bold text-center pt-6 h-auto  w-full">Productos Recomendados</motion.h2>
+  }}  className="text-[#BB6A72] italic text-lg tracking-wide font-bold text-center pt-6 h-auto  w-full">Productos Recomendados</motion.h2>
       </>
       <Suspense fallback={<div>Cargando...</div>}>
         <Await resolve={products}>
@@ -150,8 +150,8 @@ function RecommendedProducts({
                   />
                   {/* <div className='h-20 justify-between px-2 flex flex-col'> */}
 
-                  <div className=' transition-all duration-200 flex flex-col items-center justify-center  group-hover:text-gray-300 group-hover:ease-in-out rounded-b mx-4 text-sm'>
-                  <p className='text-xs w-36 flex-wrap text-center  group-hover:text-gray-300 '>{product.title}</p>
+                  <div className=' transition-all text-[#BB6A72] duration-200 flex flex-col items-center justify-center  group-hover:text-gray-300 group-hover:ease-in-out rounded-b mx-4 text-sm'>
+                  <p className='text-xs w-36 flex-wrap text-[#BB6A72] text-center  group-hover:text-gray-300 '>{product.title}</p>
                   <Money data={product.priceRange.minVariantPrice} />
                   </div>
 

@@ -27,8 +27,8 @@ export function Aside({
         }}
       />
       <>
-        <div className="flex  items-center px-2 justify-between space-x-2 mb-4">
-          <div >{heading}</div>
+        <div className="flex pt-8 pb-2 items-center px-2 justify-between space-x-2 mb-4">
+          <h3 className="font-bold text-[#BB6A72] " >{heading}</h3>
           <CloseAside />
         </div>
         <main>{children}</main>
@@ -40,7 +40,7 @@ export function Aside({
 function CloseAside() {
   return (
     /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
-    <span className="close font-bold text-[#BB6A72]  hover:text-slate-300  text-center h-8 text-md w-8 border-2 border-[#BB6A72]  no-underline hover:border-slate-300 rounded-full cursor-pointer" onClick={() => history.go(-1)}>
+    <span className="close font-bold text-[#BB6A72] pt-0.5 hover:text-slate-300  text-center h-8 text-md w-8 border-2 border-[#BB6A72]  no-underline hover:border-slate-300 rounded-full cursor-pointer" onClick={() => history.go(-1)}>
       &times;
     </span>
   );

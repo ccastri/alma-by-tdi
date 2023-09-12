@@ -77,29 +77,29 @@ export default function Login() {
   const error = data?.error || null;
 
   return (
-    <div className="login">
-      <h1>Sign in.</h1>
+    <div className="login pt-24 px-8 h-screen">
+      <h1>Inicio de Sesion.</h1>
       <Form method="POST">
         <fieldset>
-          <label htmlFor="email">Email address</label>
+          <label htmlFor="email">Correo electrónico</label>
           <input
             id="email"
             name="email"
             type="email"
             autoComplete="email"
             required
-            placeholder="Email address"
+            placeholder="Correo electrónico"
             aria-label="Email address"
             // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus
           />
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Contraseña</label>
           <input
             id="password"
             name="password"
             type="password"
             autoComplete="current-password"
-            placeholder="Password"
+            placeholder="Contraseña"
             aria-label="Password"
             minLength={8}
             required
@@ -114,15 +114,15 @@ export default function Login() {
         ) : (
           <br />
         )}
-        <button type="submit">Sign in</button>
+        <button type="submit">Iniciar sesión</button>
       </Form>
       <br />
       <div>
         <p>
-          <Link to="/account/recover">Forgot password →</Link>
+          <Link to="/account/recover">Olvidé mi contraseña →</Link>
         </p>
         <p>
-          <Link to="/account/register">Register →</Link>
+          <Link to="/account/register">Registrarse →</Link>
         </p>
       </div>
     </div>

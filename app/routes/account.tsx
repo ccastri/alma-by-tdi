@@ -106,7 +106,7 @@ function AccountLayout({
     : 'Account Details';
 
   return (
-    <div className="account">
+    <div className="account h-screen p-8">
       <h1>{heading}</h1>
       <br />
       <AccountMenu />
