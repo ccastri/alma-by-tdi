@@ -18,8 +18,8 @@ type Viewport = 'desktop' | 'mobile';
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   return (
-<>
-  <header className="fixed z-40 flex flex-col overflow-hidden justify-between  h-auto transition-all over ease-in-out duration-200 opacity-20 hover:opacity-100 bg-[#F6EEE6] ">
+<div className=''>
+  <header className="fixed top-0 z-40 flex flex-col overflow-hidden justify-between  h-auto transition-all over ease-in-out duration-200 opacity-20 hover:opacity-100 bg-[#F6EEE6] ">
     <div className="md:px-12 xs:px-4 space-x-4 justify-between my-auto w-full items-center flex">
     <div className='flex space-x-2 py-4 justify-center items-center'>
             <HeaderMenuMobileToggle /> 
@@ -39,7 +39,7 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
     <HeaderMenu menu={menu} viewport="desktop" />
   </div>
   </header>
-</>
+</div>
   );
 }
 

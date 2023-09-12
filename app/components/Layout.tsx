@@ -13,6 +13,7 @@ import {
   PredictiveSearchForm,
   PredictiveSearchResults,
 } from '~/components/Search';
+import Banner from './Banner';
 
 export type LayoutProps = {
   cart: Promise<CartApiQueryFragment | null>;
@@ -36,6 +37,9 @@ export function Layout({
       <CartAside cart={cart} />
       <SearchAside />
       <MobileMenuAside menu={header.menu} />
+      <Banner/>
+      <div  className='relative'>
+
       <Header header={header} cart={cart} isLoggedIn={isLoggedIn} />
       <main>{children}</main>
       <Suspense>
@@ -43,6 +47,7 @@ export function Layout({
           {(footer) => <Footer menu={footer.menu} />}
         </Await>
       </Suspense>
+      </div>
     </div>
   );
 }
