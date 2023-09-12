@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const sliderItems = [
   'PhotoRoom_20230811_171642.jpg',
@@ -42,15 +42,20 @@ const Slider = () => {
   };
 
   return (
-    <div className="w-full h-screen rounded-md flex flex-col">
+    <div className="w-full top-0 h-screen rounded-md flex flex-col">
       <div
         ref={sliderRef}
         className="h-screen w-full mx-auto flex justify-center overflow-y-hidden scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#F6EEE6] scrollbar-thumb-rounded-md rounded-md bg-[#F6EEE6]"
       >
+        <AnimatePresence>
+
         {sliderItems.map((img, index) => (
-          <div
-            className="flex  items-center justify-center w-auto h-screen rounded-md"
+          <motion.div
+            className="flex justify-center duration-200 transition-all ease-in-out w-auto h-screen rounded-md"
             key={index}
+            initial={{ opacity: 0 }}
+              animate={{ opacity: index === currentImageIndex ? 1 : 0 }}
+              exit={{ opacity: 0 }}
           >
             {/* Use conditional rendering to display the current image */}
             <img
@@ -59,8 +64,9 @@ const Slider = () => {
               alt={`Image ${index}`}
               style={{ display: index === currentImageIndex ? 'block' : 'none' }}
             />
-          </div>
+          </motion.div>
         ))}
+        </AnimatePresence>
       </div>
       <div className="my-4 flex justify-center space-x-2">
         {sliderItems.map((_, index) => (

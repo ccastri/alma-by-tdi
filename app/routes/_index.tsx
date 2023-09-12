@@ -62,8 +62,10 @@ export default function Homepage() {
       <FeaturedCollection collection={data.featuredCollection} />
       </div>
       {/* <div className='w-full flex flex-col border'> */}
+<div className='w-full'>
 
       <Reviews/>
+</div>
 
       {/* </div> */}
     </div>
