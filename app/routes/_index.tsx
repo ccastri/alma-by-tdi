@@ -41,20 +41,18 @@ export default function Homepage() {
   return (
     // ! Aqui estoy quitando el overflow EN LA JUEGAAAA!!!
     
-    <div className=" flex w-full flex-col space-y-44 h-auto bg-[#fafafa] overflow-x-hidden  overflow-y-hidden  ">
+    <div className=" flex w-full flex-col space-y- h-auto bg-[#fef6f6] overflow-x-hidden  overflow-y-hidden  ">
       <div className=' justify-between mx-auto items-center h-screen w-screen bg-[#F6EEE6]'>
       <Slider/>
       </div>
       <div className=" bg-[#fafafa] relative ">
-        {/* Gradiente izquierdo */}
-        
-        <div className="absolute rounded  h-auto inset-y-0 left-0 w-1/4 bg-gradient-to-r to-[rgba(0,0,0,0)] from-[rgba(256,256,256,0.92)] z-40" />
+         {/* <div className="absolute rounded-r-full blur-lg h-auto inset-y-0 left-0 w-28 md:w-56 bg-gradient-to-r from-[#f5f5f5] to-[#fafafa] z-40 shadow-md" /> */}
 
-        {/* Gradiente derecho */}
-        <div className="absolute rounded h-auto inset-y-0 right-0 w-1/4 bg-gradient-to-l to-[rgba(0,0,0,0)] from-[rgba(256,256,256,0.92)] z-40" />
-        <div className="absolute rounded-b-full  h-16  inset-x-0 top-10 w-full bg-gradient-to-b to-[rgba(0,0,0,0)] from-[#DFC7C7] z-10" />
+  {/* Gradiente derecho */}
+  {/* <div className="absolute rounded-l-full blur-xl h-auto inset-y-0 right-0 w-28 md:w-56 bg-gradient-to-l from-[#f5f5f5] to-[#fafafa] z-40 shadow-md" /> */}
+        <div className="absolute rounded-b-full blur-xl  h-16  inset-x-0 top-10 w-full bg-gradient-to-b to-[rgba(0,0,0,0)] from-[#DFC7C7] z-10" />
         <RecommendedProducts products={data.recommendedProducts} />
-        <div className="absolute rounded-t-full  h-16  inset-x-0 bottom-10 w-full bg-gradient-to-t to-[rgba(0,0,0,0)] from-[#DFC7C7] z-10" />
+        <div className="absolute rounded-t-full blur-xl  h-24  inset-x-0 bottom-0 w-full bg-gradient-to-t to-[rgba(0,0,0,0)] from-[#DFC7C7] z-10" />
       </div>
       {/* <div className='flex  flex-row w-full '>
 
@@ -113,7 +111,7 @@ function RecommendedProducts({
   products: Promise<RecommendedProductsQuery>;
 }) {
   return (
-    <div className=" z-10">
+    <div className=" z-10 bg-gray-500">
       <>
 
 
@@ -123,22 +121,22 @@ function RecommendedProducts({
   transition={{
     type: 'spring',     // tipo de transición (rebote)
     stiffness: 100,     // rigidez del rebote
-    damping: 50,        // amortiguación del rebote
+    damping: 5,        // amortiguación del rebote
     duration: 1.5,      // duración de la animación
-  }}  className="text-[#886969] text-lg tracking-wide font-bold text-center mb-6 h-auto  w-full">Productos Recomendados</motion.h2>
+  }}  className="text-[#fafafa] text-lg tracking-wide font-bold text-center pt-6 h-auto  w-full">Productos Recomendados</motion.h2>
       </>
       <Suspense fallback={<div>Cargando...</div>}>
         <Await resolve={products}>
           {({products}) => (
-            <div className=" h-full rounded w-full overflow-x-scroll overflow-y-hidden scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#fafa] scrollbar-thumb-rounded-md transition-all ease-in-out duration-200 space-x-6 flex z-40">
+            <div className=" h-full rounded  w-full overflow-x-scroll overflow-y-hidden scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#fafa] scrollbar-thumb-rounded-md transition-all ease-in-out duration-200 space-x-6 flex z-40">
               {products.nodes.map((product:any) => (
                 <div 
                 key={product.id}
-                className=" group w-36 items-center p-4 justify-center  rounded-md  flex ">
+                className=" group group-hover:shadow-md w-36 items-center p-4 justify-center  rounded-md  flex ">
                  
                 <Link
                   
-                  className="w-auto rounded-md h-auto transition-all transform hover:scale-105 hover:ease-in-out group-hover:text-gray-300 text-[#886969] font-semibold  flex flex-col justify-between"
+                  className="w-auto  rounded-md h-auto transition-all transform hover:scale-105 hover:ease-in-out group-hover:text-gray-300 text-[#fafafa] font-semibold  flex flex-col"
                   to={`/products/${product.handle}`}
                 >
 
@@ -150,8 +148,8 @@ function RecommendedProducts({
                   />
                   {/* <div className='h-20 justify-between px-2 flex flex-col'> */}
 
-                  <div className=' transition-all duration-200 group-hover:text-gray-300 group-hover:ease-in-out rounded-b p-4 text-sm'>
-                  <p className='text-xs w-auto flex-1 text-justify  group-hover:text-gray-300 '>{product.title}</p>
+                  <div className=' transition-all duration-200 flex flex-col items-center justify-center  group-hover:text-gray-300 group-hover:ease-in-out rounded-b mx-4 text-sm'>
+                  <p className='text-xs w-36 flex-wrap text-center  group-hover:text-gray-300 '>{product.title}</p>
                   <Money data={product.priceRange.minVariantPrice} />
                   </div>
 
