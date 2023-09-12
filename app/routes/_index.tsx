@@ -41,10 +41,10 @@ export default function Homepage() {
   return (
     // ! Aqui estoy quitando el overflow EN LA JUEGAAAA!!!
     
-    <div className=" flex flex-col space-y-12 overflow-x-hidden xs:p-4 overflow-y-hidden md:p-12 ">
-      {/* <div className='w-full overflow-x-scroll'> */}
+    <div className=" flex w-full flex-col space-y-44 h-auto bg-[#fafafa] overflow-x-hidden  overflow-y-hidden  ">
+      <div className=' justify-between mx-auto items-center h-screen w-screen bg-[#F6EEE6]'>
       <Slider/>
-      {/* </div> */}
+      </div>
       <div className=" bg-[#fafafa] relative ">
         {/* Gradiente izquierdo */}
         

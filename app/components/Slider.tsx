@@ -25,15 +25,15 @@ const sliderItems:string[] = [
 
 const Slider = () => {
   return (
-    <div className='w-full h-[calc(100vw- 64px)] rounded-md   bg-[#F6EEE6] py-12  '>
+    <div className='w-full h-screen rounded-md flex     '>
       <div 
-       className=' h-full flex space-x-44 overflow-x-scroll overflow-y-hidden scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#F6EEE6] scrollbar-thumb-rounded-md rounded-md  bg-[#DFC7C7]'>
+       className=' h-screen w-full  mx-auto flex space-x-44 overflow-x-scroll overflow-y-hidden scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#F6EEE6] scrollbar-thumb-rounded-md rounded-md  bg-[#F6EEE6]'>
         {sliderItems.map((img, index)=>
-          <div className='  flex-shrink-0 w-full min-h-full rounded-md' key={index}
+          <div className='  flex-shrink-0 md:pl-[35%] items-center justify-center  w-auto h-screen rounded-md' key={index}
             // whileHover={{ scale: 1.1 }} // Ejemplo: escala al pasar el cursor
           >
             <img 
-              className="w-full  transform transition-all duration-200  ease-in-out hover:scale-105 cursor-grab  h-[calc(100vw- 64px)] object-cover"
+              className="sm:w-auto w-screen max-w-auto bg-[#fafafa]  transform transition-all duration-200  ease-in-out hover:scale-105 cursor-grab  h-screen object-cover"
               src={`/${img}`} alt={`Image ${index}`}
             />
           </div>

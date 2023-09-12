@@ -32,7 +32,7 @@ export function Layout({
   // const newMenu = header?.menu?.items?.map(menuItem=> menuItem.title === 'Catalogo' && menuItem.url:'https://my-store-newww.myshopify.com/collections' )
  
   return (
-    <div>
+    <div className=''>
       <CartAside cart={cart} />
       <SearchAside />
       <MobileMenuAside menu={header.menu} />

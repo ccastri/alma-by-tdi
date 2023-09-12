@@ -111,7 +111,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="bg-[#FEE6]">
+      <body className="">
         <Layout {...data}>
           <Outlet />
         </Layout>
