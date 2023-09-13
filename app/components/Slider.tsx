@@ -42,7 +42,7 @@ const Slider = () => {
   };
 
   return (
-    <div className="w-full top-0 h-full rounded-md space-x-8 flex flex-col">
+    <div className="w-full top-0 h-screen md:h-full rounded-md space-x-8 flex flex-col">
       <div
         ref={sliderRef}
         className="h-full w-screen mx-auto flex rounded-md bg-[#F6EEE6]"
@@ -59,7 +59,7 @@ const Slider = () => {
           >
             {/* Use conditional rendering to display the current image */}
             <img
-              className="w-screen h-auto  cursor-pointer "
+              className="w-screen h-auto cursor-pointer "
               src={`/${img}`}
               alt={`Image ${index}`}
               style={{ display: index === currentImageIndex ? 'block' : 'none' }}
