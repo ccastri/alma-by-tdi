@@ -59,7 +59,7 @@ const Slider = () => {
           >
             {/* Use conditional rendering to display the current image */}
             <img
-              className="w-screen   transform transition-all duration-200 ease-in-out hover:scale-105 cursor-grab max-h-screen "
+              className="w-screen cursor-pointer "
               src={`/${img}`}
               alt={`Image ${index}`}
               style={{ display: index === currentImageIndex ? 'block' : 'none' }}
