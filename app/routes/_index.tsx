@@ -42,7 +42,7 @@ export default function Homepage() {
     // ! Aqui estoy quitando el overflow EN LA JUEGAAAA!!!
     
     <div className=" flex w-full flex-col space-y- h-auto bg-[#fef6f6] overflow-x-hidden  overflow-y-hidden  ">
-      <div className=' justify-between mx-auto items-center h-screen w-screen bg-[#F6EEE6]'>
+      <div className=' justify-between mx-auto items-center h-full w-screen bg-[#F6EEE6]'>
       <Slider/>
       </div>
       <div className=" bg-[#fafafa] relative ">
@@ -82,19 +82,19 @@ function FeaturedCollection({
   const image = collection.image;
   return (
 <>
-      <h3 className="text-center font-bold leading-tight tracking-widest py-2 text-3xl">¡Enterate de las nuevas tendencias en Alma!</h3>
-    <div className='w-full md:flex md:px-20 flex-row md:h-screen'>
-    <img src="/pink-girl-bg.jpg" className='w-full h-screen mx-auto' alt="" />
+      <h3 className="text-center font-bold leading-tight tracking-widest text-[#BB6A72] py-2 text-3xl">¡Enterate de las nuevas tendencias en Alma!</h3>
+    <div className='w-full md:flex  md:px-20 flex-row md:h-screen'>
+    <img src="/pink-girl-bg.jpg" className='md:w-full w-auto px-8 h-screen mx-auto' alt="" />
 <Link
   className=" w-full  flex"
   to={`/collections/${collection.handle}`}
 >
   {image && (
     // <div className="group w-full relative m-0 h-full flex flex-row">
-      <div className="w-full h-screen ">
+      <div className="w-full px-8 h-screen ">
         <Image
           data={image}
-          className=" w-full h-screen "
+          className=" md:w-full w-auto  h-screen "
           aspectRatio="1/1"
           sizes="(min-width: 45em) 50vw, 100vw"
           />

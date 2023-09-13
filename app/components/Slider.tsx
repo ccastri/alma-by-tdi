@@ -2,14 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const sliderItems = [
-  'PhotoRoom_20230811_171642.jpg',
-  'PhotoRoom_20230811_171700.jpg',
-  'PhotoRoom_20230811_172032.jpg',
-  'PhotoRoom_20230811_172055.jpg',
-  'PhotoRoom_20230811_172118.jpg',
-  'PhotoRoom_20230811_172356.jpg',
-  'PhotoRoom_20230811_172423.jpg',
-  'PhotoRoom_20230811_172447.jpg',
+  'PhotoRoom_20230811_172356.png',
+  'PhotoRoom_20230811_171642.png',
+  'PhotoRoom_20230811_172032.png',
+  'PhotoRoom_20230811_172055.png',
+  'PhotoRoom_20230811_172118.png',
+  'PhotoRoom_20230811_172423.png',
+  'PhotoRoom_20230811_171700.png',
+  'PhotoRoom_20230811_172447.png',
 ];
 
 const Slider = () => {
@@ -42,10 +42,10 @@ const Slider = () => {
   };
 
   return (
-    <div className="w-full top-0 h-screen rounded-md flex flex-col">
+    <div className="w-full top-0 h-full rounded-md space-x-8 flex flex-col">
       <div
         ref={sliderRef}
-        className="h-screen w-full mx-auto flex justify-center overflow-y-hidden scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#F6EEE6] scrollbar-thumb-rounded-md rounded-md bg-[#F6EEE6]"
+        className="h-full w-screen mx-auto flex rounded-md bg-[#F6EEE6]"
       >
         <AnimatePresence>
 
@@ -59,7 +59,7 @@ const Slider = () => {
           >
             {/* Use conditional rendering to display the current image */}
             <img
-              className="w-auto   transform transition-all duration-200 ease-in-out hover:scale-105 cursor-grab max-h-screen object-cover"
+              className="w-screen   transform transition-all duration-200 ease-in-out hover:scale-105 cursor-grab max-h-screen "
               src={`/${img}`}
               alt={`Image ${index}`}
               style={{ display: index === currentImageIndex ? 'block' : 'none' }}
@@ -68,7 +68,7 @@ const Slider = () => {
         ))}
         </AnimatePresence>
       </div>
-      <div className="my-4 flex justify-center space-x-2">
+      <div className="my-4 flex justify-center h-20 items-center space-x-2">
         {sliderItems.map((_, index) => (
           <motion.div
             key={index}
