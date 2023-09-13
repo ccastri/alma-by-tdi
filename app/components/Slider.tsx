@@ -51,7 +51,7 @@ const Slider = () => {
 
         {sliderItems.map((img, index) => (
           <motion.div
-            className="flex justify-center duration-200 transition-all ease-in-out w-auto h-screen rounded-md"
+            className="flex justify-center duration-200 transition-all ease-in-out w-auto md:h-screen rounded-md"
             key={index}
             initial={{ opacity: 0 }}
               animate={{ opacity: index === currentImageIndex ? 1 : 0 }}
@@ -59,7 +59,7 @@ const Slider = () => {
           >
             {/* Use conditional rendering to display the current image */}
             <img
-              className="w-screen xs:pb-8 cursor-pointer "
+              className="w-screen h-auto  cursor-pointer "
               src={`/${img}`}
               alt={`Image ${index}`}
               style={{ display: index === currentImageIndex ? 'block' : 'none' }}
