@@ -132,11 +132,12 @@ function ProductImage({image}: {image: ProductVariantFragment['image']}) {
     return <div className="product-image" />;
   }
   return (
-    <div className="product-image ">
+    <div className="product-image py-4 ">
       <Image
         alt={image.altText || 'Product Image'}
-        aspectRatio="1.2/2"
+        aspectRatio="1/1.4"
         data={image}
+        className='object-cover h-screen'
         key={image.id}
         sizes="(min-width: 45em) 50vw, 100vw"
       />
