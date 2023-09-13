@@ -59,7 +59,7 @@ const Slider = () => {
           >
             {/* Use conditional rendering to display the current image */}
             <img
-              className="w-screen cursor-pointer "
+              className="w-screen xs:pb-8 cursor-pointer "
               src={`/${img}`}
               alt={`Image ${index}`}
               style={{ display: index === currentImageIndex ? 'block' : 'none' }}
