@@ -55,7 +55,7 @@ const Slider = () => {
       >
             {/* Use conditional rendering to display the current image */}
             <img
-              className="relative w-screen h-screen cursor-pointer max-w-full"
+              className="relative w-screen h-screen cursor-pointer"
               src={`/${slide.imgBg}`}
               alt={`Image ${index}`}
               style={{ display: index === currentImageIndex ? 'block' : 'none' }}
@@ -70,7 +70,7 @@ const Slider = () => {
         ))}
         </AnimatePresence>
       </div>
-      <div className=" absolute  pb-8 w-full  flex justify-center h-screen items-end space-x-6">
+      <div className=" absolute  pb-8 w-screen  flex justify-center h-screen items-end space-x-6">
         {sliderItems.map((_, index) => (
           <motion.div
             key={index}
