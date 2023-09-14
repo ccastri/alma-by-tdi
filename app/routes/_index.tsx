@@ -42,7 +42,7 @@ export default function Homepage() {
     // ! Aqui estoy quitando el overflow EN LA JUEGAAAA!!!
     
     <div className=" flex w-full flex-col space-y- h-auto bg-[#fef6f6] overflow-x-hidden  overflow-y-hidden  ">
-      <div className=' justify-between mx-auto items-center h-full w-screen bg-[#F6EEE6]'>
+      <div className=' h-screen w-screen '>
       <Slider/>
       </div>
       <div className=" bg-[#fafafa] relative ">

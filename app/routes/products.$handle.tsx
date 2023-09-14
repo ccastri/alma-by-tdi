@@ -383,7 +383,7 @@ const PRODUCT_FRAGMENT = `#graphql
     selectedVariant: variantBySelectedOptions(selectedOptions: $selectedOptions) {
       ...ProductVariant
     }
-    variants(first: 1) {
+    variants(first: 5) {
       nodes {
         ...ProductVariant
       }
@@ -412,7 +412,7 @@ const PRODUCT_QUERY = `#graphql
 
 const PRODUCT_VARIANTS_FRAGMENT = `#graphql
   fragment ProductVariants on Product {
-    variants(first: 250) {
+    variants(first: 5) {
       nodes {
         ...ProductVariant
       }
