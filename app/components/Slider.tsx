@@ -6,10 +6,10 @@ const sliderItems = [
   {'imgBg':"aesthetic_col_2.png", "img":'PhotoRoom_20230811_171642_big_no_bg.png'},
   {'imgBg':"", "img":'PhotoRoom_20230811_172032.png'},
   {'imgBg':"", "img":'PhotoRoom_20230811_172055.png'},
-  {'imgBg':"", "img":'PhotoRoom_20230811_172118.png'},
-  {'imgBg':"", "img":'PhotoRoom_20230811_172423.png'},
-  {'imgBg':"", "img":'PhotoRoom_20230811_171700.png'},
-  {'imgBg':"", "img":'PhotoRoom_20230811_172447.png'}
+  // {'imgBg':"", "img":'PhotoRoom_20230811_172118.png'},
+  // {'imgBg':"", "img":'PhotoRoom_20230811_172423.png'},
+  // {'imgBg':"", "img":'PhotoRoom_20230811_171700.png'},
+  // {'imgBg':"", "img":'PhotoRoom_20230811_172447.png'}
 ];
 
 const Slider = () => {
