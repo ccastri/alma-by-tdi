@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const sliderItems = [
   'PhotoRoom_20230811_172356.png',
-  'PhotoRoom_20230811_171642.png',
+  'coleccion-1-HD.png',
   'PhotoRoom_20230811_172032.png',
   'PhotoRoom_20230811_172055.png',
   'PhotoRoom_20230811_172118.png',
@@ -51,7 +51,7 @@ const Slider = () => {
 
         {sliderItems.map((img, index) => (
           <motion.div
-            className="flex justify-center duration-200 transition-all ease-in-out w-auto md:h-screen rounded-md"
+            className="flex h-auto justify-center duration-200 transition-all ease-in-out w-auto md:h-screen rounded-md"
             key={index}
             initial={{ opacity: 0 }}
               animate={{ opacity: index === currentImageIndex ? 1 : 0 }}
@@ -59,7 +59,7 @@ const Slider = () => {
           >
             {/* Use conditional rendering to display the current image */}
             <img
-              className="w-screen h-auto cursor-pointer "
+              className="w-screen h-auto cursor-pointer max-w-full"
               src={`/${img}`}
               alt={`Image ${index}`}
               style={{ display: index === currentImageIndex ? 'block' : 'none' }}

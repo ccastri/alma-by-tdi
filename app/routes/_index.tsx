@@ -83,18 +83,18 @@ function FeaturedCollection({
   return (
 <>
       <h3 className="text-center font-bold leading-tight tracking-widest text-[#BB6A72] py-2 text-3xl">¡Enterate de las nuevas tendencias en Alma!</h3>
-    <div className='w-full md:flex  md:px-20 flex-row md:h-screen'>
-    <img src="/pink-girl-bg.jpg" className='md:w-full w-auto px-8 h-screen mx-auto' alt="" />
+    <div className='w-screen md:flex  md:px-20 flex-row md:h-auto'>
+    <img src="/pink-girl-bg.jpg" className='hidden md:block md:w-full w-auto px-8 h-screen mx-auto' alt="" />
 <Link
   className=" w-full  flex"
   to={`/collections/${collection.handle}`}
 >
   {image && (
     // <div className="group w-full relative m-0 h-full flex flex-row">
-      <div className="w-full px-8 h-screen ">
+      <div className="w-full px-8 h-auto ">
         <Image
           data={image}
-          className=" md:w-full w-auto  h-screen "
+          className=" md:w-full w-auto xs:py-12 py-0  md:h-screen "
           aspectRatio="1/1"
           sizes="(min-width: 45em) 50vw, 100vw"
           />
