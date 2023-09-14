@@ -32,7 +32,7 @@ const Slider = () => {
   };
 
   return (
-    <div className="w-screen top-0 h-screen md:h-full rounded-md space-x-8 flex flex-col">
+    <div className="w-screen top-0 h-screen md:h-full rounded-md space-x-8 items-center flex flex-col">
       <div
         ref={sliderRef}
         className="h-auto w-screen mx-auto flex rounded-md "
@@ -61,7 +61,7 @@ const Slider = () => {
               style={{ display: index === currentImageIndex ? 'block' : 'none' }}
             />
             <img
-              className="w-auto  absolute h-screen cursor-pointer max-w-full"
+              className="w-auto xs:w-screen absolute h-screen cursor-pointer "
               src={`/${slide.img}`}
               alt={`Image ${index}`}
               style={{ display: index === currentImageIndex ? 'block' : 'none' }}
@@ -70,7 +70,7 @@ const Slider = () => {
         ))}
         </AnimatePresence>
       </div>
-      <div className=" absolute  pb-8 w-screen  flex justify-center h-screen items-end space-x-6">
+      <div className=" absolute over  pb-8  w-auto  flex justify-center h-screen items-end space-x-6">
         {sliderItems.map((_, index) => (
           <motion.div
             key={index}
