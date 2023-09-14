@@ -42,10 +42,10 @@ const Slider = () => {
   };
 
   return (
-    <div className="w-full top-0 h-screen md:h-full rounded-md space-x-8 flex flex-col">
+    <div className="w-screen top-0 h-screen md:h-full rounded-md space-x-8 flex flex-col">
       <div
         ref={sliderRef}
-        className="h-full w-screen mx-auto flex rounded-md bg-[#F6EEE6]"
+        className="h-screen w-screen mx-auto flex rounded-md bg-[#F6EEE6]"
       >
         <AnimatePresence>
 
