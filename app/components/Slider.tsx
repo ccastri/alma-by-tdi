@@ -6,10 +6,10 @@ const sliderItems = [
   {'imgBg':"aesthetic_col_2.png", "img":'PhotoRoom_20230811_171642_big_no_bg.png'},
   {'imgBg':"", "img":'PhotoRoom_20230811_172032.png'},
   {'imgBg':"", "img":'PhotoRoom_20230811_172055.png'},
-  // {'imgBg':"", "img":'PhotoRoom_20230811_172118.png'},
-  // {'imgBg':"", "img":'PhotoRoom_20230811_172423.png'},
-  // {'imgBg':"", "img":'PhotoRoom_20230811_171700.png'},
-  // {'imgBg':"", "img":'PhotoRoom_20230811_172447.png'}
+  {'imgBg':"", "img":'PhotoRoom_20230811_172118.png'},
+  {'imgBg':"", "img":'PhotoRoom_20230811_172423.png'},
+  {'imgBg':"", "img":'PhotoRoom_20230811_171700.png'},
+  {'imgBg':"", "img":'PhotoRoom_20230811_172447.png'}
 ];
 
 const Slider = () => {
@@ -32,7 +32,7 @@ const Slider = () => {
   };
 
   return (
-    <div className="w-screen top-0 h-screen md:h-full rounded-md space-x-8 flex flex-col">
+    <div className="w-screen relative top-0 h-screen md:h-full  flex flex-col">
       <div
         ref={sliderRef}
         className="h-auto w-screen  flex rounded-md "
@@ -61,7 +61,7 @@ const Slider = () => {
               style={{ display: index === currentImageIndex ? 'block' : 'none' }}
             />
             <img
-              className="w-auto xs:w-screen absolute h-screen cursor-pointer "
+              className="w-auto  absolute h-screen cursor-pointer max-w-full"
               src={`/${slide.img}`}
               alt={`Image ${index}`}
               style={{ display: index === currentImageIndex ? 'block' : 'none' }}
@@ -70,7 +70,7 @@ const Slider = () => {
         ))}
         </AnimatePresence>
       </div>
-      <div className=" absolute  pb-8 w-screen  flex justify-center h-screen items-end space-x-6">
+      <div className=" absolute  pb-8 w-full  flex justify-center h-screen items-end space-x-6">
         {sliderItems.map((_, index) => (
           <motion.div
             key={index}
