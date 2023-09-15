@@ -1,5 +1,5 @@
 import {Await, NavLink, useMatches} from '@remix-run/react';
-import {Suspense} from 'react';
+import {Suspense, useState} from 'react';
 import type {LayoutProps} from './Layout';
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
@@ -11,6 +11,7 @@ import {
 import LoginIcon from '@mui/icons-material/Login';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+// import AddIcon from '@mui/icons-material/Add';
 type HeaderProps = Pick<LayoutProps, 'header' | 'cart' | 'isLoggedIn'>;
 
 type Viewport = 'desktop' | 'mobile';
@@ -52,7 +53,8 @@ export function HeaderMenu({
 }) {
   const [root] = useMatches();
   const publicStoreDomain = root?.data?.publicStoreDomain;
-  const className = `header-menu-${viewport}`;
+  const className = `header-menu-${viewport}`
+  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false)
 
   function closeAside(event: React.MouseEvent<HTMLAnchorElement>) {
     if (viewport === 'mobile') {
@@ -89,9 +91,35 @@ export function HeaderMenu({
       item.url.includes(publicStoreDomain)
         ? new URL(item.url).pathname
         : item.url;
+       const submenu = item.items.map((sublink) => {
+    if (!sublink || !sublink.url) return null; // Comprobación adicional
+const subItemURL =
+      sublink.url.includes('myshopify.com') ||
+      sublink?.url.includes(publicStoreDomain)
+        ? new URL(sublink?.url).pathname
+        : sublink.url;
     return (
-      <div className="flex flex-col" key={item.id}>
       <NavLink
+        className="flex space-y-2 pl-8 py-2 justify-between relative w-full"
+        end
+        key={sublink.id}
+        onClick={closeAside}
+        prefetch="intent"
+        style={activeLinkStyle}
+        to={subItemURL}
+      >
+        {sublink.title}
+      </NavLink>
+    );
+  });
+    return (
+      <div className="flex flex-col w-full relative" key={item.id}>
+      
+      <div 
+       
+      className="items-center  justify-between flex w-full flex-row" key={item.id}>
+      <NavLink
+      onMouseEnter={() => setIsSubmenuOpen(prev=>!prev)}
         className=" flex space-y-2 px-4 py-2 justify-between relative w-full"
         end
         key={item.id}
@@ -101,29 +129,31 @@ export function HeaderMenu({
         to={url}
         >
         {item.title} 
-        {item.items.length > 0 && (
-          
-        <KeyboardArrowDownIcon className="group-hover:block"/>
-        )}
-
         </NavLink>
+        {item.items.length > 0 && (
+          <>
+          <KeyboardArrowDownIcon 
+          className="group-hover:block  md:opacity-0 cursor-pointer"
+                  // onClick={() => setIsSubmenuOpen(prev=>(!prev))}
+                 
+                  
+                  />
+
+          </>
+          )}
+          </div>
+
+        <div 
+        onMouseLeave={() => setIsSubmenuOpen(false)}
+        className={`xl:left-0 transition-opacity duration-200 ease-in-out ${isSubmenuOpen ? 'opacity-100' : 'opacity-0 hidden '}`}>
+
+        {submenu}
+        </div>
         </div>
         );
       })}
 
     </nav>
-      {/* ------------------------------------------------------------------------------------------------ */}
-      {/*--------------------- MAÑANA SEPARO ESTO CON UN ESTADO; IMPORTANTE CONTAINERIZAR!!!! --------------*/}
-      {/* ------------------------------------------------------------------------------------------------ */}
-
-{/* <div className=' absolute z-50 w-full  mt-6 hover:border-2 flex flex-col '>
-      </div>
-      </div> */}
-
-
-
-
-
   </div>
   );
 }
