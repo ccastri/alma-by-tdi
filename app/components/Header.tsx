@@ -68,7 +68,7 @@ export function HeaderMenu({
     // className="sticky z-50 w-full flex items-center justify-center    h-full"
     >
     <nav className={className} role="navigation">
-      {viewport === 'mobile' && (
+      {/* {viewport === 'mobile' && (
         <NavLink
           end
           className='text-[#BB6A72] '
@@ -78,7 +78,7 @@ export function HeaderMenu({
           to="/"
           >
         </NavLink>
-      )}
+      )} */}
       {/* {menu?.items} */}
   {(menu || FALLBACK_HEADER_MENU).items
   // .filter(item => item?.title !== 'Contacto')
