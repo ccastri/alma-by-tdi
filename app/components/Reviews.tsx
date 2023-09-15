@@ -39,7 +39,7 @@ const Reviews = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-auto h-full rounded pt-8"
+            className="w-auto h-full  pt-8"
             src={`/${comments[currentIndex].img}`}
             alt=""
           />
@@ -78,7 +78,7 @@ const Reviews = () => {
             transition={{ duration: 0.8 }}
             className="mb-2 w-full h-full flex flex-col text-gray-500 dark:text-gray-400"
           >
-            <p className="w-full  text-3xl tracking-wide text-justify font-bold ">{comments[currentIndex].body}</p>
+            <p className="w-full  text-base font-light tracking-wide text-justify  ">{comments[currentIndex].body}</p>
             <p className="py-8 text-xl w-full">- {comments[currentIndex].name}</p>
           </motion.div>
         </AnimatePresence>

@@ -111,7 +111,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="">
+      <body className="m-0 p-0 overflow-x-hidden">
         <Layout {...data}>
           <Outlet />
         </Layout>

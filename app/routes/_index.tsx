@@ -15,7 +15,8 @@ import {AnimatePresence, motion} from 'framer-motion'
 import Slider from '../components/Slider'
 import Reviews from '~/components/Reviews';
 import Perks from '~/components/Perks';
-
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 
 // #BB6A72, #F6EEE6, #DFC7C7
@@ -41,23 +42,23 @@ export default function Homepage() {
   return (
     // ! Aqui estoy quitando el overflow EN LA JUEGAAAA!!!
     
-    <div className=" flex w-full flex-col space-y- h-auto bg-[#fef6f6] overflow-x-hidden  overflow-y-hidden  ">
-      <div className=' h-screen w-screen '>
+    <div className=" flex w-screen flex-col space-y- h-auto bg-[#fef6f6] overflow-x-hidden  overflow-y-hidden  ">
+      <div className=' h-screen w-full '>
       <Slider/>
       </div>
-      <div className=" bg-[#fafafa] relative ">
+      <div className="h-screen border-2 bg-[#fafafa] relative ">
          {/* <div className="absolute rounded-r-full blur-lg h-auto inset-y-0 left-0 w-28 md:w-56 bg-gradient-to-r from-[#f5f5f5] to-[#fafafa] z-40 shadow-md" /> */}
 
   {/* Gradiente derecho */}
   {/* <div className="absolute rounded-l-full blur-xl h-auto inset-y-0 right-0 w-28 md:w-56 bg-gradient-to-l from-[#f5f5f5] to-[#fafafa] z-40 shadow-md" /> */}
-        <div className="absolute rounded-b-full blur-xl  h-16  inset-x-0 top-10 w-full bg-gradient-to-b to-[rgba(0,0,0,0)] from-[#DFC7C7] z-10" />
+        {/* <div className="absolute rounded-b-full blur-xl  h-16  inset-x-0 top-10 w-full bg-gradient-to-b to-[rgba(0,0,0,0)] from-[#DFC7C7] z-10" /> */}
+        {/* <div className="absolute rounded-t-full blur-xl  h-24  inset-x-0 bottom-0 w-full bg-gradient-to-t to-[rgba(0,0,0,0)] from-[#DFC7C7] z-10" /> */}
         <RecommendedProducts products={data.recommendedProducts} />
-        <div className="absolute rounded-t-full blur-xl  h-24  inset-x-0 bottom-0 w-full bg-gradient-to-t to-[rgba(0,0,0,0)] from-[#DFC7C7] z-10" />
       </div>
       {/* <div className='flex  flex-row w-full '>
 
       </div> */}
-      <div className="w-full my-6 h-auto overflow-hidden transition-all    xs:mx-0 xl:px-6  transform  hover:opacity-80  xs:hover:scale-105 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72] hover:border-2 border-[#DFC7C7]">
+      <div className="w-auto h-screen my-6 border-2 p-8 overflow-hidden transition-all    xs:mx-0 xl:px-6  ">
 {/* Debo revisar que es lo que estoy consumiendo aqui porque lo que necesito son todas las colecciones */}
       <FeaturedCollection collection={data.featuredCollection} />
       </div>
@@ -83,18 +84,18 @@ function FeaturedCollection({
   return (
 <>
       <h3 className="text-center font-bold leading-tight tracking-widest text-[#BB6A72] py-2 text-3xl">¡Enterate de las nuevas tendencias en Alma!</h3>
-    <div className='w-screen md:flex  md:px-20 flex-row md:h-auto'>
-    <img src="/pink-girl-bg.jpg" className='hidden md:block md:w-full w-auto px-8 h-screen mx-auto' alt="" />
+    <div className='w-full flex items-center md:justify-between  justify-center  md:px-20 md:flex-row md:h-auto'>
+    <img src="/pink-girl-bg.jpg" className='hidden md:block md:w-full w-auto h-auto' alt="" />
 <Link
   className=" w-full  flex"
   to={`/collections/${collection.handle}`}
 >
   {image && (
     // <div className="group w-full relative m-0 h-full flex flex-row">
-      <div className="w-full px-8 h-auto ">
+      <div className="w-full flex h-auto transform  hover:opacity-80  xs:hover:scale-105 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72] hover:border-2 border-[#DFC7C7]">
         <Image
           data={image}
-          className=" md:w-full w-auto xs:py-12 py-0  md:h-screen "
+          className=" md:w-full w-auto xs:py-12 p-8  md:h-screen "
           aspectRatio="1/1"
           sizes="(min-width: 45em) 50vw, 100vw"
           />
@@ -134,22 +135,29 @@ function RecommendedProducts({
     stiffness: 100,     // rigidez del rebote
     damping: 5,        // amortiguación del rebote
     duration: 1.5,      // duración de la animación
-  }}  className="text-[#BB6A72] italic text-lg tracking-wider bg-slate-200 items-center  font-bold text-center py-6 h-auto  w-full">Productos Recomendados</motion.h2>
+  }}  className="text-slate-700  italic text-xl tracking-wider  items-center  font-bold text-center py-4 h-auto  w-full">
+    <span><ArrowBackIosIcon className=' mr-6 'onClick={() => setCurrentIndex((prevIndex) => prevIndex - 1)}/></span>Productos Recomendados<span><ArrowForwardIosIcon className="ml-8" onClick={() => setCurrentIndex((prevIndex) => prevIndex + 1)}/></span></motion.h2>
+    <Link
+    className='w-full  text-slate-300'
+     to="/collections/all">
+      <p className='w-auto text-center text-[#DFC7C7] hover:font-semibold bg-[#fafafa] hover:text-slate-300 mx-auto'>Ver todo</p>
+    </Link>
       </>
       <Suspense fallback={<div>Cargando...</div>}>
         <Await resolve={products}>
           {({products}) => (
             <motion.div
-  className="h-full rounded w-full overflow-x-scroll overflow-y-hidden py-8 scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#fafa] scrollbar-thumb-rounded-md transition-all ease-in-out duration-200 space-x-6 flex z-40"
-  initial={{ x: 0 }} // Initial position of the carousel
-  animate={{ x: -currentIndex * cardWidth }} // Slide the carousel based on the currentIndex
-  transition={{ type: 'spring', stiffness: 100, damping: 10 }}
+  className="h-full rounded w-auto overflow-x-scroll overflow-y-hidden py-8 scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#fafa] scrollbar-thumb-rounded-md transition-all ease-in-out duration-200 space-x-6 flex z-40"
+
 >
   <AnimatePresence initial={false}>
               {products.nodes.map((product:any) => (
                  <motion.div
         key={product.id}
         className="group group-hover:shadow-md w-44 border-2  items-center px-4 bg-white  justify-center rounded-md flex"
+          initial={{ x: 0 }} // Initial position of the carousel
+  animate={{ x: -currentIndex * cardWidth }} // Slide the carousel based on the currentIndex
+  transition={{ type: 'spring', stiffness: 100, damping: 10 }}
         exit={{ opacity: 0, x: 50 }} // Animation when item is removed
       >
                 <Link
@@ -175,14 +183,7 @@ function RecommendedProducts({
           )}
         </Await>
       </Suspense>
-      <br />
-            <div className='flex space-x-2 w-full justify-center items-center'>
-              <button onClick={() => setCurrentIndex((prevIndex) => prevIndex - 1)}>
-  Previous
-</button>
-<button onClick={() => setCurrentIndex((prevIndex) => prevIndex + 1)}>
-  Next
-</button></div>
+
     </div>
   );
 }

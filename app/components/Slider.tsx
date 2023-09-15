@@ -32,10 +32,10 @@ const Slider = () => {
   };
 
   return (
-    <div className="w-screen top-0 h-screen md:h-full rounded-md space-x-8 flex flex-col">
+    <div className="w-screen relative top-0 h-screen md:h-full rounded-md space-x-8 flex flex-col">
       <div
         ref={sliderRef}
-        className="h-auto w-screen mx-auto flex rounded-md "
+        className="h-auto w-screen  flex rounded-md "
       >
         <AnimatePresence>
 
@@ -70,7 +70,7 @@ const Slider = () => {
         ))}
         </AnimatePresence>
       </div>
-      <div className=" absolute  pb-8 w-screen  flex justify-center h-screen items-end space-x-6">
+      <div className=" absolute  pb-8 w-full  flex justify-center h-screen items-end space-x-6">
         {sliderItems.map((_, index) => (
           <motion.div
             key={index}
