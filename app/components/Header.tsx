@@ -32,7 +32,7 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
   return (
 <div className=''>
   {/* <Banner/> */}
-  <header id="myHeader" className="fixed z-40 flex flex-col overflow-hidden justify-between  h-auto transition-all over ease-in-out duration-200 opacity-100 hover:opacity-100 hover:bg-[#F6EEE6] ">
+  <header  className="fixed z-40 flex flex-col overflow-hidden justify-between  h-auto transition-all over ease-in-out duration-200 opacity-100 hover:opacity-100 hover:bg-[#F6EEE6] ">
     <div className="md:px-12 xs:px-4 space-x-4 justify-between my-auto w-full items-center  flex">
     <div className='flex space-x-2 py-4 justify-center items-center '>
             <HeaderMenuMobileToggle /> 
