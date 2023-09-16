@@ -65,7 +65,7 @@ function CollectionItem({
 }) {
   return (
     <Link
-      className="collection-item p-6 group hover:text-[#F6EEE6] text-[#BB6A72]"
+      className="collection-item p-4 group hover:text-[#F6EEE6] text-[#BB6A72]"
       key={collection.id}
       to={`/collections/${collection.handle}`}
       prefetch="intent"
@@ -74,7 +74,7 @@ function CollectionItem({
         <Image
           alt={collection.image.altText || collection.title}
           aspectRatio="1/1.3"
-          className='object-contain group p-4'
+          className='object-contain group '
           data={collection.image}
           loading={index < 3 ? 'eager' : undefined}
         />
