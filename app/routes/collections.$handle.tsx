@@ -40,7 +40,7 @@ export default function Collection() {
   const {collection} = useLoaderData<typeof loader>();
 
   return (
-    <div className="collection px-8 py-4">
+    <div className="collection px-8 py-2">
       <h1>{collection.title}</h1>
       <p className="collection-description">{collection.description}</p>
       <Pagination connection={collection.products}>
@@ -63,7 +63,7 @@ export default function Collection() {
 
 function ProductsGrid({products}: {products: ProductItemFragment[]}) {
   return (
-    <div className="products-grid grid  xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 ">
+    <div className="products-grid grid  xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 px-4 ">
       {products.map((product, index) => {
         return (
           <ProductItem
