@@ -98,7 +98,7 @@ function FeaturedCollection({
       <div className="w-full flex h-[50%] transform  hover:opacity-80  xs:hover:scale-105 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72] hover:border-2 border-[#DFC7C7]">
         <Image
           data={image}
-          className=" md:w-full w-auto  h-auto  md:h-screen "
+          className=" md:w-full w-auto  h-full  md:h-screen "
           aspectRatio="1/1.4"
           sizes="(min-width: 45em) 50vw, 100vw"
           />
