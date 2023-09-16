@@ -87,7 +87,7 @@ function FeaturedCollection({
     <div className='w-full flex space-y-4 xs:flex-col items-center md:justify-between h-screen md:space-x-8 justify-center  md:px-20  md:h-full'>
       <div className='h-[50%] md:w-[60%]  '>
 
-    <img src="/european-like-street.jpeg" className=' md:w-full md:px-14 object-cover h-screen' alt="" />
+    <img src="/european-like-street.jpeg" className=' md:w-full md:px-14 object-cover h-full' alt="" />
       </div>
 <Link
   className="md:h-[50%] h-full  w-full md:w-[40%] flex"
