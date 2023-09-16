@@ -19,7 +19,7 @@ export default function Collections() {
   const {collections} = useLoaderData<typeof loader>();
 
   return (
-    <div className="collections">
+    <div className="collections p-8 ">
       <h1>Colecciones</h1>
       <Pagination connection={collections}>
         {({nodes, isLoading, PreviousLink, NextLink}) => (
@@ -79,7 +79,7 @@ function CollectionItem({
           loading={index < 3 ? 'eager' : undefined}
         />
       )}
-      <h5 className='py-4 rounded-b-md text text-[#BB6A72] text-center group-hover:text-[#F6EEE6] group-hover:bg-[#DFC7C7]'>{collection.title}</h5>
+      <h5 className='py-2  text text-[#BB6A72] text-center group-hover:text-[#F6EEE6] '>{collection.title}</h5>
     </Link>
   );
 }
