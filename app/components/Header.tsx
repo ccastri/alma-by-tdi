@@ -19,22 +19,26 @@ type Viewport = 'desktop' | 'mobile';
 
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
+if (typeof window !== 'undefined') {
+  // Tu código que utiliza window aquí
   window.addEventListener("scroll", function() {
-  const header = document.getElementById("myHeader");
-  if (header !== null  && window.scrollY > 0) {
-    header.classList.remove("top-8");
-    header.classList.add("top-0");
-  } else {
-    header?.classList.remove("top-0");
-    header?.classList.add("top-8");
-  }
-});
+    const header = document.getElementById("myHeader");
+    if (header !== null && window.scrollY > 0) {
+      header.classList.remove("top-8");
+      header.classList.add("top-0");
+    } else {
+      header?.classList.remove("top-0");
+      header?.classList.add("top-8");
+    }
+  });
+}
+
   return (
 <div className=''>
   {/* <Banner/> */}
-  <header  className="fixed z-40 flex flex-col overflow-hidden justify-between  h-auto transition-all over ease-in-out duration-200 opacity-100 hover:opacity-100 hover:bg-[#F6EEE6] ">
-    <div className="md:px-12 xs:px-4 space-x-4 justify-between my-auto w-full items-center  flex">
-    <div className='flex space-x-2 py-4 justify-center items-center '>
+  <header id="myHeader" className="fixed z-40 flex flex-col overflow-hidden justify-between  h-auto transition-all over ease-in-out duration-200 opacity-100 hover:bg-[#F6EEE6] ">
+    <div className="md:px-12 xs:px-4 space-x-4 justify-between my-auto w-full items-center flex">
+    <div className='flex space-x-2 py-4 justify-center items-center'>
             <HeaderMenuMobileToggle /> 
       <SearchToggle />
     </div>
@@ -48,7 +52,7 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
         <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
       </div>
     </div>
-  <div className='sticky z-50 hover hover:bg-[#fafafa] border-t-slate-300 border-dashed border w-screen  items-center justify-center mx-0 md:flex'>
+  <div className='sticky z-50  border-t-slate-300 hover:bg-[#fafafa] border-dashed border w-screen  items-center justify-center mx-0 opacity-100  md:flex'>
     <HeaderMenu menu={menu} viewport="desktop" />
   </div>
   </header>
@@ -125,14 +129,14 @@ const subItemURL =
     );
   });
     return (
-      <div className="flex flex-col  w-full relative" key={item.id}>
+      <div className="flex flex-col w-full relative" key={item.id}>
       
       <div 
        
-      className="items-center   justify-between flex w-full flex-row" key={item.id}>
+      className="items-center  justify-between flex w-full flex-row" key={item.id}>
       <NavLink
       onMouseEnter={() => item.items.length > 0 && setIsSubmenuOpen(!isSubmenuOpen)}
-        className=" flex  space-y-2 px-4 py-2 text-[#BB6A72] w-full duration-200 transition-all justify-between relative"
+        className=" flex space-y-2 px-4 py-2 text-[#BB6A72] w-full duration-200 transition-all justify-between relative"
         end
         key={item.id}
         onClick={closeAside}
