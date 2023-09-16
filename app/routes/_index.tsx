@@ -58,7 +58,7 @@ export default function Homepage() {
       {/* <div className='flex  flex-row w-full '>
 
       </div> */}
-      <div className="w-auto h-screen my-6 border-2 p-8 overflow-hidden transition-all    xs:mx-0 xl:px-6  ">
+      <div className="w-auto h-screen border-2 p-8 overflow-hidden transition-all    xs:mx-0 xl:px-6  ">
 {/* Debo revisar que es lo que estoy consumiendo aqui porque lo que necesito son todas las colecciones */}
       <FeaturedCollection collection={data.featuredCollection} />
       </div>
