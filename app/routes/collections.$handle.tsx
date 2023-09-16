@@ -63,7 +63,7 @@ export default function Collection() {
 
 function ProductsGrid({products}: {products: ProductItemFragment[]}) {
   return (
-    <div className="products-grid grid  xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 px-4 ">
+    <div className="products-grid grid items-center xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 px-4 ">
       {products.map((product, index) => {
         return (
           <ProductItem
@@ -98,16 +98,16 @@ function ProductItem({
       {product.featuredImage && (
         <Image
           alt={product.featuredImage.altText || product.title}
-          aspectRatio="1/1.3"
+          aspectRatio="1/1.2"
           data={product.featuredImage}
           loading={loading}
-          sizes="(min-width: 45em) 400px, 100vw"
+          sizes="(min-width: 45em) 50vw, 100vw"
           />
           )}
-      <h4>{product.title}</h4>
+      {/* <h4>{product.title}</h4>
       <small>
         <Money data={product.priceRange.minVariantPrice} />
-      </small>
+      </small> */}
     </Link>
           // </div>
   );
