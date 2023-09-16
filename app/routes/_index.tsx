@@ -46,7 +46,7 @@ export default function Homepage() {
       <div className=' h-screen w-full '>
       <Slider/>
       </div>
-      <div className="h-screen border-2 bg-[#fafafa] relative ">
+      <div className="h-full border-2 bg-[#fafafa]  ">
          {/* <div className="absolute rounded-r-full blur-lg h-auto inset-y-0 left-0 w-28 md:w-56 bg-gradient-to-r from-[#f5f5f5] to-[#fafafa] z-40 shadow-md" /> */}
 
   {/* Gradiente derecho */}
@@ -58,7 +58,7 @@ export default function Homepage() {
       {/* <div className='flex  flex-row w-full '>
 
       </div> */}
-      <div className="w-auto h-screen my-6 border-2 p-8 overflow-hidden transition-all    xs:mx-0 xl:px-6  ">
+      <div className="w-auto h-full my-6 border-2 p-8 overflow-hidden transition-all    xs:mx-0 xl:px-6  ">
 {/* Debo revisar que es lo que estoy consumiendo aqui porque lo que necesito son todas las colecciones */}
       <FeaturedCollection collection={data.featuredCollection} />
       </div>
@@ -83,20 +83,23 @@ function FeaturedCollection({
   const image = collection.image;
   return (
 <>
-      <h3 className="text-center font-bold leading-tight tracking-widest text-[#BB6A72] py-2 text-3xl">¡Enterate de las nuevas tendencias en Alma!</h3>
-    <div className='w-full flex items-center md:justify-between  justify-center  md:px-20 md:flex-row md:h-auto'>
-    <img src="/pink-girl-bg.jpg" className='hidden md:block md:w-full w-auto h-auto' alt="" />
+      {/* <h3 className="text-center font-bold leading-tight tracking-widest text-[#BB6A72] py-2 text-3xl">¡Enterate de las nuevas tendencias en Alma!</h3> */}
+    <div className='w-full flex  items-center md:justify-between h-screen md:space-x-8 justify-center  md:px-20  md:h-full'>
+      <div className='md:h-[50%] md:w-[60%] hidden md:block '>
+
+    <img src="/european-like-street.jpeg" className='hidden md:block md:w-full md:px-14 object-cover h-screen' alt="" />
+      </div>
 <Link
-  className=" w-full  flex"
+  className="md:h-[50%] h-full  w-full md:w-[40%] flex"
   to={`/collections/${collection.handle}`}
 >
   {image && (
     // <div className="group w-full relative m-0 h-full flex flex-row">
-      <div className="w-full flex h-auto transform  hover:opacity-80  xs:hover:scale-105 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72] hover:border-2 border-[#DFC7C7]">
+      <div className="w-full flex h-1/2 transform  hover:opacity-80  xs:hover:scale-105 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72] hover:border-2 border-[#DFC7C7]">
         <Image
           data={image}
-          className=" md:w-full w-auto xs:py-12 p-8  md:h-screen "
-          aspectRatio="1/1"
+          className=" md:w-full w-auto  h-auto  md:h-screen "
+          aspectRatio="1/1.4"
           sizes="(min-width: 45em) 50vw, 100vw"
           />
       </div>
@@ -123,7 +126,7 @@ function RecommendedProducts({
   const [currentIndex, setCurrentIndex] = useState(0);
   const cardWidth = 200;
   return (
-    <div className=" z-10 bg-[#fafafa]">
+    <div className="h-full flex flex-col z-10  bg-[#fafafa]">
       <>
 
 
@@ -136,44 +139,59 @@ function RecommendedProducts({
     damping: 5,        // amortiguación del rebote
     duration: 1.5,      // duración de la animación
   }}  className="text-slate-700  italic text-xl tracking-wider  items-center  font-bold text-center py-4 h-auto  w-full">
-    <span><ArrowBackIosIcon className=' mr-6 'onClick={() => setCurrentIndex((prevIndex) => prevIndex - 1)}/></span>Productos Recomendados<span><ArrowForwardIosIcon className="ml-8" onClick={() => setCurrentIndex((prevIndex) => prevIndex + 1)}/></span></motion.h2>
+    <span>
+      <ArrowBackIosIcon 
+        className=' mr-6 '  
+        onClick={() => setCurrentIndex((prevIndex) => prevIndex - 1)}
+      />
+    </span>
+    Productos Recomendados
+    <span>
+      <ArrowForwardIosIcon 
+        className="ml-8" 
+        onClick={() => setCurrentIndex((prevIndex) => prevIndex + 1)}
+      />
+      </span>
+    </motion.h2>
     <Link
     className='w-full  text-slate-300'
      to="/collections/all">
-      <p className='w-auto text-center text-[#DFC7C7] hover:font-semibold bg-[#fafafa] hover:text-slate-300 mx-auto'>Ver todo</p>
+      <p className='w-auto text-center text-[#DFC7C7] hover:font-semibold bg-[#fafafa] hover:text-slate-300 mx-auto'>
+        Ver todo
+      </p>
     </Link>
       </>
       <Suspense fallback={<div>Cargando...</div>}>
         <Await resolve={products}>
           {({products}) => (
             <motion.div
-  className="h-full rounded w-auto overflow-x-scroll overflow-y-hidden py-8 scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#fafa] scrollbar-thumb-rounded-md transition-all ease-in-out duration-200 space-x-6 flex z-40"
+  className="  w-full h-full overflow-x-scroll  overflow-y-hidden  scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#fafa] scrollbar-thumb-rounded-md transition-all ease-in-out duration-200 space-x-6 flex z-20"
 
 >
   <AnimatePresence initial={false}>
               {products.nodes.map((product:any) => (
                  <motion.div
         key={product.id}
-        className="group group-hover:shadow-md w-44 border-2  items-center px-4 bg-white  justify-center rounded-md flex"
+        className="group group-hover:shadow-md xl:h-screen  md:w-1/3 lg:w-1/4  w-1/2    bg-white  justify-center  flex"
           initial={{ x: 0 }} // Initial position of the carousel
   animate={{ x: -currentIndex * cardWidth }} // Slide the carousel based on the currentIndex
   transition={{ type: 'spring', stiffness: 100, damping: 10 }}
         exit={{ opacity: 0, x: 50 }} // Animation when item is removed
       >
                 <Link
-                  className="w-auto  rounded-md h-auto transition-all transform hover:scale-105 hover:ease-in-out group-hover:text-gray-300 text-[#fafafa] font-semibold  flex flex-col"
+                  className="w-screen relative h-full xl:h-full transition-all transform hover:scale-105 hover:ease-in-out group-hover:text-gray-300 text-[#fafafa] font-semibold  flex flex-col"
                   to={`/products/${product.handle}`}
                 >
                   <Image
                     data={product.images.nodes[0]}
                     aspectRatio="1/1.5"
-                    className=''
-                    sizes="(min-width: 45em) 20vw, 50vw"
+                    className=' object-cover   '
+                    sizes="(min-width: 45em) 50vw, 100vw"
                   />
-                  <div className=' transition-all duration-200 flex text-[#BB6A72]  flex-col items-center justify-center  group-hover:text-gray-300 group-hover:ease-in-out rounded-b mx-4 text-sm'>
-                  <p className='text-xs w-36 flex-wrap text-[#BB6A72]  text-center  group-hover:text-gray-300 '>{product.title}</p>
+                  <motion.div className=' font-light text-slate-900 bg-[#fafafa] w-full  transition-all duration-200 flex   flex-col   group-hover:ease-in-out  '>
+                  <p className='text-md w-full font-medium  text-slate-900     group-hover:text-gray-300 '>{product.title}</p>
                   <Money data={product.priceRange.minVariantPrice} />
-                  </div>
+                  </motion.div>
 
     </Link>
                   </motion.div>

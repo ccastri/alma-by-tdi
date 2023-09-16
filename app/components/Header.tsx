@@ -11,6 +11,7 @@ import {
 import LoginIcon from '@mui/icons-material/Login';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import Banner from './Banner';
 // import AddIcon from '@mui/icons-material/Add';
 type HeaderProps = Pick<LayoutProps, 'header' | 'cart' | 'isLoggedIn'>;
 
@@ -18,11 +19,22 @@ type Viewport = 'desktop' | 'mobile';
 
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
+  window.addEventListener("scroll", function() {
+  const header = document.getElementById("myHeader");
+  if (header !== null  && window.scrollY > 0) {
+    header.classList.remove("top-8");
+    header.classList.add("top-0");
+  } else {
+    header?.classList.remove("top-0");
+    header?.classList.add("top-8");
+  }
+});
   return (
 <div className=''>
-  <header className="fixed top-0 z-40 flex flex-col overflow-hidden justify-between  h-auto transition-all over ease-in-out duration-200 opacity-20 hover:opacity-100 bg-[#F6EEE6] ">
-    <div className="md:px-12 xs:px-4 space-x-4 justify-between my-auto w-full items-center flex">
-    <div className='flex space-x-2 py-4 justify-center items-center'>
+  {/* <Banner/> */}
+  <header id="myHeader" className="fixed z-40 flex flex-col overflow-hidden justify-between  h-auto transition-all over ease-in-out duration-200 opacity-100 hover:opacity-100 hover:bg-[#F6EEE6] ">
+    <div className="md:px-12 xs:px-4 space-x-4 justify-between my-auto w-full items-center  flex">
+    <div className='flex space-x-2 py-4 justify-center items-center '>
             <HeaderMenuMobileToggle /> 
       <SearchToggle />
     </div>
@@ -36,7 +48,7 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
         <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
       </div>
     </div>
-  <div className='sticky z-50  border-t-slate-300 border-dashed border w-screen  items-center justify-center mx-0 opacity-20 hover:opacity-100  md:flex'>
+  <div className='sticky z-50 hover hover:bg-[#fafafa] border-t-slate-300 border-dashed border w-screen  items-center justify-center mx-0 md:flex'>
     <HeaderMenu menu={menu} viewport="desktop" />
   </div>
   </header>
@@ -100,41 +112,41 @@ const subItemURL =
         : sublink.url;
     return (
       <NavLink
-        className="flex space-y-2 pl-8 py-2 justify-between relative w-full"
+        className="flex space-y-2 pl-8 group text-[#BB6A72] hover:text-slate-300 py-2 justify-between relative w-full"
         end
         key={sublink.id}
         onClick={closeAside}
         prefetch="intent"
-        style={activeLinkStyle}
+        // style={activeLinkStyle}
         to={subItemURL}
       >
-        {sublink.title}
+       <p className="text-[#BB6A72] w-full group-hover:text-slate-300"> {sublink.title}</p>
       </NavLink>
     );
   });
     return (
-      <div className="flex flex-col w-full relative" key={item.id}>
+      <div className="flex flex-col  w-full relative" key={item.id}>
       
       <div 
        
-      className="items-center  justify-between flex w-full flex-row" key={item.id}>
+      className="items-center   justify-between flex w-full flex-row" key={item.id}>
       <NavLink
-      onMouseEnter={() => setIsSubmenuOpen(prev=>!prev)}
-        className=" flex space-y-2 px-4 py-2 justify-between relative w-full"
+      onMouseEnter={() => item.items.length > 0 && setIsSubmenuOpen(!isSubmenuOpen)}
+        className=" flex  space-y-2 px-4 py-2 text-[#BB6A72] w-full duration-200 transition-all justify-between relative"
         end
         key={item.id}
         onClick={closeAside}
         prefetch="intent"
-        style={activeLinkStyle}
+        // style={activeLinkStyle}
         to={url}
         >
-        {item.title} 
+        <p className='text-[#BB6A72] '>{item.title} </p>
         </NavLink>
         {item.items.length > 0 && (
           <>
           <KeyboardArrowDownIcon 
-          className="group-hover:block  md:opacity-0 cursor-pointer"
-                  // onClick={() => setIsSubmenuOpen(prev=>(!prev))}
+          className="group-hover:block text-[#BB6A72]  md:hidden cursor-pointer"
+                  onClick={() => setIsSubmenuOpen(!isSubmenuOpen)}
                  
                   
                   />
@@ -145,7 +157,7 @@ const subItemURL =
 
         <div 
         onMouseLeave={() => setIsSubmenuOpen(false)}
-        className={`xl:left-0 transition-opacity duration-200 ease-in-out ${isSubmenuOpen ? 'opacity-100' : 'opacity-0 hidden '}`}>
+        className={`xl:left-0 transition-opacity relative w-full bg-slate-300 border-2 duration-200 ease-in-out ${isSubmenuOpen ? 'opacity-100' : 'opacity-0 hidden '}`}>
 
         {submenu}
         </div>
@@ -266,7 +278,7 @@ function activeLinkStyle({
   isPending: boolean;
 }) {
   return {
-    fontFamily: 'Assistant, sans-serif',
+
     fontWeight: isActive ? 'bold' : undefined,
     color: isPending ? 'grey' : 'text-[#BB6A72]',
   };

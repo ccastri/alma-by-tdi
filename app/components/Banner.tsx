@@ -20,7 +20,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="  bg-[#fafafa]  h-auto w-full">
+    <div className=" sticky bg-[#fafafa]  h-auto w-full">
       <h1 className='text-center font-bold py-2'>{texts[currentIndex]}</h1>
     </div>
   )

@@ -33,12 +33,12 @@ export function Layout({
   // const newMenu = header?.menu?.items?.map(menuItem=> menuItem.title === 'Catalogo' && menuItem.url:'https://my-store-newww.myshopify.com/collections' )
  
   return (
-    <div className=''>
+    <div className='relative'>
       <CartAside cart={cart} />
       <SearchAside />
       <MobileMenuAside menu={header.menu} />
       <Banner/>
-      <div  className=''>
+      {/* <div  className='absolute'> */}
 
       <Header header={header} cart={cart} isLoggedIn={isLoggedIn} />
       <main>{children}</main>
@@ -47,7 +47,7 @@ export function Layout({
           {(footer) => <Footer menu={footer.menu} />}
         </Await>
       </Suspense>
-      </div>
+      {/* </div> */}
     </div>
   );
 }
