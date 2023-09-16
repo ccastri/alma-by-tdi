@@ -23,11 +23,14 @@ if (typeof window !== 'undefined') {
   // Tu código que utiliza window aquí
   window.addEventListener("scroll", function() {
     const header = document.getElementById("myHeader");
-    if (header !== null && window.scrollY > 0) {
+    const navMenu = document.getElementById("myNav")
+    if (header !== null && navMenu !== null && window.scrollY > 0) {
       header.classList.remove("top-8");
       header.classList.add("top-0");
+      // navMenu.classList.add("bg-[#Fafafa]");
+      // navMenu.classList.add("bg-none");
     } else {
-      header?.classList.remove("top-0");
+      header?.classList.remove("top-0") ;
       header?.classList.add("top-8");
     }
   });
@@ -36,23 +39,24 @@ if (typeof window !== 'undefined') {
   return (
 <div className=''>
   {/* <Banner/> */}
-  <header id="myHeader" className="fixed z-40 flex flex-col overflow-hidden justify-between  h-auto transition-all over ease-in-out duration-200 opacity-100 hover:bg-[#F6EEE6] ">
-    <div className="md:px-12 xs:px-4 space-x-4 justify-between my-auto w-full items-center flex">
-    <div className='flex space-x-2 py-4 justify-center items-center'>
+  <header id="myHeader" className="fixed z-40 flex flex-col overflow-hidden justify-between  h-auto transition-all over ease-in-out duration-200 opacity-100  ">
+    <div className="md:px-12 xs:px-4 space-x-4 hover:bg-[#F6EEE6] justify-between my-auto w-full items-center flex">
+    <div className='flex space-x-2 py-2 justify-center items-center'>
             <HeaderMenuMobileToggle /> 
       <SearchToggle />
     </div>
-      <NavLink className="rounded-full my-auto bg-[#fafafa" prefetch="intent" to="/" style={activeLinkStyle} end>
-        <div className="sm:w-32 justify-center  my-2 p-2  xs:w-full rounded-full md:rounded-xl bg-[#fafafa]">
-          <img className={`hidden sm:flex w-full object-cover`} src='/logo.png' alt="Logo" />
-          <img className={`sm:hidden flex h-12 w-12 sm:w-14 sm:h-14 object-cover`} src='/logo-small.png' alt="Logo" />
+      <NavLink className="rounded-full py-2 my-auto bg-[#fafafa" prefetch="intent" to="/" style={activeLinkStyle} end>
+        <div className="sm:w-auto justify-center    xs:w-full rounded-full md:rounded-xl ">
+          <img className={`hidden sm:flex w-full h-14 object-cover`} src='/logo-remove.png' alt="Logo" />
+          <img className={`sm:hidden flex h-20 w-20 sm:w-14 sm:h-14 object-cover`} src='/logo-small-remove.png' alt="Logo" />
         </div>
       </NavLink>
-      <div className='w-auto mt-2 flex'>
+      <div className='w-auto   flex'>
         <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
       </div>
     </div>
-  <div className='sticky z-50  border-t-slate-300 hover:bg-[#fafafa] border-dashed border w-screen  items-center justify-center mx-0 opacity-100  md:flex'>
+  <div id="myNav" className='sticky z-50   hover:bg-[#fafafa] 
+  w-screen  items-center justify-center mx-0 opacity-100  md:flex'>
     <HeaderMenu menu={menu} viewport="desktop" />
   </div>
   </header>
@@ -87,7 +91,7 @@ export function HeaderMenu({
       {/* {viewport === 'mobile' && (
         <NavLink
           end
-          className='text-[#BB6A72] '
+          className='text-slate-900 '
           onClick={closeAside}
           prefetch="intent"
           style={activeLinkStyle}
@@ -116,7 +120,7 @@ const subItemURL =
         : sublink.url;
     return (
       <NavLink
-        className="flex space-y-2 pl-8 group text-[#BB6A72] hover:text-slate-300 py-2 justify-between relative w-full"
+        className="flex space-y-2 pl-8 group text-slate-900 hover:text-slate-300 py-2 justify-between relative w-full"
         end
         key={sublink.id}
         onClick={closeAside}
@@ -124,7 +128,7 @@ const subItemURL =
         // style={activeLinkStyle}
         to={subItemURL}
       >
-       <p className="text-[#BB6A72] w-full group-hover:text-slate-300"> {sublink.title}</p>
+       <p className="text-slate-900 w-full group-hover:text-slate-300"> {sublink.title}</p>
       </NavLink>
     );
   });
@@ -133,10 +137,10 @@ const subItemURL =
       
       <div 
        
-      className="items-center  justify-between flex w-full flex-row" key={item.id}>
+      className="items-center hover:text-[#DFC7C7] duration-300 transition-all hover:ease-in-out group justify-between flex w-full flex-row" key={item.id}>
       <NavLink
       onMouseEnter={() => item.items.length > 0 && setIsSubmenuOpen(!isSubmenuOpen)}
-        className=" flex space-y-2 px-4 py-2 text-[#BB6A72] w-full duration-200 transition-all justify-between relative"
+        className={`  b group-hover:text-[#DFC7C7] flex space-y-2 px-4 py-2 w-full duration-200 transition-all hover:ease-in-out justify-between relative `}
         end
         key={item.id}
         onClick={closeAside}
@@ -144,12 +148,12 @@ const subItemURL =
         // style={activeLinkStyle}
         to={url}
         >
-        <p className='text-[#BB6A72] '>{item.title} </p>
+        <p className='text-[#fafafa] w-auto  text-3xl font-semibold duration-200 transition-all '><span className='hover:text group-hover:text-[#DFC7C7] text-slate-900'>{item.title}</span> </p>
         </NavLink>
         {item.items.length > 0 && (
           <>
           <KeyboardArrowDownIcon 
-          className="group-hover:block text-[#BB6A72]  md:hidden cursor-pointer"
+          className="group-hover:block text-slate-900  md:hidden cursor-pointer"
                   onClick={() => setIsSubmenuOpen(!isSubmenuOpen)}
                  
                   
@@ -161,7 +165,7 @@ const subItemURL =
 
         <div 
         onMouseLeave={() => setIsSubmenuOpen(false)}
-        className={`xl:left-0 transition-opacity relative w-full bg-slate-300 border-2 duration-200 ease-in-out ${isSubmenuOpen ? 'opacity-100' : 'opacity-0 hidden '}`}>
+        className={`xl:left-0 transition-opacity relative w-full    duration-200 ease-in-out ${isSubmenuOpen ? 'opacity-100' : 'opacity-0 hidden '}`}>
 
         {submenu}
         </div>
@@ -180,16 +184,16 @@ function HeaderCtas({
 }: Pick<HeaderProps, 'isLoggedIn' | 'cart'>) {
   return (
       
-    <nav className="header-ctas flex items-center w-full " role="navigation">
+    <nav className="flex items-center w-full " role="navigation">
 
-      <div className= " space-x-4 flex items-center w-auto">
+      <div className= " space-x-4 text-light flex items-center w-auto">
 
-      <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className='hidden text-sm md:flex text-[#BB6A72]'>
-        {isLoggedIn ? 'Cuenta' : 'Iniciar Sesion'}
+      <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className='hidden items-center text-center justify-center text-xs text-light md:flex text-slate-900'>
+        {isLoggedIn ? (`Cuenta: `) : <div className="w-auto  space-x-2  text-center">Iniciar Sesion <LoginIcon  className="ml-2 font-light" sx={{ fontSize: '30px' }} /></div>}
       </NavLink>
-      <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className=' text-[#BB6A72]'>
-        {isLoggedIn ?  <PersonOutlineIcon sx={{ fontSize: '20px' }} /> :<LoginIcon sx={{ fontSize: '20px' }} />}
-      </NavLink>
+      {/* <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className=' '>
+        {isLoggedIn ?   :}
+      </NavLink> */}
       <CartToggle cart={cart} />
       </div>
     </nav>
@@ -201,22 +205,22 @@ function HeaderMenuMobileToggle() {
   return (
     <a className="md:hidden " href="#mobile-menu-aside">
       <MenuIcon 
-      sx={{ fontSize: '20px' }}
-      className='text-[#BB6A72] hover:text-slate-300 transition-all transform hover:scale duration-200 hover:ease-in-out'/>
+      sx={{ fontSize: '30px' }}
+      className='text-slate-900 hover:text-slate-300 transition-all transform hover:scale duration-200 hover:ease-in-out'/>
     </a>
   );
 }
 
 function SearchToggle() {
   return <>
-  <a href="#search-aside" className=' flex flex-row items-center space-x-2 text-[#BB6A72] '>
-  <span className="hidden md:block text-sm text-[#BB6A72]">Buscar</span><SearchOutlinedIcon sx={{ fontSize: '20px' }}/>
+  <a href="#search-aside" className=' flex flex-row space-x-2 items-center  text-slate-900 '>
+  <SearchOutlinedIcon className="font-extralight" sx={{ fontSize: '30px' }}/><span className="hidden md:block text-xs text-slate-900">Buscar</span>
   </a>
   </>
 }
 
 function CartBadge({count}: {count: number}) {
-  return <a href="#cart-aside" className="flex text-sm text-[#BB6A72]">{count !== 0 ? <ShoppingCartFilledIcon sx={{ fontSize: '20px' }} />:<ShoppingCartOutlinedIcon sx={{ fontSize: '20px' }} />}  {count} </a>;
+  return <a href="#cart-aside" className="flex text-sm text-slate-900">{count !== 0 ? <ShoppingCartFilledIcon sx={{ fontSize: '30px' }} />:<ShoppingCartOutlinedIcon sx={{ fontSize: '30px' }} />}  {count} </a>;
 }
 
 function CartToggle({cart}: Pick<HeaderProps, 'cart'>) {
@@ -224,8 +228,7 @@ function CartToggle({cart}: Pick<HeaderProps, 'cart'>) {
     <Suspense fallback={<CartBadge count={0} />}>
       <Await resolve={cart}>
         {(cart) => {
-          if (!cart) return <CartBadge count={0} />;
-          return <CartBadge count={cart.totalQuantity || 0} />;
+          if (!cart) return<> <CartBadge count={0} /></>
         }}
       </Await>
     </Suspense>
@@ -284,6 +287,6 @@ function activeLinkStyle({
   return {
 
     fontWeight: isActive ? 'bold' : undefined,
-    color: isPending ? 'grey' : 'text-[#BB6A72]',
+    color: isPending ? 'grey' : 'text-slate-900',
   };
 }

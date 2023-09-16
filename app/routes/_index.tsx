@@ -42,11 +42,11 @@ export default function Homepage() {
   return (
     // ! Aqui estoy quitando el overflow EN LA JUEGAAAA!!!
     
-    <div className=" flex w-screen flex-col space-y- h-auto bg-[#fef6f6] overflow-x-hidden  overflow-y-hidden  ">
+    <div className=" flex w-screen flex-col space-y- px-8 h-auto bg-[#fef6f6] overflow-x-hidden  overflow-y-hidden  ">
       <div className=' h-screen w-full '>
       <Slider/>
       </div>
-      <div className="h-screen border-2 bg-[#fafafa]  ">
+      <div className="h-screen sm:h-auto bg-[#fafafa]  ">
          {/* <div className="absolute rounded-r-full blur-lg h-auto inset-y-0 left-0 w-28 md:w-56 bg-gradient-to-r from-[#f5f5f5] to-[#fafafa] z-40 shadow-md" /> */}
 
   {/* Gradiente derecho */}
@@ -58,7 +58,7 @@ export default function Homepage() {
       {/* <div className='flex  flex-row w-full '>
 
       </div> */}
-      <div className="w-auto my-4 h-screen border-2 px-8 overflow-hidden transition-all    xs:mx-0 xl:px-6  ">
+      <div className="w-auto my-4 h-screen overflow-hidden transition-all    xs:mx-0   ">
 {/* Debo revisar que es lo que estoy consumiendo aqui porque lo que necesito son todas las colecciones */}
       <FeaturedCollection collection={data.featuredCollection} />
       </div>
@@ -83,7 +83,7 @@ function FeaturedCollection({
   const image = collection.image;
   return (
 
-    <div className='w-full flex md:flex-row space-y-4 py-8 xs:flex-col items-center md:justify-between h-screen md:space-x-8 justify-center  md:px-20  md:h-full'>
+    <div className='w-full flex md:flex-row space-y-4 py-8 xs:flex-col items-center md:justify-between h-screen md:space-x-8 justify-center    md:h-full'>
       <div className='h-[50%] md:w-[60%] md:h-screen  items-center w-full '>
 
     <img src="/european-like-street.jpeg" className=' md:w-full  object-cover w-screen h-full md:h-screen' alt="" />
@@ -94,11 +94,11 @@ function FeaturedCollection({
 >
   {image && (
     // <div className="group w-full relative m-0 h-full flex flex-row">
-      <div className="w-full  group flex h-full transform items-center  hover:opacity-80  xs:hover:scale-105 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72] hover:border-2 border-[#DFC7C7]">
+      <div className="w-full  group flex h-full transform items-center  hover:opacity-80  xs:hover:scale-105 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72]  border-[#DFC7C7]">
         <Image
           data={image}
           className=" md:w-full w-auto relative h-full  md:h-screen "
-          aspectRatio="1/1.4"
+          aspectRatio="1/1"
           sizes="(min-width: 45em) 50vw, 100vw"
           />
           <p className="absolute bottom-0 m-4 p-4  group-hover:font-bold group-hover:text-black text-[#fafafa]  ease-in-out transition-all ">Tendencias</p>
