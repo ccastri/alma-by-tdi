@@ -46,7 +46,7 @@ export default function Homepage() {
       <div className=' h-screen w-full '>
       <Slider/>
       </div>
-      <div className="h-full border-2 bg-[#fafafa]  ">
+      <div className="h-screen border-2 bg-[#fafafa]  ">
          {/* <div className="absolute rounded-r-full blur-lg h-auto inset-y-0 left-0 w-28 md:w-56 bg-gradient-to-r from-[#f5f5f5] to-[#fafafa] z-40 shadow-md" /> */}
 
   {/* Gradiente derecho */}
@@ -58,7 +58,7 @@ export default function Homepage() {
       {/* <div className='flex  flex-row w-full '>
 
       </div> */}
-      <div className="w-auto h-screen border-2 p-8 overflow-hidden transition-all    xs:mx-0 xl:px-6  ">
+      <div className="w-auto my-4 h-screen border-2 px-8 overflow-hidden transition-all    xs:mx-0 xl:px-6  ">
 {/* Debo revisar que es lo que estoy consumiendo aqui porque lo que necesito son todas las colecciones */}
       <FeaturedCollection collection={data.featuredCollection} />
       </div>
@@ -82,33 +82,33 @@ function FeaturedCollection({
 }) {
   const image = collection.image;
   return (
-<>
-      {/* <h3 className="text-center font-bold leading-tight tracking-widest text-[#BB6A72] py-2 text-3xl">¡Enterate de las nuevas tendencias en Alma!</h3> */}
-    <div className='w-full flex space-y-4 xs:flex-col items-center md:justify-between h-screen md:space-x-8 justify-center  md:px-20  md:h-full'>
-      <div className='h-[50%] md:w-[60%] w-full '>
 
-    <img src="/european-like-street.jpeg" className=' md:w-full md:px-14 object-cover w-screen h-full' alt="" />
+    <div className='w-full flex md:flex-row space-y-4 py-8 xs:flex-col items-center md:justify-between h-screen md:space-x-8 justify-center  md:px-20  md:h-full'>
+      <div className='h-[50%] md:w-[60%] md:h-screen  items-center w-full '>
+
+    <img src="/european-like-street.jpeg" className=' md:w-full  object-cover w-screen h-full md:h-screen' alt="" />
       </div>
 <Link
-  className="md:h-[50%] h-full  w-full md:w-[40%] flex"
+  className="md:h-[50%] h-[50%]  w-full md:w-[40%] flex"
   to={`/collections/${collection.handle}`}
 >
   {image && (
     // <div className="group w-full relative m-0 h-full flex flex-row">
-      <div className="w-full flex h-[50%] transform  hover:opacity-80  xs:hover:scale-105 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72] hover:border-2 border-[#DFC7C7]">
+      <div className="w-full  group flex h-full transform items-center  hover:opacity-80  xs:hover:scale-105 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72] hover:border-2 border-[#DFC7C7]">
         <Image
           data={image}
-          className=" md:w-full w-auto  h-full  md:h-screen "
+          className=" md:w-full w-auto relative h-full  md:h-screen "
           aspectRatio="1/1.4"
           sizes="(min-width: 45em) 50vw, 100vw"
           />
+          <p className="absolute bottom-0 m-4 p-4  group-hover:font-bold group-hover:text-black text-[#fafafa]  ease-in-out transition-all ">Tendencias</p>
       </div>
     
     )}
 </Link>
 </div>
   
-</>
+// </>
 
 );
 }
@@ -138,7 +138,7 @@ function RecommendedProducts({
     stiffness: 100,     // rigidez del rebote
     damping: 5,        // amortiguación del rebote
     duration: 1.5,      // duración de la animación
-  }}  className="text-slate-700  italic text-xl tracking-wider  items-center  font-bold text-center py-4 h-auto  w-full">
+  }}  className="text-slate-900   text-xl -tracking-wide  items-center  font-light text-center py-4 h-auto  w-full">
     <span>
       <ArrowBackIosIcon 
         className=' mr-6 '  
