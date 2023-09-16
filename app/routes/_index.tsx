@@ -85,9 +85,9 @@ function FeaturedCollection({
 <>
       {/* <h3 className="text-center font-bold leading-tight tracking-widest text-[#BB6A72] py-2 text-3xl">¡Enterate de las nuevas tendencias en Alma!</h3> */}
     <div className='w-full flex  items-center md:justify-between h-screen md:space-x-8 justify-center  md:px-20  md:h-full'>
-      <div className='md:h-[50%] md:w-[60%] hidden md:block '>
+      <div className='md:h-[50%] md:w-[60%]  '>
 
-    <img src="/european-like-street.jpeg" className='hidden md:block md:w-full md:px-14 object-cover h-screen' alt="" />
+    <img src="/european-like-street.jpeg" className=' md:w-full md:px-14 object-cover h-screen' alt="" />
       </div>
 <Link
   className="md:h-[50%] h-full  w-full md:w-[40%] flex"
