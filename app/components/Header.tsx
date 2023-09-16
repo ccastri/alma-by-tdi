@@ -148,7 +148,7 @@ const subItemURL =
         // style={activeLinkStyle}
         to={url}
         >
-        <p className='text-[#fafafa] w-auto  text-3xl font-semibold duration-200 transition-all '><span className='hover:text group-hover:text-[#DFC7C7] text-slate-900'>{item.title}</span> </p>
+        <p className='text-[#fafafa] w-auto  text-2xl font-normal duration-200 transition-all '><span className='hover:text group-hover:text-[#DFC7C7] text-slate-900'>{item.title}</span> </p>
         </NavLink>
         {item.items.length > 0 && (
           <>
