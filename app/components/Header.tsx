@@ -40,7 +40,7 @@ if (typeof window !== 'undefined') {
 <div className=''>
   {/* <Banner/> */}
   <header id="myHeader" className="fixed z-40 flex flex-col overflow-hidden justify-between  h-auto transition-all over ease-in-out duration-200 opacity-100  ">
-    <div className="md:px-12 xs:px-4 space-x-4 hover:bg-[#F6EEE6] justify-between my-auto w-full items-center flex">
+    <div className="md:px-12 xs:px-4 space-x-4 hover:bg-[#F6EEE6] justify-between my-auto w-full items-center flex transition-all over ease-in-out duration-200">
     <div className='flex space-x-2 py-2 justify-center items-center'>
             <HeaderMenuMobileToggle /> 
       <SearchToggle />
@@ -55,8 +55,7 @@ if (typeof window !== 'undefined') {
         <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
       </div>
     </div>
-  <div id="myNav" className='sticky z-50   hover:bg-[#fafafa] 
-  w-screen  items-center justify-center mx-0 opacity-100  md:flex'>
+  <div id="myNav" className='sticky z-50   hover:bg-[#fafafa] w-screen  items-center justify-center mx-0 opacity-100  md:flex transition-all over ease-in-out duration-200'>
     <HeaderMenu menu={menu} viewport="desktop" />
   </div>
   </header>
@@ -188,8 +187,8 @@ function HeaderCtas({
 
       <div className= " space-x-4 text-light flex items-center w-auto">
 
-      <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className='hidden items-center text-center justify-center text-xs text-light md:flex text-slate-900'>
-        {isLoggedIn ? (`Cuenta: `) : <div className="w-auto  space-x-2  text-center">Iniciar Sesion <LoginIcon  className="ml-2 font-light" sx={{ fontSize: '30px' }} /></div>}
+      <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className=' items-center text-center justify-center text-xs text-light flex flex-row text-slate-900'>
+        {isLoggedIn ? (`Cuenta: `) : <div className="w-auto flex items-center  space-x-2  text-center "><span className="md:flex  hidden">Iniciar Sesion</span> <PersonOutlineIcon  className="ml-2 font-light" sx={{ fontSize: '30px' }} /></div>}
       </NavLink>
       {/* <NavLink prefetch="intent" to="/account" style={activeLinkStyle} className=' '>
         {isLoggedIn ?   :}

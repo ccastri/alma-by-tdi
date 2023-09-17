@@ -42,11 +42,11 @@ export default function Homepage() {
   return (
     // ! Aqui estoy quitando el overflow EN LA JUEGAAAA!!!
     
-    <div className=" flex w-screen flex-col space-y- px-8 h-auto bg-[#fef6f6] overflow-x-hidden  overflow-y-hidden  ">
+    <div className=" flex w-screen flex-col h-auto bg-[#fef6f6] overflow-x-hidden  overflow-y-hidden  ">
       <div className=' h-screen w-full '>
       <Slider/>
       </div>
-      <div className="h-screen sm:h-auto bg-[#fafafa]  ">
+      <div className="h-auto p-8 bg-[#fafafa]  ">
          {/* <div className="absolute rounded-r-full blur-lg h-auto inset-y-0 left-0 w-28 md:w-56 bg-gradient-to-r from-[#f5f5f5] to-[#fafafa] z-40 shadow-md" /> */}
 
   {/* Gradiente derecho */}
@@ -58,8 +58,8 @@ export default function Homepage() {
       {/* <div className='flex  flex-row w-full '>
 
       </div> */}
-      <div className="w-auto my-4 h-screen overflow-hidden transition-all    xs:mx-0   ">
-{/* Debo revisar que es lo que estoy consumiendo aqui porque lo que necesito son todas las colecciones */}
+      <div className="w-auto  sm:h-screen overflow-hidden transition-all    xs:mx-0   ">
+{/* Debo revisar que es lo que estoy consumienedo aqui porque lo que necesito son todas las colecciones */}
       <FeaturedCollection collection={data.featuredCollection} />
       </div>
       {/* <div className='w-full flex flex-col border'> */}
@@ -89,7 +89,7 @@ function FeaturedCollection({
     <img src="/european-like-street.jpeg" className=' md:w-full  object-cover w-screen h-full md:h-screen' alt="" />
       </div>
 <Link
-  className="md:h-[50%] h-[50%]  w-full md:w-[40%] flex"
+  className="md:h-[50%] h-[50%]  relative w-full md:w-[40%] flex"
   to={`/collections/${collection.handle}`}
 >
   {image && (
@@ -97,7 +97,7 @@ function FeaturedCollection({
       <div className="w-full  group flex h-full transform items-center  hover:opacity-80  xs:hover:scale-105 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72]  border-[#DFC7C7]">
         <Image
           data={image}
-          className=" md:w-full w-auto relative h-full  md:h-screen "
+          className=" md:w-full w-auto  h-full  md:h-screen "
           aspectRatio="1/1"
           sizes="(min-width: 45em) 50vw, 100vw"
           />
@@ -165,7 +165,7 @@ function RecommendedProducts({
         <Await resolve={products}>
           {({products}) => (
             <motion.div
-  className="  w-full h-full overflow-x-scroll  overflow-y-hidden  scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#fafa] scrollbar-thumb-rounded-md transition-all ease-in-out duration-200 space-x-6 flex z-20"
+  className="  w-full h-full overflow-x-scroll py-4 overflow-y-hidden  scrollbar-track-transparent scrollbar-thin scrollbar-thumb-[#fafa] scrollbar-thumb-rounded-md transition-all ease-in-out duration-200 space-x-6 flex z-20"
 
 >
   <AnimatePresence initial={false}>
@@ -179,7 +179,7 @@ function RecommendedProducts({
         exit={{ opacity: 0, x: 50 }} // Animation when item is removed
       >
                 <Link
-                  className="w-screen relative h-full xl:h-full transition-all transform hover:scale-105 hover:ease-in-out group-hover:text-gray-300 text-[#fafafa] font-semibold  flex flex-col"
+                  className="w-screen relative sm:h-full h-auto xl:h-full transition-all transform hover:scale-105 hover:ease-in-out group-hover:text-gray-300 text-[#fafafa] font-semibold  flex flex-col"
                   to={`/products/${product.handle}`}
                 >
                   <Image

@@ -30,16 +30,16 @@ const Reviews = () => {
   }, []);
 
   return (
-    <div className="flex w-full h-screen justify-center items-center my-12">
-      <article className="relative md:w-full w-screen px-8 my-12 space-y-4 items-center md:flex">
-        <div className="flex items-center md:w-1/2 w-full   justify-center ">
+    <div className="flex w-full h-screen pt-12 md:pt-0 md:justify-center md:items-center ">
+      <article className="relative md:w-full w-screen px-8 space-y-4 md:items-center md:flex">
+        <div className="flex md:items-center md:w-1/2 w-full   md:justify-center ">
           <motion.img
             key={comments[currentIndex].img}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-auto h-full  pt-8"
+            className="w-auto h-full "
             src={`/${comments[currentIndex].img}`}
             alt=""
           />
