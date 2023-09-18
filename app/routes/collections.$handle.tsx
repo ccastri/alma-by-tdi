@@ -17,7 +17,7 @@ export async function loader({request, params, context}: LoaderArgs) {
   const {handle} = params;
   const {storefront} = context;
   const paginationVariables = getPaginationVariables(request, {
-    pageBy: 8,
+    pageBy: 6,
   });
   console.log(handle)
   if (!handle) {
@@ -40,7 +40,7 @@ export default function Collection() {
   const {collection} = useLoaderData<typeof loader>();
 
   return (
-    <div className="collection px-8 py-2">
+    <div className="collection px-8 py-2 pt-20">
       <h1>{collection.title}</h1>
       <p className="collection-description">{collection.description}</p>
       <Pagination connection={collection.products}>
@@ -69,7 +69,7 @@ function ProductsGrid({products}: {products: ProductItemFragment[]}) {
           <ProductItem
             key={product.id}
             product={product}
-            loading={index < 8 ? 'eager' : undefined}
+            loading={index < 6 ? 'eager' : undefined}
           />
         );
       })}
@@ -98,16 +98,16 @@ function ProductItem({
       {product.featuredImage && (
         <Image
           alt={product.featuredImage.altText || product.title}
-          aspectRatio="1/1.2"
+          aspectRatio="1/1.6"
           data={product.featuredImage}
           loading={loading}
           sizes="(min-width: 45em) 50vw, 100vw"
           />
           )}
-      {/* <h4>{product.title}</h4>
+      <h4>{product.title}</h4>
       <small>
         <Money data={product.priceRange.minVariantPrice} />
-      </small> */}
+      </small> 
     </Link>
           // </div>
   );
@@ -137,7 +137,7 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
         ...MoneyProductItem
       }
     }
-    variants(first: 1) {
+    variants(first: 3) {
       nodes {
         selectedOptions {
           name
