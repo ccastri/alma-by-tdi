@@ -17,7 +17,7 @@ export async function loader({request, params, context}: LoaderArgs) {
   const {handle} = params;
   const {storefront} = context;
   const paginationVariables = getPaginationVariables(request, {
-    pageBy: 8,
+    pageBy: 6,
   });
   console.log(handle)
   if (!handle) {
@@ -98,16 +98,16 @@ function ProductItem({
       {product.featuredImage && (
         <Image
           alt={product.featuredImage.altText || product.title}
-          aspectRatio="1/1.2"
+          aspectRatio="1/1.4"
           data={product.featuredImage}
           loading={loading}
           sizes="(min-width: 45em) 50vw, 100vw"
           />
           )}
-      {/* <h4>{product.title}</h4>
+      <h4>{product.title}</h4>
       <small>
         <Money data={product.priceRange.minVariantPrice} />
-      </small> */}
+      </small> 
     </Link>
           // </div>
   );
@@ -137,7 +137,7 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
         ...MoneyProductItem
       }
     }
-    variants(first: 1) {
+    variants(first: 3) {
       nodes {
         selectedOptions {
           name
