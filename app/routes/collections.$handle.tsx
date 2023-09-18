@@ -40,7 +40,7 @@ export default function Collection() {
   const {collection} = useLoaderData<typeof loader>();
 
   return (
-    <div className="collection px-8 py-2">
+    <div className="collection px-8 py-2 pt-20">
       <h1>{collection.title}</h1>
       <p className="collection-description">{collection.description}</p>
       <Pagination connection={collection.products}>
