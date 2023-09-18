@@ -30,7 +30,7 @@ const Reviews = () => {
   }, []);
 
   return (
-    <div className="flex w-full h-screen pt-12 md:pt-0 md:justify-center md:items-center ">
+    <div className="flex w-full h-auto md:screen pt-12 md:pt-0 md:justify-center md:items-center ">
       <article className="relative md:w-full w-screen px-8 space-y-4 md:items-center md:flex">
         <div className="flex md:items-center md:w-1/2 w-full   md:justify-center ">
           <motion.img
