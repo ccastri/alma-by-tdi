@@ -4,12 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 const sliderItems = [
   {'imgBg':"aesthetic_col_1.png", "img":'PhotoRoom_20230811_172356_big_no_bg.png'},
   {'imgBg':"aesthetic_col_2.png", "img":'PhotoRoom_20230811_171642_big_no_bg.png'},
-  {'imgBg':"", "img":'PhotoRoom_20230811_172032.png'},
-  {'imgBg':"", "img":'PhotoRoom_20230811_172055.png'},
-  {'imgBg':"", "img":'PhotoRoom_20230811_172118.png'},
-  {'imgBg':"", "img":'PhotoRoom_20230811_172423.png'},
-  {'imgBg':"", "img":'PhotoRoom_20230811_171700.png'},
-  {'imgBg':"", "img":'PhotoRoom_20230811_172447.png'}
+  // {'imgBg':"aesthetic_col_3.png", "img":'PhotoRoom_20230811_172032.png_big_no_bg.png'},
+  // {'imgBg':"aesthetic_col_3.png", "img":'PhotoRoom_20230811_172055.png_big_no_bg.png'},
+  {'imgBg':"aesthetic_col_3.png", "img":'PhotoRoom_20230811_172118_big_no_bg.png'},
+  {'imgBg':"aesthetic_col_4.png", "img":'PhotoRoom_20230811_172423_big_no_bg.png'},
+  // {'imgBg':"", "img":'PhotoRoom_20230811_171700.png'},
+  // {'imgBg':"", "img":'PhotoRoom_20230811_172447.png'}
 ];
 
 const Slider = () => {
@@ -32,16 +32,16 @@ const Slider = () => {
   };
 
   return (
-    <div className="w-screen relative top-0 h-screen md:h-full  flex flex-col">
+    <div className="w-screen relative  h-screen md:h-full  flex flex-col">
       <div
         ref={sliderRef}
-        className="h-auto w-screen  flex rounded-md "
+        className="h-screen w-screen  flex rounded-md "
       >
         <AnimatePresence>
 
         {sliderItems.map((slide, index) => (
           <motion.div
-            className="relative flex h-auto justify-center duration-200 transition-all ease-in-out w-auto md:h-screen rounded-md"
+            className="relative flex h-screen justify-center duration-200 transition-all ease-in-out w-auto md:h-screen rounded-md"
             key={index}
             initial={{ opacity: 0 }}
               animate={{ opacity: index === currentImageIndex ? 1 : 0 }}
