@@ -69,7 +69,7 @@ function ProductsGrid({products}: {products: ProductItemFragment[]}) {
           <ProductItem
             key={product.id}
             product={product}
-            loading={index < 8 ? 'eager' : undefined}
+            loading={index < 6 ? 'eager' : undefined}
           />
         );
       })}
@@ -98,7 +98,7 @@ function ProductItem({
       {product.featuredImage && (
         <Image
           alt={product.featuredImage.altText || product.title}
-          aspectRatio="1/1.4"
+          aspectRatio="1/1.6"
           data={product.featuredImage}
           loading={loading}
           sizes="(min-width: 45em) 50vw, 100vw"
