@@ -8,7 +8,7 @@ type SelectedPolicies = keyof Pick<
 >;
 
 export const meta: V2_MetaFunction = ({data}) => {
-  return [{title: `Hydrogen | ${data.policy.title}`}];
+  return [{title: ` ${data.policy.title}`}];
 };
 
 export async function loader({params, context}: LoaderArgs) {
@@ -45,15 +45,17 @@ export default function Policy() {
   const {policy} = useLoaderData<typeof loader>();
 
   return (
-    <div className="policy">
+    <div className="policy pt-28 p-8">
       <br />
       <br />
       <div>
-        <Link to="/policies">← Back to Policies</Link>
+        <Link to="/policies">← Volver a las políticas</Link>
       </div>
       <br />
       <h1>{policy.title}</h1>
       <div dangerouslySetInnerHTML={{__html: policy.body}} />
+      <br />
+      <Link to="/">← Volver a Inicio</Link>
     </div>
   );
 }

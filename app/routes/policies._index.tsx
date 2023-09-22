@@ -16,7 +16,7 @@ export default function Policies() {
   const {policies} = useLoaderData<typeof loader>();
 
   return (
-    <div className="policies">
+    <div className="policies p-8 pt-32 ">
       <h1>Políticas</h1>
       <div>
         {policies.map((policy) => {

@@ -63,7 +63,7 @@ export default function Homepage() {
       <FeaturedCollection collection={data.featuredCollection} />
       </div>
       {/* <div className='w-full flex flex-col border'> */}
-<div>
+<div className="mt-12">
 
       <Reviews/>
 </div>
