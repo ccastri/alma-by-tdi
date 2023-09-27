@@ -27,11 +27,14 @@ export default function Page() {
   const {page} = useLoaderData<typeof loader>();
 
   return (
-    <div className="page">
+    <div className="pt-32">
       <header>
-        <h1>{page.title}</h1>
+        {/* <h1>{page.title}</h1> */}
       </header>
-      {page.title === 'Contacto' && <Contact/>}
+      <div className='w-full bg-[#fff0f0]'>
+
+      {page.title === 'Nosotros' && <Contact/>}
+      </div>
       <main dangerouslySetInnerHTML={{__html: page.body}} />
     </div>
   );

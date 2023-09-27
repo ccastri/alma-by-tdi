@@ -83,13 +83,13 @@ function FeaturedCollection({
   const image = collection.image;
   return (
 
-    <div className='w-full flex md:flex-row space-y-4 py-8 xs:flex-col items-center md:justify-between h-screen md:space-x-8 justify-center    md:h-full'>
-      <div className='h-[50%] md:w-[60%] md:h-screen  items-center w-full '>
+    <div className='w-full flex md:flex-row space-y-4 py-8 flex-col sm:items-center sm:justify-between h-screen sm:space-x-8   sm:h-full'>
+      <div className='h-[40%] md:w-[60%] items-center justify-center flex w-full '>
 
-    <img src="/european-like-street.jpeg" className=' md:w-full  object-cover w-screen h-full md:h-screen' alt="" />
+    <img src="/aesthetic_filler.png" className=' md:w-full object-cover   w-auto h-full md:h-screen' alt="" />
       </div>
 <Link
-  className="md:h-[50%] h-[50%]  relative w-full md:w-[40%] flex"
+  className=" h-[60%]  relative w-full sm:w-[40%] flex"
   to={`/collections/${collection.handle}`}
 >
   {image && (
@@ -97,8 +97,8 @@ function FeaturedCollection({
       <div className="w-full  group flex h-full transform items-center  hover:opacity-80  xs:hover:scale-105 hover:ease-in-out duration-200 hover:shadow-xl shadow-[#BB6A72]  border-[#DFC7C7]">
         <Image
           data={image}
-          className=" md:w-full w-auto  h-full  md:h-screen "
-          aspectRatio="1/1"
+          className=" w-full   h-full  md:h-screen "
+          aspectRatio="1/2"
           sizes="(min-width: 45em) 50vw, 100vw"
           />
           <p className="absolute bottom-0 m-4 p-4  group-hover:font-bold group-hover:text-black text-[#fafafa]  ease-in-out transition-all ">Tendencias</p>
