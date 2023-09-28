@@ -83,13 +83,13 @@ function FeaturedCollection({
   const image = collection.image;
   return (
 
-    <div className='w-full flex md:flex-row space-y-4 py-8 flex-col sm:items-center sm:justify-between h-screen sm:space-x-8   sm:h-full'>
+    <div className='w-full flex md:flex-row space-y-4 my-8 flex-col sm:items-center sm:justify-between h-screen sm:space-x-8   sm:h-full'>
       <div className='h-[40%] md:w-[60%] items-center justify-center flex w-full '>
 
     <img src="/aesthetic_filler.png" className=' md:w-full object-cover   w-auto h-full md:h-screen' alt="" />
       </div>
 <Link
-  className=" h-[60%]  relative w-full sm:w-[40%] flex"
+  className=" h-[60%]  md:h-full  relative w-full sm:w-[40%] flex"
   to={`/collections/${collection.handle}`}
 >
   {image && (
@@ -101,7 +101,10 @@ function FeaturedCollection({
           aspectRatio="1/2"
           sizes="(min-width: 45em) 50vw, 100vw"
           />
-          <p className="absolute bottom-0 m-4 p-4  group-hover:font-bold group-hover:text-black text-[#fafafa]  ease-in-out transition-all ">Tendencias</p>
+          <div className="h-full bottom-0  absolute">
+
+          <p className="  py-8 px-2 text-3xl  group-hover:font-bold group-hover:text-black text-[#fafafa]  ease-in-out transition-all ">Tendencias</p>
+          </div>
       </div>
     
     )}

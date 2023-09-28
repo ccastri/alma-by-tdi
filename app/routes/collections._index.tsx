@@ -19,7 +19,7 @@ export default function Collections() {
   const {collections} = useLoaderData<typeof loader>();
 
   return (
-    <div className="collections  border-2 flex flex-col  p-8 pt-20 ">
+    <div className="collections  border-2 flex flex-col  p-8 pt-28 ">
       <h1 className="font-extralight borde-2 text-slate-900 text-3xl">Colecciones</h1>
       <Pagination connection={collections}>
         {({nodes, isLoading, PreviousLink, NextLink}) => (

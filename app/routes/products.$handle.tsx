@@ -116,7 +116,7 @@ export default function Product() {
   const {selectedVariant} = product;
   console.log(selectedVariant)
   return (
-    <div className="product p-8">
+    <div className="product p-8 pt-32">
       <ProductImage image={selectedVariant?.image} />
       <ProductMain
         selectedVariant={selectedVariant}
