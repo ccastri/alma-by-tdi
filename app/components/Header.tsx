@@ -135,10 +135,11 @@ const subItemURL =
       <div className="flex flex-col w-full relative" key={item.id}>
       
       <div 
-       
+       onMouseEnter={() => setIsSubmenuOpen(true)}
+                // onMouseLeave={() => setIsSubmenuOpen(false)}
       className="items-center hover:text-[#DFC7C7] duration-300 transition-all hover:ease-in-out group justify-between flex w-full flex-row" key={item.id}>
       <NavLink
-      onMouseEnter={() => item.items.length > 0 && setIsSubmenuOpen(!isSubmenuOpen)}
+      onMouseEnter={() => item.items.length > 0 && setIsSubmenuOpen(true)}
         className={`  b group-hover:text-[#DFC7C7] flex space-y-2 px-4 py-2 w-full duration-200 transition-all hover:ease-in-out justify-between relative `}
         end
         key={item.id}

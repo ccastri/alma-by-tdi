@@ -1,4 +1,4 @@
-import {useMatches, NavLink} from '@remix-run/react';
+import {useMatches, NavLink, Link} from '@remix-run/react';
 import type {FooterQuery} from 'storefrontapi.generated';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -11,6 +11,14 @@ export function Footer({menu}: FooterQuery) {
     </footer>
   );
 }
+
+  const phoneNumber = '3154840114';
+
+  // Función para generar el enlace de WhatsApp
+  const generateWhatsAppLink = () => {
+    const message = 'Hola! Quisiera más información acerca de'; // Mensaje inicial opcional
+    return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  };
 
 function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
   const [root] = useMatches();
@@ -61,10 +69,10 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
         <h2 className='text-base font-bold text-slate-600'>Contacto</h2>
         <p className='text-sm font-light leading-6 text-slate-600'>
 
-         <span className="font-semibold">Correo Electrónico:   </span>almabytdi@gmail.com  <br/>
-        <span className="font-semibold ">WhatsApp:  </span>3101234567<br/>
-        Horario de Atención al Cliente: Lunes a domingo 7:00 am - 7:00  <br/>
-        Dirección (Tienda Fisica): Cra 12A # 34-56
+         <span className="font-semibold">Correo Electrónico:   </span>almabytejidosdeidentidad@gmail.com<br/>
+        <span className="font-semibold ">WhatsApp:  </span>{phoneNumber}<br/>
+        Horario de Atención al Cliente: Lunes a domingo 7:00 am - 7:00 pm  <br/>
+        Dirección (Tienda Fisica): Cra 32a #17-26 Sur
 
         </p>
       </div>
@@ -82,9 +90,9 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
       </div>
       </div>
       <div className="flex space-x-6  px-3">
-<FacebookIcon className="text-slate-600" sx={{fontSize: '30px'}}/>
-<InstagramIcon className="text-slate-600" sx={{fontSize: '30px'}}/>
-<WhatsAppIcon className="text-slate-600" sx={{fontSize: '30px'}}/>
+<Link to='https://www.facebook.com/AlmaByYuyuMolina?mibextid=2JQ9oc'><FacebookIcon className="text-slate-600" sx={{fontSize: '30px'}}/></Link>
+<Link to='https://instagram.com/almabyyuyumolina?igshid=MzRlODBiNWFlZA=='><InstagramIcon className="text-slate-600" sx={{fontSize: '30px'}}/></Link>
+<Link to={`${generateWhatsAppLink()}`}><WhatsAppIcon className="text-slate-600" sx={{fontSize: '30px'}}/></Link>
       </div>
       <div className="w-full h-px bg-gray-300 my-4"/>
       <div className='flex px-4 items-center space-x-2'>

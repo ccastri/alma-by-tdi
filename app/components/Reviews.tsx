@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const comments = [
-  {"img":'PhotoRoom_20230811_172118.png', "name":"Sofía Gómez","title":"","body":"¡Alma by Tejidos es lo más! Las creaciones de Yuyu Molina son puro talento de la 'sucursal del cielo'."},
-  {"img":'PhotoRoom_20230811_172423.png', "name":"Valentina Rodríguez","title":"","body":"Soy fan de Alma by Tejidos desde los tiempos del MIO, pero sería bacano si pensaran en las tallas pa' todas las caleñas."},
-  {"img":'PhotoRoom_20230811_171700.png', "name":"Camila Pérez","title":"","body":"OMG, chicas, Alma by Tejidos es literalmente nuestra 'ropa de ir pa'l centro'. 😍"},
-  {"img":'PhotoRoom_20230811_172447.png', "name":"Isabella García","title":"","body":"Amigas, sé que todas amamos Alma by Tejidos, pero ¿no sería lo máximo si tuvieran una línea 'sporty'? Algo para nuestras tardes de patineta en el Bulevar del Río o nuestras clases de salsa en Escuela de Baile Cali Swing. Estoy segura de que Yuyu Molina lo haría genial. ¿Qué opinan, amigas?"},
+  {"img":'PhotoRoom_20230811_172118.png', "name":"Sofía Gómez","title":"","body":"¡Wow, 10/10 en esta experiencia! Como caleña, siempre he apreciado la belleza única de las mujeres de nuestra ciudad, y esta tienda realmente nos representa. Encontré ropa que no solo encaja perfectamente con mi estilo, sino que también me hace sentir poderosa y segura. ¡Gracias por destacar la autenticidad y la versatilidad de las mujeres caleñas a través de la moda!"},
+  {"img":'PhotoRoom_20230811_172423.png', "name":"Valentina Rodríguez","title":"","body":"No puedo evitar sonreír cada vez que visito esta tienda. La moda es una forma de empoderamiento para mí, y esta tienda lo comprende completamente. Cada prenda aquí resalta la belleza auténtica de las mujeres caleñas. ¡La confianza y el sentido de pertenencia representados en una prenda!"},
+  {"img":'PhotoRoom_20230811_171700.png', "name":"Camila Pérez","title":"","body":" Esta tienda va más allá al ofrecer ropa que no solo refleja nuestro excelente sentido de la moda, sino que también nos empodera. Comodidad en cada prenda, desarrollo social y generacion de empleo. ¡Son un ejemplo a seguir en el mundo empresarial de Cali! 😍"},
+  // {"img":'PhotoRoom_20230811_172447.png', "name":"Isabella García","title":"","body":"Amigas, sé que todas amamos Alma by Tejidos, pero ¿no sería lo máximo si tuvieran una línea 'sporty'? Algo para nuestras tardes de patineta en el Bulevar del Río o nuestras clases de salsa en Escuela de Baile Cali Swing. Estoy segura de que Yuyu Molina lo haría genial. ¿Qué opinan, amigas?"},
   // Agrega más comentarios aquí
 ];
 
@@ -22,7 +22,7 @@ const Reviews = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % comments.length);
-    }, 8000);
+    }, 12000);
 
     return () => {
       clearInterval(interval);
